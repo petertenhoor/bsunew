@@ -1,2 +1,2 @@
-# bsunew
-WordPress website
+# BSU
+WP Template door Peter ten Hoor
