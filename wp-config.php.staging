@@ -28,6 +28,7 @@ define('DB_USER', 'bsunew_master');
 /** MySQL database password */
 define('DB_PASSWORD', '3Ki6UMY2=Wyw');
 
+
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
