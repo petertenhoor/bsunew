@@ -1,6 +1,6 @@
 server 'maseru.happy-online.nl', user: 'bsunew', roles: %w{web}
 
-set :application, 'BSU'
+set :application, 'BSU new'
 set :repo_url, 'git@github.com:HappyOnline/bsunew.git'
 set :keep_releases, 2
 
