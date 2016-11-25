@@ -1,0 +1,67 @@
+<ifModule mod_expires.c>
+    # Turn on Expires and set default to 0
+    ExpiresActive On
+    ExpiresDefault A0
+
+    # Set up caching on media files for 1 year (forever?)
+    <filesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav)$">
+      ExpiresDefault A29030400
+      Header append Cache-Control "public"
+    </filesMatch>
+
+    # Set up caching on media files for 1 week
+    <filesMatch "\.(gif|jpg|jpeg|png|swf)$">
+      ExpiresDefault A604800
+      Header append Cache-Control "public"
+    </filesMatch>
+
+    # Set up 2 Hour caching on commonly updated files
+    <filesMatch "\.(xml|txt|html|js|css)$">
+      ExpiresDefault A7200
+      Header append Cache-Control "proxy-revalidate"
+    </filesMatch>
+
+    # Force no caching for dynamic files
+    <filesMatch "\.(php|cgi|pl|htm)$">
+      ExpiresActive Off
+      Header set Cache-Control "private, no-cache, no-store, proxy-revalidate, no-transform"
+      Header set Pragma "no-cache"
+    </filesMatch>
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header unset ETag
+    FileETag None
+    Header unset Last-Modified
+    Header append Cache-Control "public"
+</IfModule>
+
+<IfModule mod_deflate.c>
+    # Insert output filter by type
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/x-httpd-php
+    AddOutputFilterByType DEFLATE application/cgi-php5
+    AddOutputFilterByType DEFLATE application/cgi-php53
+    AddOutputFilterByType DEFLATE application/cgi-php54
+
+    # Don't compress images, compressed files, docs nor movies
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI \.(?:pdf|doc)$ no-gzip dont-vary
+    SetEnvIfNoCase Request_URI \.(?:avi|mov|mp3|mp4|rm)$ no-gzip dont-vary
+</IfModule>
+
+AddType text/x-component .htc
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
