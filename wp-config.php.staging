@@ -28,7 +28,6 @@ define('DB_USER', 'bsunew_master');
 /** MySQL database password */
 define('DB_PASSWORD', '3Ki6UMY2=Wyw');
 
-
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
@@ -47,14 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         '^}n-REIzP8>l0`4I;PZTT#M1,+S,hzr91#SXy7kTn-b6c)+mN>S/u8sbSI35~n:H');
-define('SECURE_AUTH_KEY',  'gyp8 !,@0kR0xh<.r$zp#iE85f.:6exRSSC6$b1+xSgNL]x/6l}u,L )wS+m)Jx{');
-define('LOGGED_IN_KEY',    'oP@SA|]_f+7^=O6}H&Zzr^apYho/Uvm2INn+lqt|9]K.9)]-PwzPv/m8u]z,2-,D');
-define('NONCE_KEY',        '1Z-C~@o)vp95A#usF;0I#O0JA73iA0m`*H~ql|4z/BR$dE&Y1D/saE!S&`q!&-n)');
-define('AUTH_SALT',        'z o**zP{eZ>&;9+%`=<9KjC;5Sj2oz>1xC*|%b/dZ^)(B16p7ItbG-(4!7]LIKj_');
-define('SECURE_AUTH_SALT', '-GG2|qO;w Oq[Gq44XU%Hxh2G_sg:c}R3_6g]Ve8Cb(_+={=s1BG{dG=xn[5PBLt');
-define('LOGGED_IN_SALT',   '0|@x^5`t a1aid(;t6o(jEPo!dv((QqONo|Z~`x)&v!WCSdOD*1R+(%N%=R;%d>E');
-define('NONCE_SALT',       '2D%;CI-ctr0VYHWfWt8 aO7tRRcvoh xxM94I0U|wnUhqG+UTPmS0dU?tm-,D!J]');
+define('AUTH_KEY',         '] -d,txV1!>9O7$el6/R2oC4):O)@C*Ky?d,V4(-Y%UAdEgrF>!3TiJcD#Zj$fQo');
+define('SECURE_AUTH_KEY',  ')IK.}!KV9HC|JI`v|QY.~tfEp`dS7<jDbr/3{+3.5ZOdRTz7*9@AX^n!Gkok]JLL');
+define('LOGGED_IN_KEY',    '_?`rS1o@iV4=oMwYNie=[M_?4O<X$2<gKQn+|Y=*JO!Uv:L4a|l)B,z<Nf;R2Me5');
+define('NONCE_KEY',        '!ivr#W{Z)K}Y+4MGX=+:/w!Vi|ZZx{]+4U&<lb:r< z8cq7GxE}f;yIHp[DL1iW%');
+define('AUTH_SALT',        'o;sZd}/qRI}aa$^-j-EJ&^><wKYTL1<y|5wvVb1&,oS)k`Cx1jz:B^UsfO+Z:GW*');
+define('SECURE_AUTH_SALT', '0Yf5 kp!KueEeWv8:D>0U*1$pijeMJy:t,&}Q:R)+2Oy8|nBxN%7mi{v:EGT ]$O');
+define('LOGGED_IN_SALT',   'Q`y#A#a|ijd{;?g fUU%ssW0`+?d;0GD[Hwl+Ci-vvX=of|(>0BGWw@|h&h.LHz5');
+define('NONCE_SALT',       'M)G7|4X0W>B!i*wi$3DYc*%#Q%F_@FayEN2R|? b+e4/}F|4yZcmT31~$6)DH|<Q');
 
 /**#@-*/
 
@@ -64,20 +63,8 @@ define('NONCE_SALT',       '2D%;CI-ctr0VYHWfWt8 aO7tRRcvoh xxM94I0U|wnUhqG+UTPmS
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix  = 'bsu_';
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- *
- * For information on other constants that can be used for debugging,
- * visit the Codex.
- *
- * @link https://codex.wordpress.org/Debugging_in_WordPress
- */
 define ('WPLANG', 'nl_NL');
 
 /** Disable auto-update **/
@@ -87,9 +74,12 @@ define('WP_AUTO_UPDATE_CORE', false);
 /** Prevent editing by Admin -> Appearance -> Editor **/
 define('DISALLOW_FILE_EDIT', true);
 
+/** No more updates **/
+define('DISALLOW_FILE_MODS',true);
+
 /** Report all errors */
-@ini_set('log_errors', 'On');
-@ini_set('display_errors', 'On');
+@ini_set('log_errors', 'Off');
+@ini_set('display_errors', 'Off');
 define('WP_DEBUG', false);
 define('WP_DEBUG_LOG', false);
 define('WP_DEBUG_DISPLAY', false);
