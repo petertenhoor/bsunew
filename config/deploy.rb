@@ -1,4 +1,4 @@
-server 'maseru.happy-online.nl', user: 'bsu', roles: %w{web}
+server 'maseru.happy-online.nl', user: 'bsunew', roles: %w{web}
 
 set :application, 'BSU'
 set :repo_url, 'git@github.com:HappyOnline/bsu.git'

@@ -1,4 +1,4 @@
-set :deploy_to, '/home/bsu/build-master'
+set :deploy_to, '/home/bsunew/build-master'
 set :branch, 'build-master'
 
 task :deploy do

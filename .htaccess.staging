@@ -1,4 +1,4 @@
-AuthUserFile /home/bsu/build-staging/current/public/.htpasswd
+AuthUserFile /home/bsunew/build-staging/current/public/.htpasswd
 AuthType Basic
 AuthName "BSU Staging"
 Require valid-user
