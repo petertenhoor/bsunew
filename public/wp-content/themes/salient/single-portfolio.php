@@ -53,9 +53,11 @@ $subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
 			
 			<div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
 				
-				<?php if(have_posts()) : while(have_posts()) : the_post(); 
-				
-					if ( function_exists( 'yoast_breadcrumb' ) ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } 
+				<?php if(have_posts()) : while(have_posts()) : the_post();
+
+					if ( function_exists( 'yoast_breadcrumb' ) ){
+						yoast_breadcrumb('<div class="full-width-section breadcrumbs"><div class="row"><p id="breadcrumbs">', '</p></div></div>');
+					}
 				?>
 					
 					<div id="post-area" class="col <?php if($fwp != 'enabled') { echo 'span_9'; } else { echo 'span_12'; } ?>">

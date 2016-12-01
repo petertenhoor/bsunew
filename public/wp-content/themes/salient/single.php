@@ -172,7 +172,9 @@ endwhile; endif;
 			
 			<?php 
 
-			if ( function_exists( 'yoast_breadcrumb' ) ){ yoast_breadcrumb('<p id="breadcrumbs">','</p>'); } 
+			if ( function_exists( 'yoast_breadcrumb' ) ){
+				yoast_breadcrumb('<div class="full-width-section breadcrumbs"><div class="row"><p id="breadcrumbs">', '</p></div></div>');
+			}
 
 			$options = get_nectar_theme_options(); 
 
