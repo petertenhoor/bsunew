@@ -1,0 +1,21 @@
+table.merge-variables-list {
+  margin: 0;
+
+  th, td {
+    padding: .2em 1em;
+    width: auto;
+    min-width: 150px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  thead th {
+    padding-bottom: .5em;
+  }
+
+  td:nth-child(2) {
+    color: #999;
+  }
+}

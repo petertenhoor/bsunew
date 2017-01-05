@@ -1,0 +1,55 @@
+// reset defaults
+i[class*="vc-icon-"].vc_element-icon {
+  background-image: none !important;
+  &:before {
+    @include fa-icon();
+    font-size: 2.2em;
+  }
+}
+
+/**
+ * Set shortcode icon
+ *
+ * - Visual Composer icon
+ * - TinyMce icon
+ */
+@mixin set-shortcode-icon($type, $icon-content, $color: null) {
+  i.vc_element-icon.vc-icon-#{$type}:before {
+    content: $icon-content;
+  }
+  i.mce-i-shortcodes-#{$type}:before {
+    @include fa-icon();
+    content: $icon-content;
+  }
+  @if $color {
+    a##{$type} {
+      color: $color;
+    }
+  }
+}
+
+@include set-shortcode-icon('button', $fa-var-arrow-circle-right);
+@include set-shortcode-icon('coloredblock', $fa-var-square);
+@include set-shortcode-icon('borderedblock', $fa-var-square-o);
+@include set-shortcode-icon('divider', $fa-var-ellipsis-h);
+@include set-shortcode-icon('quote', $fa-var-quote-right);
+@include set-shortcode-icon('block-link', $fa-var-external-link);
+@include set-shortcode-icon('social-links', $fa-var-share-alt);
+@include set-shortcode-icon('zorgkaart', $fa-var-code);
+@include set-shortcode-icon('image-label', $fa-var-image);
+@include set-shortcode-icon('image', $fa-var-image);
+@include set-shortcode-icon('location-attributes', $fa-var-list, $color-orange);
+@include set-shortcode-icon('location-details', $fa-var-map-marker, $color-orange);
+@include set-shortcode-icon('location-featured-image', $fa-var-image, $color-orange);
+@include set-shortcode-icon('posts-location', $fa-var-clone);
+@include set-shortcode-icon('posts-blogpost', $fa-var-clone);
+@include set-shortcode-icon('download-block', $fa-var-download);
+@include set-shortcode-icon('newsletter-form', $fa-var-file);
+@include set-shortcode-icon('jobalert-form', $fa-var-file);
+@include set-shortcode-icon('application-process', $fa-var-dot-circle-o, $color-orange);
+@include set-shortcode-icon('application-form', $fa-var-pencil-square, $color-orange);
+@include set-shortcode-icon('job-profile', $fa-var-user, $color-orange);
+@include set-shortcode-icon('job-location', $fa-var-map-marker, $color-orange);
+@include set-shortcode-icon('media-gallery', $fa-var-image, $color-orange);
+@include set-shortcode-icon('clickable-map', $fa-var-map);
+

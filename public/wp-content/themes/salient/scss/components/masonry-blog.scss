@@ -1,0 +1,17 @@
+/** Masonry blog **/
+
+.single .masonry-blog-item .inner-wrap, #search-results .result .inner-wrap {
+  -o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f4f4f4;
+}
+
+.single, .archive {
+  .masonry-blog-item {
+    .post-content {
+      padding-left: 0 !important;
+    }
+  }
+}

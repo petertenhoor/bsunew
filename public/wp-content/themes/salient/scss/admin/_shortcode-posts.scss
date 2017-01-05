@@ -1,0 +1,41 @@
+.vc-custom-attribute-posts-selection {
+  .manual-posts {
+    display: none;
+    flex-wrap: wrap;
+    @include grid-context-columns-percentage(null, 4);
+
+    .manual-post {
+      animation: get-animation($animate-scale-in, .5s, $ease-out-quad);
+      border: 1px solid #eee;
+      padding: 1em;
+      font-size: .8em;
+      line-height: 1.4em;
+      user-select: none;
+      box-shadow: 0 15px 15px -17px rgba(0, 0, 0, .3);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      span {
+        display: block;
+        cursor: default;
+        margin-bottom: 1em;
+      }
+
+      @include button-elements {
+        margin-top: auto;
+        display: block;
+        width: initial;
+      }
+    }
+  }
+
+  .selection {
+    display: flex;
+    margin-top: 1em;
+    .button {
+      margin-left: 1em;
+    }
+  }
+}

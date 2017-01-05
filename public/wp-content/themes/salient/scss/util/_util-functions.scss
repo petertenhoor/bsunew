@@ -1,0 +1,65 @@
+/**
+ * @package superduperbox/util
+ * Functions */
+
+/**
+ * Get column width percentage
+ *
+ * @param   {int} $number-column
+ * @return  {percentage} */
+@function column-width-percentage($number-column) {
+  @if type-of($number-column) == "number" {
+    @return 100% / $number-column;
+  }
+}
+
+/**
+ * Sanitize value to class
+ *
+ * @param 	{string} $str
+ * @return 	{string} */
+@function sanitize-class($str) {
+  $class: "";
+  @for $i from 1 through str-length($str) {
+    $character: to-lower-case(str-slice($str, $i, $i));
+    @if $character == " " {
+      $character: "-";
+    }
+    $class: $class + $character;
+  }
+  @return $class;
+}
+
+/**
+ * Replace `$search` with `$replace` in `$string`
+ *
+ * @param   {string} $string
+ * @param   {string} $search
+ * @param   {string} $replace
+ * @return  {string}
+ */
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+/**
+ * Convert a unit string to number. Only numbers are computable
+ *
+ * @param {string} $string
+ * @param {string} $unit */
+@function unit-string-to-number($string, $unit) {
+  $units: ("px": 1px, "cm": 1cm, "mm": 1mm, "%": 1%, "ch": 1ch, "in": 1in, "em": 1em, "rem": 1rem, "pt": 1pt, "pc": 1pc, "ex": 1ex, "vw": 1vw, "vh": 1vh, "vmin": 1vmin, "vmax": 1vmax, "deg": 1deg, "turn": 1turn, "rad": 1rad, "grad": 1grad, "s": 1s, "ms": 1ms, "Hz": 1Hz, "kHz": 1kHz);
+  @if type_of($string) != string {
+    @warn "unit-string-to-number: first parameter `#{$string}` should be a string";
+    @return $string;
+  }
+  @if map-has-key($units, $unit) == false {
+    @warn "unit-string-to-number: unknown unit `#{$unit}`";
+    @return $string;
+  }
+  @return _str-to-num(str-replace($string, $unit)) * map-get($units, $unit);
+}

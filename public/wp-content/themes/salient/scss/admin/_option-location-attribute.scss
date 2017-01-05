@@ -1,0 +1,39 @@
+#option-location-attributes {
+
+  .taxonomies {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    @media screen and (min-width: 1200px) {
+      @include grid-context-columns-percentage(null, 4, 10px, 10px);
+    }
+
+    @media screen and (min-width: 800px) and (max-width: 1199px) {
+      @include grid-context-columns-percentage(null, 3, 10px, 10px);
+    }
+
+    @media screen and (max-width: 799px) {
+      @include grid-context-columns-percentage(null, 2, 10px, 10px);
+    }
+  }
+
+  .iteratable-block-item {
+    padding: 1em;
+    box-sizing: border-box;
+    margin-top: 0 !important;
+    flex-grow: 1;
+    box-shadow: 0 15px 15px -17px rgba(0, 0, 0, .3);
+
+    .attribute-title {
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    @media screen and (max-width: 480px) {
+      .button {
+        display: block;
+      }
+    }
+  }
+}

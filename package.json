@@ -1,0 +1,32 @@
+{
+  "name": "bsunew",
+  "version": "1.0.0",
+  "description": "WP Template door Peter ten Hoor",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HappyOnline/bsunew.git"
+  },
+  "author": "Peter ten Hoor",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-watch": "^4.3.9"
+  },
+  "bugs": {
+    "url": "https://github.com/HappyOnline/bsunew/issues"
+  },
+  "homepage": "https://github.com/HappyOnline/bsunew#readme"
+}

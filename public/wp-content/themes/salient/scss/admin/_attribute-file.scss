@@ -1,0 +1,22 @@
+.vc-custom-attribute-file {
+  @include clearfix;
+
+  .attribute-file-filename {
+    margin: 1em 0;
+    background-color: #F5F5F5;
+    padding: .5em;
+    border: 1px solid #DFDFDF;
+    display: block;
+    float: left;
+
+    &:before {
+      @include fa-icon;
+      content: $fa-var-file-pdf-o;
+      margin-right: .5em;
+    }
+  }
+
+  .button.button-delete {
+    margin: 1.2em 0 1.2em 1em;
+  }
+}

@@ -1,0 +1,21 @@
+/* Line-height mappings
+ *------------------------ */
+$lineheight-mapping-default: (
+  "body-text": 1.6,
+  "title-big": 1.5,
+  "title-medium": 1.4,
+  'select': 1.6,
+  'caption': 1.6,
+  'time': 1,
+  'small': 1.4
+);
+
+/**
+ * Get line-height by name
+ *
+ * @param   {string} $name
+ * @return  {relative value}
+ */
+@function get-lineheight($name) {
+  @return map-get($lineheight-mapping-default, $name);
+}

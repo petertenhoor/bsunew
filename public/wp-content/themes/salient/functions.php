@@ -7,6 +7,29 @@ define('NECTAR_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/nectar/');
 define('NECTAR_THEME_NAME', 'salient');
 
 #-----------------------------------------------------------------#
+# Init Happy Framework
+#-----------------------------------------------------------------#
+
+use Bsu\BsuTheme;
+
+//include Happy Framework
+require_once 'happy-framework/happy-framework.php';
+// include the hbs theme
+require_once 'classes/BsuTheme.php';
+
+/**
+ * Get BsuTheme instance
+ *
+ * @return BsuTheme
+ */
+function Bsu()
+{
+    return BsuTheme::getInstance();
+}
+
+$GLOBALS['bsu'] = Bsu();
+
+#-----------------------------------------------------------------#
 # Load text domain
 #-----------------------------------------------------------------#
 
@@ -951,7 +974,7 @@ foreach ($font_fields as $k => $v) {
 # Post formats
 #-----------------------------------------------------------------#
 
-add_theme_support('post-formats', array('quote', 'video', 'audio', 'gallery', 'link'));
+//add_theme_support('post-formats', array('quote', 'video', 'audio', 'gallery', 'link'));
 
 
 #-----------------------------------------------------------------#
@@ -4025,7 +4048,6 @@ function be_adjacent_post_link($format, $link, $in_same_cat = false, $excluded_c
 if (!function_exists('nectar_page_header')) {
     function nectar_page_header($postid)
     {
-
         global $options;
         global $post;
         global $nectar_theme_skin;
@@ -4073,6 +4095,7 @@ if (!function_exists('nectar_page_header')) {
         if ($page_template == 'template-portfolio.php' && empty($title)) $title = get_the_title($post->ID);
 
         $bg_type = get_post_meta($postid, '_nectar_slider_bg_type', true);
+
         if (empty($bg_type)) $bg_type = 'image_bg';
 
         if ((!empty($bg) || !empty($bg_color) || $bg_type == 'video_bg' || $bg_type == 'particle_bg') && !is_post_type_archive('post')) {
@@ -4519,7 +4542,6 @@ if (!function_exists('nectar_page_header')) {
                 <div class="container">
                     <div class="col span_12 section-title">
                         <h1><?php echo $title; ?><?php if (!empty($subtitle)) echo '<span>' . $subtitle . '</span>'; ?></h1>
-
                         <?php // portfolio filters
                         if ($page_template == 'template-portfolio.php' && $display_sortable == '1' && $inline_filters == '0') { ?>
                             <div class="<?php echo $filters_id; ?>" instance="0">
@@ -4636,7 +4658,6 @@ if (!function_exists('nectar_page_header')) {
 
                 </div>
             <?php } else { ?>
-
 
                 <div class="row page-header-no-bg"
                      data-alignment="<?php echo (!empty($text_align)) ? $text_align : 'left'; ?>">

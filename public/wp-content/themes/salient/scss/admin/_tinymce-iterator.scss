@@ -1,0 +1,37 @@
+.vc-custom-attribute-iterator {
+  .items .item {
+    padding: 1em;
+    background-color: #f9f4f7;
+    border: 1px solid #e7e7e7;
+    margin-top: 1em;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .vc_shortcode-param {
+      margin-top: 1em;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .button.button-add {
+    margin-top: 1em;
+  }
+
+  .spinner {
+    float: none;
+    width: 100%;
+    padding-left: 30px;
+    font-style: italic;
+    font-size: .9em;
+    margin-top: 1em;
+    visibility: visible;
+    display: none;
+  }
+}
+
+.vc_ui-panel-content-container {
+   border: 1px solid #cecece;
+}

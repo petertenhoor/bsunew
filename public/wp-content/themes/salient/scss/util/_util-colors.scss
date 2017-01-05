@@ -1,0 +1,155 @@
+/* Color definitions
+ *--------------------------- */
+
+$color-gray-1: #f4f4f4;
+$color-gray-2: #cccccc;
+$color-gray-3: #999999;
+$color-gray-4: #f9f9f8;
+$color-blue-1: #339cee;
+$color-blue-2: #1772a2;
+$color-blue-3: #417c91;
+$color-yellow-1: #fcf3cd;
+$color-yellow-2: #efd661;
+$color-yellow-3: #eec507;
+$color-yellow-4: #d0a126;
+$color-yellow-5: #be9f57;
+$color-red: #ae150f;
+$color-orange: #cc9900;
+$color-black: #333333;
+$color-white: #ffffff;
+$color-green: #0fae4b;
+$color-header-blue: #1f368d;
+$color-white: #ffffff;
+$color-space-gray: #b3bdc2;
+$color-yellow: #f4ae05;
+
+/* Color mappings
+ *------------------------ */
+$color-mapping-default: (
+        'button-default': $color-yellow-4,
+        'button-default-bg-color': $color-white,
+        'border': $color-gray-2,
+        'input-placeholder': $color-gray-3,
+        'button-text': $color-white,
+        'button-border-dotted': $color-gray-2,
+        'button-linkedin': $color-blue-2,
+        'button-linkedin-hover': darken($color-blue-2, 10),
+        'button-small-background': $color-gray-4,
+        'button-small-color': $color-red,
+        'body-text': $color-black,
+        'link': $color-red,
+        'read-more-link': $color-yellow-3,
+        'title-big': $color-blue-3,
+        'title-big-red': $color-red,
+        'title-medium': $color-black,
+        'form-field-border': $color-gray-2,
+        'form-field-background': $color-white,
+        'border-hover': $color-yellow-4,
+        'error': $color-red,
+        'success': $color-green,
+        'select-border': $color-yellow-4,
+        'select-background': $color-white,
+        'select-color': $color-yellow-4,
+        'radio-checked': $color-yellow-5,
+        'radio-background': $color-white,
+        'radio-border': $color-gray-2,
+        'divider': lighten($color-black, 60),
+        'image-background': $color-white,
+        'loader-background': $color-white,
+        'loader-icon': $color-red,
+        'selection': lighten($color-blue-1, 30),
+        'gray-block': $color-gray-4,
+        'blue-block-background': $color-white,
+        'blue-block-border': $color-gray-2,
+        'time-background': $color-yellow-1,
+        'blockquote': $color-gray-3,
+        'blockquote-before-after': $color-gray-2,
+        'social-links-icon': $color-white,
+  // colored block
+        'colored-block-background-default': $color-gray-1,
+        'colored-block-background-yellow': $color-yellow-1,
+  // quote block
+        'quote-block-content-background-default': $color-yellow-1,
+        'quote-block-content-background-gray': $color-gray-1,
+        'quote-block-content-text-gray': $color-blue-3,
+        'quote-block-author-name': $color-blue-3,
+  // menu
+        'menu-link-selected': $color-yellow-2,
+        'menu-link-hover': $color-yellow-1,
+        'menu-link-background': $color-white,
+        'menu-link-border': $color-yellow-2,
+        'menu-link-hover-text': $color-red,
+  // mobile view
+        'mobile-view-background': $color-gray-1,
+        'mobile-view-text': $color-black,
+        'mobile-view-border': $color-gray-2,
+  // mobile header menu
+        'mobile-header-menu-link': $color-blue-2,
+        'mobile-header-menu-link-active': $color-green,
+  // site footer
+        'site-footer-background': $color-yellow-1,
+        'site-footer-border-bottom': $color-yellow-2,
+        'site-footer-link-elements': $color-black,
+  // block link
+        'block-link-background': $color-gray-1,
+        'block-link-title': $color-red,
+  // block zorgkaart
+        'zorgkaart-background': $color-gray-1,
+  // menu links
+        'page-menu-link-background': $color-gray-1,
+        'page-menu-link-text': $color-red,
+        'page-menu-link-background-hover': $color-yellow-1,
+        'page-menu-link-background-active': $color-yellow-2,
+  // breadcrumbs
+        'breadcrumbs': $color-black,
+        'breadcrumb-last': $color-gray-3,
+  // snippet post
+        'post-list-icon': $color-yellow-3,
+  // widget category
+        'widget-category-link': $color-yellow-3,
+  // recent post
+        'widget-recent-post-time': $color-gray-3,
+  // nav mnu
+        'widget-nav-menu-link': $color-yellow-3,
+  // comments
+        'comments-required': $color-gray-3,
+        'comment-author-name': $color-yellow-3,
+        'comment-date': $color-gray-3,
+  // snippet search
+        'snippet-search-singular-label-background': $color-gray-2,
+        'snippet-search-singular-label': $color-white,
+  // snippet location
+        'snippet-location-title': $color-black,
+  // location attribute
+        'location-attribute-odd-term': $color-gray-1,
+        'location-attribute-term-non-selected': $color-red,
+        'location-attribute-term-selected': $color-green,
+        'location-attribute-label-hover': $color-yellow-1,
+        'location-attribute-label-selected': $color-yellow-3,
+  // term service
+        'term-service-background': $color-gray-1,
+  // application process
+        'application-process-bulb': $color-yellow-3,
+  // twitter widget
+        'twitter-meta': $color-blue-3,
+        'twitter-tweet-link': $color-yellow-3,
+  //custom
+        'blue' : $color-header-blue,
+        'white' : $color-white,
+        'gray' : $color-gray-1,
+        'input-placeholder-color': $color-space-gray,
+        'yellow': $color-yellow,
+        'red': #c52424,
+        'green': #24c547
+);
+
+/**
+ * Get color by mapping name
+ *
+ * @param   {string}      $name
+ * @returns {hexadecimal}
+ */
+
+@function get-color($name) {
+  @return map-get($color-mapping-default, $name);
+}
