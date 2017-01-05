@@ -20,7 +20,7 @@ $person_image = $person_image ? File::getImageWithSrcset($person_image, array(),
                     <?php echo $person_image; ?>
                 </div>
             <?php endif; ?>
-            <?php if (!empty($person_name && !empty($person_title))): ?>
+            <?php if (!empty($person_name) && !empty($person_title)): ?>
                 <span class="shortcode-single-quote-block-person-name"><?php echo $person_name; ?></span>
                 <span class="shortcode-single-quote-block-person-title"><?php echo $person_title; ?></span>
             <?php endif; ?>
