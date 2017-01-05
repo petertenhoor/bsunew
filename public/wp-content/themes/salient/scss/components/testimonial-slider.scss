@@ -1,0 +1,24 @@
+/** Testimonial Slider **/
+
+.dark .testimonial_slider[data-style="multiple_visible"] blockquote.is-selected p {
+  background-color: #fbfbfb !important;
+}
+
+.testimonial_slider[data-style="multiple_visible"] blockquote span.title {
+  color: #ca3d7f;
+  font-weight: bolder !important;
+}
+
+.testimonial_slider[data-style="multiple_visible"] blockquote p {
+  padding: 25px 25px 25px 75px;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+.testimonial_slider[data-style="multiple_visible"] blockquote p:before {
+  font-size: 100px;
+  left: 20px;
+  top: 20px;
+  opacity: 0.5;
+  line-height: 1;
+}

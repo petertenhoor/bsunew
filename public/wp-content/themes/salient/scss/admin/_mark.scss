@@ -1,0 +1,9 @@
+mark {
+  background-color: transparent;
+  color: gray;
+
+  &:before, &:after {
+    content: '"';
+    color: gray;
+  }
+}

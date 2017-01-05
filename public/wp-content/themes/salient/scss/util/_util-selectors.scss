@@ -1,0 +1,98 @@
+/**
+ * Get all button elements
+ * -----------------------
+ * @type   {mixin} */
+@mixin button-elements {
+  .button:link,
+  .button:visited,
+  .button:active,
+  .button,
+  button,
+  input[type=submit],
+  input[type=button],
+  input[type=reset] {
+    @content;
+  }
+}
+
+/**
+ * Get all input elements
+ * ----------------------
+ * @type  {mixin} */
+@mixin input-elements {
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=tel],
+  input[type=number],
+  input[type=search],
+  input[type=color],
+  input[type=date],
+  input[type=range],
+  input[type=week],
+  input[type=month],
+  input[type=datetime],
+  input[type=datetime-local],
+  input[type=time],
+  input[type=url] {
+    @content;
+  }
+}
+
+/**
+ * Link elements
+ * -------------
+ * @type  {mixin} */
+@mixin link-elements {
+  a,
+  a:active,
+  a:focus,
+  a:visited {
+    @content;
+  }
+}
+
+/**
+ * Get all heading elements
+ * ------------------------
+ * @type  {mixin} */
+@mixin heading-elements {
+  h1, h2, h3, h4, h5, h6 {
+    @content;
+  }
+}
+
+/**
+ * Get all list elements
+ * ---------------------
+ * @type  {mixin} */
+@mixin list-elements {
+  ul, ol, menu {
+    @content;
+  }
+}
+
+/**
+ * Get all input and textarea elements
+ * -----------------------------------
+ * @type  {mixin} */
+@mixin input-textarea-elements {
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=tel],
+  input[type=number],
+  input[type=search],
+  input[type=color],
+  input[type=date],
+  input[type=range],
+  input[type=week],
+  input[type=month],
+  input[type=datetime],
+  input[type=datetime-local],
+  input[type=time],
+  input[type=url],
+  textarea {
+    @content;
+  }
+}

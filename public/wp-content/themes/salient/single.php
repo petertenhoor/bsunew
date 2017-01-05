@@ -19,8 +19,6 @@ if(have_posts()) : while(have_posts()) : the_post();
 
 endwhile; endif;
 
-
-
  if($fullscreen_header == true) { 
 
 	if(empty($bg) && empty($bg_color)) { ?>
@@ -190,7 +188,7 @@ endwhile; endif;
 			if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1'){
 				echo '<div id="post-area" class="col '.$std_minimal_class.' span_12 col_last">';
 			} else {
-				echo '<div id="post-area" class="col '.$std_minimal_class.' span_9">';
+				echo '<div id="post-area" class="col '.$std_minimal_class.' span_12">';
 			}
 			
 				 if(have_posts()) : while(have_posts()) : the_post(); 

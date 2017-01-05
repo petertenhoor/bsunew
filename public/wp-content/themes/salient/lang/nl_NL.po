@@ -1,0 +1,3025 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BSU\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-16 09:49+0100\n"
+"PO-Revision-Date: 2016-12-19 11:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: Happy Online <peter@happy-online.nl>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+"X-Poedit-SearchPathExcluded-1: nectar/meta\n"
+"X-Poedit-SearchPathExcluded-2: nectar/nectar-vc-addons\n"
+"X-Poedit-SearchPathExcluded-3: nectar/redux-framework\n"
+
+#: 404.php:13
+msgid "Not Found"
+msgstr ""
+
+#: classes/post-types/AbstractPostType.php:234
+msgid "Pages"
+msgstr "Pagina’s"
+
+#: classes/post-types/JobPostType.php:25
+msgid "Job"
+msgstr "Vacature"
+
+#: classes/post-types/JobPostType.php:26
+msgid "Jobs"
+msgstr "Vacatures"
+
+#: classes/post-types/JobPostType.php:48
+msgid "BSU Jobs"
+msgstr "BSU Vacatures"
+
+#: classes/visual-composer/templates/code_embed.php:28
+msgid "Preview"
+msgstr ""
+
+#: classes/visual-composer/templates/file.php:26
+msgid "Delete PDF file"
+msgstr ""
+
+#: classes/visual-composer/templates/file.php:28
+msgid "Select PDF file"
+msgstr ""
+
+#: classes/visual-composer/templates/iterator.php:35
+msgid "Delete"
+msgstr ""
+
+#: classes/visual-composer/templates/iterator.php:41
+msgid "Loading data..."
+msgstr ""
+
+#: classes/visual-composer/templates/iterator.php:44
+#: classes/visual-composer/templates/posts_selection.php:71
+msgid "Add"
+msgstr ""
+
+#: classes/visual-composer/templates/posts_selection.php:32
+msgid "Selection Method"
+msgstr ""
+
+#: classes/visual-composer/templates/posts_selection.php:34
+msgid "Latest"
+msgstr ""
+
+#: classes/visual-composer/templates/posts_selection.php:35
+msgid "Manual"
+msgstr ""
+
+#: classes/visual-composer/templates/posts_selection.php:40
+msgid "Number of posts"
+msgstr ""
+
+#: classes/visual-composer/templates/posts_selection.php:49
+msgid "Columns per row"
+msgstr ""
+
+# @ js_composer
+#: classes/visual-composer/templates/posts_selection.php:63
+msgid "Remove"
+msgstr ""
+
+#: comments.php:25
+msgid "Join the discussion"
+msgstr ""
+
+# @ js_composer
+#: comments.php:25 functions.php:4253 functions.php:4267
+#: includes/post-templates-pre-3-6/entry-audio.php:46
+#: includes/post-templates-pre-3-6/entry-gallery.php:52
+#: includes/post-templates-pre-3-6/entry-video.php:51
+#: includes/post-templates-pre-3-6/entry.php:58
+#: includes/post-templates/entry-aside.php:88
+#: includes/post-templates/entry-audio.php:316
+#: includes/post-templates/entry-gallery.php:352
+#: includes/post-templates/entry-image.php:251
+#: includes/post-templates/entry-video.php:386
+#: includes/post-templates/entry.php:298
+#: nectar/tinymce/shortcode-processing.php:2724 single.php:61 single.php:105
+#: single.php:115 single.php:276 template-home-2.php:270
+#: template-home-3.php:398
+msgid "No Comments"
+msgstr "Geen Reacties"
+
+# @ js_composer
+#: comments.php:25 nectar/tinymce/shortcode-processing.php:2724
+#: template-home-2.php:270 template-home-3.php:398
+msgid "One Comment"
+msgstr "Een Reactie"
+
+# @ js_composer
+#: comments.php:25 functions.php:4253 functions.php:4267
+#: includes/post-templates-pre-3-6/entry-audio.php:46
+#: includes/post-templates-pre-3-6/entry-gallery.php:52
+#: includes/post-templates-pre-3-6/entry-video.php:51
+#: includes/post-templates-pre-3-6/entry.php:58
+#: includes/post-templates/entry-aside.php:88
+#: includes/post-templates/entry-audio.php:316
+#: includes/post-templates/entry-gallery.php:352
+#: includes/post-templates/entry-image.php:251
+#: includes/post-templates/entry-video.php:386
+#: includes/post-templates/entry.php:298 single.php:61 single.php:105
+#: single.php:115 single.php:276
+msgid "% Comments"
+msgstr "% Reacties"
+
+#: comments.php:53
+msgid "My comment is.."
+msgstr "Mijn reactie.."
+
+# @ js_composer
+#: comments.php:57
+msgid "Leave a Reply"
+msgstr "Laat een reactie achter"
+
+# @ js_composer
+#: comments.php:58
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+# @ js_composer
+#: comments.php:59
+msgid "Cancel Reply"
+msgstr ""
+
+# @ js_composer
+#: comments.php:60
+msgid "Submit Comment"
+msgstr "Reactie Plaatsen"
+
+# @ js_composer
+#: comments.php:66
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+# @ js_composer
+#: comments.php:72
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Ingelogd als <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=“Uitloggen "
+"van dit account“>Wil je uitloggen?</a>"
+
+# @ js_composer
+#: comments.php:86 nectar/tinymce/tinymce-class.php:4378
+msgid "Name"
+msgstr ""
+
+# @ js_composer
+#: comments.php:92
+msgid "Email"
+msgstr ""
+
+# @ js_composer
+#: comments.php:99
+msgid "Website"
+msgstr ""
+
+#: footer.php:179
+msgid "Back"
+msgstr ""
+
+#: functions.php:1158
+msgid "Menu Item Style"
+msgstr ""
+
+# @ js_composer
+#: functions.php:1162
+msgid "Standard"
+msgstr ""
+
+#: functions.php:1164
+msgid "Button With Solid Color"
+msgstr ""
+
+#: functions.php:1166
+msgid "Button With Border"
+msgstr ""
+
+#: functions.php:1663
+msgid ""
+"This content is password protected. To view it please enter your password "
+"below:"
+msgstr ""
+
+#: functions.php:1664
+msgid "Password:"
+msgstr ""
+
+# @ taxonomy general name
+#: functions.php:2086 functions.php:2314
+msgid "Slides"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2087 functions.php:2315
+msgid "Slide"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2088 functions.php:2316
+msgid "Search Slides"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2089 functions.php:2317
+msgid "All Slides"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2090 functions.php:2318
+msgid "Parent Slide"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2091 functions.php:2319
+msgid "Edit Slide"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2092 functions.php:2320
+msgid "Update Slide"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2093 functions.php:2321
+msgid "Add New Slide"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2094 functions.php:2101
+msgid "Home Slider"
+msgstr ""
+
+#: functions.php:2179 functions.php:2449
+msgid "Sort Slides"
+msgstr ""
+
+#: functions.php:2180
+msgid "Simply drag the slide up or down and they will be saved in that order."
+msgstr ""
+
+# @ js_composer
+#: functions.php:2189 functions.php:2223 functions.php:2485 functions.php:2534
+msgid "Order"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2190 functions.php:2224 functions.php:2486 functions.php:2535
+#: nectar/tinymce/tinymce-class.php:443 nectar/tinymce/tinymce-class.php:4348
+#: nectar/tinymce/tinymce-class.php:4377
+msgid "Image"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2191 functions.php:2225 functions.php:2487 functions.php:2536
+msgid "Caption"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2322 functions.php:2329 nectar/tinymce/tinymce-class.php:318
+msgid "Nectar Slider"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2344 functions.php:2352
+msgid "Slider Locations"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2345
+msgid "Slider Location"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2346
+msgid "Search Slider Locations"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2347
+msgid "All Slider Locations"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2348
+msgid "Edit Slider Location"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2349
+msgid "Update Slider Location"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2350
+msgid "Add New Slider Location"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2351
+msgid "New Slider Location"
+msgstr ""
+
+#: functions.php:2450
+msgid ""
+"Choose your slider location below and simply drag your slides up or down - "
+"they will automatically be saved in that order."
+msgstr ""
+
+#: functions.php:2635
+msgid "Show All "
+msgstr ""
+
+# @ taxonomy general name
+# @ js_composer
+#: functions.php:2996 functions.php:2999 nectar/tinymce/tinymce-class.php:4563
+msgid "Portfolio"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2997
+#: nectar/assets/functions/ajax-search/wp-search-suggest.php:68 search.php:85
+msgid "Portfolio Item"
+msgstr ""
+
+# @ js_composer
+#: functions.php:2998
+msgid "Search Portfolio Items"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3000
+msgid "Parent Portfolio Item"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3001
+msgid "Edit Portfolio Item"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3002
+msgid "Update Portfolio Item"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3003
+msgid "Add New Portfolio Item"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3016
+msgid "Project"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3043 functions.php:3051
+msgid "Project Categories"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3044
+msgid "Project Category"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3045
+msgid "Search Project Categories"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3046
+msgid "All Project Categories"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3047
+msgid "Parent Project Category"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3048
+msgid "Edit Project Category"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3049
+msgid "Update Project Category"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3050
+msgid "Add New Project Category"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3064 functions.php:3073
+msgid "Project Attributes"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3065
+msgid "Project Attribute"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3066
+msgid "Search Project Attributes"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3067
+msgid "All Project Attributes"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3068
+msgid "Parent Project Attribute"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3069
+msgid "Edit Project Attribute"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3070
+msgid "Update Project Attribute"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3071
+msgid "Add New Project Attribute"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3072
+msgid "New Project Attribute"
+msgstr ""
+
+#: functions.php:3235 functions.php:3301 functions.php:3316 functions.php:3319
+msgid "Previous Project"
+msgstr ""
+
+#: functions.php:3236 functions.php:3308 functions.php:3317 functions.php:3320
+msgid "Next Project"
+msgstr ""
+
+#: functions.php:3261
+msgid "Back to all projects"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3354 nectar/tinymce/tinymce-class.php:4799
+msgid "Nectar Shortcodes"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3578 functions.php:3587 functions.php:3592 functions.php:3601
+#: functions.php:3603 functions.php:3604 functions.php:4280 functions.php:4288
+#: functions.php:4293 functions.php:5400 functions.php:5405
+#: nectar/tinymce/shortcode-processing.php:1160
+#: nectar/tinymce/shortcode-processing.php:1168
+#: nectar/tinymce/shortcode-processing.php:1172 single-portfolio.php:203
+#: single-portfolio.php:211 single-portfolio.php:216 single.php:129
+#: single.php:137 single.php:142
+msgid "Share this"
+msgstr ""
+
+#: functions.php:3578 functions.php:3587 functions.php:3592 functions.php:5385
+#: single-portfolio.php:198 single.php:59 single.php:274
+msgid "Share"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3582 functions.php:3602 functions.php:4284
+#: nectar/tinymce/shortcode-processing.php:1164 single-portfolio.php:207
+#: single.php:133
+msgid "Tweet this"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3582
+msgid "Tweet"
+msgstr ""
+
+# @ js_composer
+#: functions.php:3597 functions.php:3605 functions.php:4297
+#: nectar/tinymce/shortcode-processing.php:1176 single-portfolio.php:220
+#: single.php:146
+msgid "Pin this"
+msgstr ""
+
+#: functions.php:3597
+msgid "Pin"
+msgstr ""
+
+# @ default
+#: functions.php:3656 functions.php:4026
+msgid "Next Post"
+msgstr ""
+
+# @ default
+#: functions.php:3958
+#, php-format
+msgid "Use commas instead of %s to separate excluded categories."
+msgstr ""
+
+# @ default
+#: functions.php:4026
+msgid "Previous Post"
+msgstr ""
+
+#: functions.php:4222 nectar/tinymce/shortcode-processing.php:2843
+#: single.php:92
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+# @ js_composer
+#: functions.php:4248 includes/post-templates/entry-aside.php:87
+#: includes/post-templates/entry-audio.php:315
+#: includes/post-templates/entry-gallery.php:349
+#: includes/post-templates/entry-image.php:248
+#: includes/post-templates/entry-video.php:383
+#: includes/post-templates/entry.php:295 single.php:102
+msgid "By"
+msgstr "Door"
+
+# @ js_composer
+#: functions.php:4253 functions.php:4267
+#: includes/post-templates-pre-3-6/entry-audio.php:46
+#: includes/post-templates-pre-3-6/entry-gallery.php:52
+#: includes/post-templates-pre-3-6/entry-video.php:51
+#: includes/post-templates-pre-3-6/entry.php:58
+#: includes/post-templates/entry-aside.php:88
+#: includes/post-templates/entry-audio.php:316
+#: includes/post-templates/entry-gallery.php:352
+#: includes/post-templates/entry-image.php:251
+#: includes/post-templates/entry-video.php:386
+#: includes/post-templates/entry.php:298 single.php:61 single.php:105
+#: single.php:115 single.php:276
+msgid "One Comment "
+msgstr ""
+
+# @ js_composer
+#: functions.php:4340 functions.php:4552
+#: nectar/tinymce/shortcode-processing.php:1251
+#: nectar/tinymce/shortcode-processing.php:1260 template-portfolio.php:128
+msgid "Sort Portfolio"
+msgstr ""
+
+# @ js_composer
+#: functions.php:4343 functions.php:4556
+#: nectar/tinymce/shortcode-processing.php:1249
+#: nectar/tinymce/shortcode-processing.php:1252
+#: nectar/tinymce/shortcode-processing.php:1262 template-portfolio.php:126
+#: template-portfolio.php:129
+msgid "All"
+msgstr "Alle"
+
+#: functions.php:4580
+msgid "All Posts By"
+msgstr ""
+
+#: functions.php:4585
+msgid "Category"
+msgstr "Categorie"
+
+#: functions.php:4590
+msgid "Tag"
+msgstr ""
+
+#: functions.php:4597
+msgid "Daily Archives"
+msgstr ""
+
+#: functions.php:4601
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: functions.php:4602
+msgid "Monthly Archives"
+msgstr ""
+
+#: functions.php:4606
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: functions.php:4607
+msgid "Yearly Archives"
+msgstr ""
+
+# @ default
+#: functions.php:4610
+msgid "Archives"
+msgstr ""
+
+#: functions.php:4861 functions.php:4879
+#: nectar/tinymce/shortcode-processing.php:2321
+#: nectar/tinymce/shortcode-processing.php:2341
+#: nectar/tinymce/shortcode-processing.php:2477
+#: nectar/tinymce/shortcode-processing.php:2494
+#: taxonomy-project-attributes.php:775 taxonomy-project-attributes.php:796
+#: taxonomy-project-type.php:777 taxonomy-project-type.php:798
+#: template-portfolio.php:1157 template-portfolio.php:1177
+msgid "All items loaded"
+msgstr ""
+
+#: functions.php:4868 functions.php:5108
+msgid "Previous"
+msgstr ""
+
+#: functions.php:4869 functions.php:5109
+msgid "Next"
+msgstr ""
+
+#: functions.php:5385 single-portfolio.php:198 single.php:59 single.php:274
+msgid "Shares"
+msgstr ""
+
+#: happy-framework/classes/class-taxonomy-meta.php:469
+#: happy-framework/classes/helper/class-helper-metabox.php:366
+#: happy-framework/classes/helper/class-helper-settingsfield.php:80
+msgid "Delete selected image"
+msgstr ""
+
+#: happy-framework/classes/class-taxonomy-meta.php:470
+#: happy-framework/classes/helper/class-helper-metabox.php:367
+#: happy-framework/classes/helper/class-helper-metabox.php:457
+#: happy-framework/classes/helper/class-helper-settingsfield.php:50
+msgid "Select Image"
+msgstr ""
+
+#: happy-framework/classes/class-taxonomy-meta.php:471
+#: happy-framework/classes/helper/class-helper-metabox.php:368
+#: happy-framework/classes/helper/class-helper-metabox.php:458
+#: happy-framework/classes/helper/class-helper-settingsfield.php:51
+msgid "Use this image"
+msgstr ""
+
+#: happy-framework/classes/class-taxonomy-meta.php:512
+#: happy-framework/classes/class-taxonomy-meta.php:563
+#: happy-framework/classes/helper/class-helper-metabox.php:406
+#: happy-framework/classes/helper/class-helper-settingsfield.php:86
+msgid "Select image"
+msgstr ""
+
+#: happy-framework/classes/helper/class-helper-log.php:27
+#, php-format
+msgid "Called from line %1$d of file %2$s"
+msgstr ""
+
+#: happy-framework/classes/helper/class-helper-metabox.php:456
+#: happy-framework/classes/helper/class-helper-settingsfield.php:49
+msgid "Delete current selected image"
+msgstr ""
+
+#: happy-framework/classes/helper/class-helper-metabox.php:489
+msgid "Select file"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-cache.php:19
+msgid "Transient Cache"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-cache.php:30
+msgid "Enable transient cache"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-cache.php:52
+msgid "Transient cache has successfully cleared!"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-inline-scripts.php:14
+msgid "Inline Scripts"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-menu-item-abstract.php:183
+msgid "You do not have permission to manage options."
+msgstr ""
+
+#: happy-framework/classes/option/class-option-settings-section.php:65
+msgid "Select an image"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-settings-section.php:66
+msgid "Use image"
+msgstr ""
+
+#: happy-framework/classes/option/class-option-settings-section.php:67
+msgid "Delete image"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:253
+#: happy-framework/classes/post-type/class-posttype-abstract.php:256
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:254
+#, php-format
+msgid "Add New %s"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:255
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:257
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:258
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:259
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:260
+#, php-format
+msgid "No %s found in trash"
+msgstr ""
+
+#: happy-framework/classes/post-type/class-posttype-abstract.php:261
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:230
+#, php-format
+msgid "file %s does not exist in partials directory directory"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:231
+#, php-format
+msgid "file %s does not exist in partials directory"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:264
+#: happy-framework/classes/theme/class-theme-abstract.php:265
+#, php-format
+msgid "file %s does not exist in admin template directory"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:298
+#, php-format
+msgid "file %s does not exist in given partials template directory"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:299
+#, php-format
+msgid "file %s does not exist in partials template directory"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:365
+msgid "Shortcodes"
+msgstr ""
+
+#: happy-framework/classes/theme/class-theme-abstract.php:484
+msgid "Post Thumbnail"
+msgstr ""
+
+#: happy-framework/templates/tinymce-popup-after.php:13
+msgid "Insert shortcode"
+msgstr ""
+
+#: happy-framework/templates/tinymce-popup-after.php:14
+msgid "Close"
+msgstr ""
+
+# @ default
+#: header.php:276
+msgid "was successfully added to your cart."
+msgstr ""
+
+# @ js_composer
+#: header.php:333
+msgid "Search.."
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-posts-extra-widget.php:13
+msgid "The most recent posts on your site, including post thumbnails & dates."
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-posts-extra-widget.php:14
+#: includes/custom-widgets/recent-posts-extra-widget.php:36
+msgid "Recent Posts Extra"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-posts-extra-widget.php:99
+#: includes/custom-widgets/recent-projects-widget.php:144
+msgid "Title:"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-posts-extra-widget.php:102
+msgid "Number of posts to show:"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-posts-extra-widget.php:104
+msgid "(at most 15)"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-projects-widget.php:43
+msgid "The most recent projects on your site."
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-projects-widget.php:44
+#: includes/custom-widgets/recent-projects-widget.php:68
+#: nectar/tinymce/tinymce-class.php:4652
+msgid "Recent Projects"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-projects-widget.php:147
+msgid "Number of projects to show:"
+msgstr ""
+
+# @ js_composer
+#: includes/custom-widgets/recent-projects-widget.php:149
+msgid "Change in increments of 3 (at most 9)"
+msgstr ""
+
+# @ js_composer
+#: includes/header-search.php:19
+msgid "Start Typing..."
+msgstr "Typ uw bericht..."
+
+#: includes/header-search.php:21
+msgid "Press enter to begin your search"
+msgstr ""
+
+# @ js_composer
+#: includes/post-templates-pre-3-6/entry-audio.php:45
+#: includes/post-templates-pre-3-6/entry-gallery.php:51
+#: includes/post-templates-pre-3-6/entry-video.php:50
+#: includes/post-templates-pre-3-6/entry.php:57
+msgid "Posted by"
+msgstr ""
+
+# @ js_composer
+#: includes/post-templates-pre-3-6/entry-audio.php:53
+#: includes/post-templates-pre-3-6/entry-audio.php:71
+#: includes/post-templates-pre-3-6/entry-gallery.php:60
+#: includes/post-templates-pre-3-6/entry-gallery.php:79
+#: includes/post-templates-pre-3-6/entry-video.php:58
+#: includes/post-templates-pre-3-6/entry-video.php:77
+#: includes/post-templates-pre-3-6/entry.php:66
+#: includes/post-templates-pre-3-6/entry.php:85
+#: includes/post-templates/entry-aside.php:82
+#: includes/post-templates/entry-audio.php:208
+#: includes/post-templates/entry-audio.php:327
+#: includes/post-templates/entry-audio.php:354
+#: includes/post-templates/entry-audio.php:365
+#: includes/post-templates/entry-gallery.php:206
+#: includes/post-templates/entry-gallery.php:222
+#: includes/post-templates/entry-gallery.php:362
+#: includes/post-templates/entry-gallery.php:393
+#: includes/post-templates/entry-gallery.php:409
+#: includes/post-templates/entry-image.php:168
+#: includes/post-templates/entry-image.php:184
+#: includes/post-templates/entry-image.php:260
+#: includes/post-templates/entry-image.php:272
+#: includes/post-templates/entry-image.php:289
+#: includes/post-templates/entry-quote.php:183
+#: includes/post-templates/entry-quote.php:195
+#: includes/post-templates/entry-quote.php:266
+#: includes/post-templates/entry-status.php:95
+#: includes/post-templates/entry-video.php:227
+#: includes/post-templates/entry-video.php:243
+#: includes/post-templates/entry-video.php:395
+#: includes/post-templates/entry-video.php:426
+#: includes/post-templates/entry-video.php:442
+#: includes/post-templates/entry.php:186 includes/post-templates/entry.php:202
+#: includes/post-templates/entry.php:308 includes/post-templates/entry.php:339
+#: includes/post-templates/entry.php:354
+#: nectar/tinymce/shortcode-processing.php:2738
+msgid "Read More"
+msgstr "Lees meer"
+
+#: includes/post-templates/entry-aside.php:100
+#: includes/post-templates/entry-audio.php:216
+#: includes/post-templates/entry-audio.php:373
+#: includes/post-templates/entry-gallery.php:230
+#: includes/post-templates/entry-gallery.php:417
+#: includes/post-templates/entry-image.php:192
+#: includes/post-templates/entry-image.php:297
+#: includes/post-templates/entry-quote.php:204
+#: includes/post-templates/entry-quote.php:275
+#: includes/post-templates/entry-video.php:251
+#: includes/post-templates/entry-video.php:450
+#: includes/post-templates/entry.php:210 includes/post-templates/entry.php:362
+msgid "Tags:"
+msgstr ""
+
+#: includes/post-templates/entry-audio.php:102
+#: includes/post-templates/entry-gallery.php:111
+#: includes/post-templates/entry-image.php:94
+#: includes/post-templates/entry-link.php:86
+#: includes/post-templates/entry-quote.php:90
+#: includes/post-templates/entry-video.php:111
+#: includes/post-templates/entry.php:112
+msgid "In"
+msgstr ""
+
+#: includes/post-templates/entry-audio.php:183
+#: includes/post-templates/entry-audio.php:194
+#: includes/post-templates/entry-gallery.php:191
+#: includes/post-templates/entry-image.php:153
+#: includes/post-templates/entry-quote.php:168
+#: includes/post-templates/entry-video.php:212
+#: includes/post-templates/entry.php:171
+msgid "Continue Reading"
+msgstr ""
+
+# @ js_composer
+#: nectar/assets/functions/ajax-search/wp-search-suggest.php:60 search.php:62
+msgid "Blog Post"
+msgstr "Blogbericht"
+
+# @ js_composer
+#: nectar/assets/functions/ajax-search/wp-search-suggest.php:64 search.php:71
+msgid "Page"
+msgstr "Pagina"
+
+# @ js_composer
+#: nectar/assets/functions/ajax-search/wp-search-suggest.php:79 search.php:97
+#: woocommerce/cart/cart.php:28
+msgid "Product"
+msgstr ""
+
+# @ multiple-post-thumbnails
+#: nectar/assets/functions/multi-post-thumbnails/multi-post-thumbnails.php:75
+#, php-format
+msgid ""
+"The 'label' and 'id' values of the 'args' parameter of '%s::%s()' are "
+"required"
+msgstr ""
+
+# @ multiple-post-thumbnails
+#: nectar/assets/functions/multi-post-thumbnails/multi-post-thumbnails.php:154
+#, php-format
+msgid "Set as %3$s"
+msgstr ""
+
+# @ js_composer
+#: nectar/love/nectar-love.php:112
+msgid "Love this"
+msgstr ""
+
+# @ js_composer
+#: nectar/love/nectar-love.php:115
+msgid "You already love this!"
+msgstr ""
+
+#: nectar/love/nectar-love.php:128
+msgid "Love"
+msgstr ""
+
+# @ js_composer
+#: nectar/options/fields/color_gradient/field_color_gradient.php:28
+#: nectar/options/fields/color_gradient/field_color_gradient.php:33
+msgid "From:"
+msgstr ""
+
+# @ js_composer
+#: nectar/options/fields/color_gradient/field_color_gradient.php:29
+msgid "To:"
+msgstr ""
+
+# @ js_composer
+#: nectar/options/fields/color_gradient/field_color_gradient.php:35
+msgid " To:"
+msgstr ""
+
+# @ js_composer
+#: nectar/options/fields/upload/field_upload.php:30
+#: nectar/tinymce/tinymce-class.php:5080 nectar/tinymce/tinymce-class.php:5098
+#: nectar/tinymce/tinymce-class.php:5196
+msgid "Upload"
+msgstr ""
+
+# @ js_composer
+#: nectar/options/fields/upload/field_upload.php:31
+#: nectar/tinymce/tinymce-class.php:5081 nectar/tinymce/tinymce-class.php:5099
+#: nectar/tinymce/tinymce-class.php:5197
+msgid "Remove Upload"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:333
+msgid "Install Required Plugins"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:334
+msgid "Install Plugins"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:335
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:336
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:338
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:343
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:348
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:353
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:358
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:363
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %1$s plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:368
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:373
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:378
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugin."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %1$s "
+"plugins."
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:383
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:388
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:393
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:397
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:398
+msgid "Return to the dashboard"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:399
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3029
+msgid "Plugin activated successfully."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:400
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2832
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:401
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:402
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:403
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:404
+msgid "Dismiss this notice"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:405
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:1881
+#, php-format
+msgctxt "%s = version number"
+msgid "TGMPA v%s"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2167
+msgid "Required"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2170
+msgid "Recommended"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2186
+msgid "WordPress Repository"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2189
+msgid "External Source"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2192
+msgid "Pre-Packaged"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2209
+msgid "Not Installed"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2213
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2215
+msgid "Active"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2221
+msgid "Required Update not Available"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2224
+msgid "Requires Update"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2227
+msgid "Update recommended"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2235
+#, php-format
+msgctxt "%1$s = install status, %2$s = update status"
+msgid "%1$s, %2$s"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2280
+#, php-format
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2283
+#, php-format
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2286
+#, php-format
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2289
+#, php-format
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2371
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2379
+msgid "Installed version:"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2387
+msgid "Minimum required version:"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2399
+msgid "Available version:"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2422
+#, php-format
+msgid ""
+"No plugins to install, update or activate. <a href=\"%1$s\">Return to the "
+"Dashboard</a>"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2436
+msgid "Plugin"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2437
+msgid "Source"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2438
+msgid "Type"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2442
+msgid "Version"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2443
+msgid "Status"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2491
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Install %2$s"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2495
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Update %2$s"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2500
+#, php-format
+msgctxt "%2$s = plugin name in screen reader markup"
+msgid "Activate %2$s"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2603
+msgid "Install"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2609
+msgid "Update"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2612
+msgid "Activate"
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2643
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2645
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2681
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:2683
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3028
+msgid "Plugin activation failed."
+msgstr ""
+
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3362
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3364
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3365
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3369
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3370
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3371
+msgid "All installations and activations have been completed."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3372
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3375
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3377
+msgid "All installations have been completed."
+msgstr ""
+
+# @ js_composer
+#: nectar/tgm-plugin-activation/class-tgm-plugin-activation.php:3378
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/shortcode-processing.php:1443
+#: nectar/tinymce/shortcode-processing.php:1450
+#: nectar/tinymce/shortcode-processing.php:2990
+#: nectar/tinymce/shortcode-processing.php:2997
+#: taxonomy-project-attributes.php:218 taxonomy-project-attributes.php:225
+#: taxonomy-project-type.php:219 taxonomy-project-type.php:226
+#: template-home-1.php:185 template-home-1.php:192 template-home-3.php:188
+#: template-home-3.php:195 template-portfolio.php:319
+#: template-portfolio.php:326
+msgid "Watch Video"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/shortcode-processing.php:1460
+#: nectar/tinymce/shortcode-processing.php:3004
+#: taxonomy-project-attributes.php:232 taxonomy-project-type.php:233
+#: template-home-1.php:199 template-home-3.php:202 template-portfolio.php:336
+msgid "View Larger"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/shortcode-processing.php:1464
+#: nectar/tinymce/shortcode-processing.php:3025
+#: taxonomy-project-attributes.php:235 taxonomy-project-type.php:236
+#: template-home-1.php:202 template-home-3.php:205 template-portfolio.php:340
+msgid "More Details"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/shortcode-processing.php:2724 template-home-2.php:270
+#: template-home-3.php:398
+msgid "Comments"
+msgstr ""
+
+#: nectar/tinymce/shortcode-processing.php:2734
+msgid "in"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:49 nectar/tinymce/tinymce-class.php:4360
+msgid "Columns"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:54
+msgid "One Half (1/2)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:56 nectar/tinymce/tinymce-class.php:87
+#: nectar/tinymce/tinymce-class.php:116 nectar/tinymce/tinymce-class.php:147
+#: nectar/tinymce/tinymce-class.php:176 nectar/tinymce/tinymce-class.php:207
+#: nectar/tinymce/tinymce-class.php:236 nectar/tinymce/tinymce-class.php:265
+msgid "Boxed Column"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:57 nectar/tinymce/tinymce-class.php:88
+#: nectar/tinymce/tinymce-class.php:117 nectar/tinymce/tinymce-class.php:148
+#: nectar/tinymce/tinymce-class.php:177 nectar/tinymce/tinymce-class.php:208
+#: nectar/tinymce/tinymce-class.php:237 nectar/tinymce/tinymce-class.php:266
+msgid "Centered Text"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:58 nectar/tinymce/tinymce-class.php:89
+#: nectar/tinymce/tinymce-class.php:118 nectar/tinymce/tinymce-class.php:149
+#: nectar/tinymce/tinymce-class.php:178 nectar/tinymce/tinymce-class.php:209
+#: nectar/tinymce/tinymce-class.php:238
+msgid "Last Column"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:58 nectar/tinymce/tinymce-class.php:89
+#: nectar/tinymce/tinymce-class.php:118 nectar/tinymce/tinymce-class.php:149
+#: nectar/tinymce/tinymce-class.php:178 nectar/tinymce/tinymce-class.php:209
+#: nectar/tinymce/tinymce-class.php:238
+msgid ""
+"Check this for the last column in a row. i.e. when the columns add up to 1."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:62 nectar/tinymce/tinymce-class.php:93
+#: nectar/tinymce/tinymce-class.php:122 nectar/tinymce/tinymce-class.php:153
+#: nectar/tinymce/tinymce-class.php:182 nectar/tinymce/tinymce-class.php:213
+#: nectar/tinymce/tinymce-class.php:242 nectar/tinymce/tinymce-class.php:270
+msgid "Animation"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:75 nectar/tinymce/tinymce-class.php:106
+#: nectar/tinymce/tinymce-class.php:135 nectar/tinymce/tinymce-class.php:166
+#: nectar/tinymce/tinymce-class.php:195 nectar/tinymce/tinymce-class.php:226
+#: nectar/tinymce/tinymce-class.php:255 nectar/tinymce/tinymce-class.php:283
+#: nectar/tinymce/tinymce-class.php:4216
+msgid "Animation Delay"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:76 nectar/tinymce/tinymce-class.php:107
+#: nectar/tinymce/tinymce-class.php:136 nectar/tinymce/tinymce-class.php:167
+#: nectar/tinymce/tinymce-class.php:196 nectar/tinymce/tinymce-class.php:227
+#: nectar/tinymce/tinymce-class.php:256 nectar/tinymce/tinymce-class.php:284
+#: nectar/tinymce/tinymce-class.php:458
+msgid ""
+"Enter delay (in milliseconds) if needed e.g. 150. This parameter comes in "
+"handy when creating the animate in \"one by one\" effect in horizontal "
+"columns. "
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:85
+msgid "One Third Column (1/3)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:95 nectar/tinymce/tinymce-class.php:124
+#: nectar/tinymce/tinymce-class.php:155 nectar/tinymce/tinymce-class.php:184
+#: nectar/tinymce/tinymce-class.php:215 nectar/tinymce/tinymce-class.php:244
+#: nectar/tinymce/tinymce-class.php:272
+msgid "None"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:96 nectar/tinymce/tinymce-class.php:125
+#: nectar/tinymce/tinymce-class.php:156 nectar/tinymce/tinymce-class.php:185
+#: nectar/tinymce/tinymce-class.php:216 nectar/tinymce/tinymce-class.php:245
+#: nectar/tinymce/tinymce-class.php:273 nectar/tinymce/tinymce-class.php:448
+msgid "Fade In"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:97 nectar/tinymce/tinymce-class.php:126
+#: nectar/tinymce/tinymce-class.php:157 nectar/tinymce/tinymce-class.php:186
+#: nectar/tinymce/tinymce-class.php:217 nectar/tinymce/tinymce-class.php:246
+#: nectar/tinymce/tinymce-class.php:274 nectar/tinymce/tinymce-class.php:449
+msgid "Fade In From Left"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:98 nectar/tinymce/tinymce-class.php:127
+#: nectar/tinymce/tinymce-class.php:158 nectar/tinymce/tinymce-class.php:187
+#: nectar/tinymce/tinymce-class.php:218 nectar/tinymce/tinymce-class.php:247
+#: nectar/tinymce/tinymce-class.php:275 nectar/tinymce/tinymce-class.php:450
+msgid "Fade In From Right"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:99 nectar/tinymce/tinymce-class.php:128
+#: nectar/tinymce/tinymce-class.php:159 nectar/tinymce/tinymce-class.php:188
+#: nectar/tinymce/tinymce-class.php:219 nectar/tinymce/tinymce-class.php:248
+#: nectar/tinymce/tinymce-class.php:276 nectar/tinymce/tinymce-class.php:451
+msgid "Fade In From Bottom"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:100 nectar/tinymce/tinymce-class.php:129
+#: nectar/tinymce/tinymce-class.php:160 nectar/tinymce/tinymce-class.php:189
+#: nectar/tinymce/tinymce-class.php:220 nectar/tinymce/tinymce-class.php:249
+#: nectar/tinymce/tinymce-class.php:277 nectar/tinymce/tinymce-class.php:452
+msgid "Grow In"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:114
+msgid "Two Thirds Column (2/3)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:145
+msgid "One Fourth Column (1/4)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:174
+msgid "Three Fourths Column (3/4)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:205
+msgid "One Sixth Column (1/6)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:234
+msgid "Five Sixths Column (5/6)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:263
+msgid "One Whole Column (1/1)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:296
+msgid "Elements"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:310
+msgid ""
+"You currently don't have any Slider Locations setup. Please create some and "
+"add assign slides to them before using this!"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:312
+msgid "Link to Nectar Slider"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:323
+msgid "Select Slider"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:329
+msgid "Slider Height"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:330
+msgid "Don'nt include \"px\" in your string. e.g. 650"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:333
+msgid "Flexible Slider Height"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:334
+msgid "Display Full Width?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:335
+msgid "Display Arrow Navigation"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:336
+msgid "Display Bullet Navigation"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:340
+msgid "Bullet Navigation Style"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:346
+msgid "Enable Swipe on Desktop?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:347
+msgid "Parallax Slider?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:348
+msgid "Loop Slider?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:349
+msgid "Fullscreen Slider?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:353 nectar/tinymce/tinymce-class.php:362
+msgid "Slider Transition"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:371
+msgid "Button Sizing"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:378
+msgid "Autorotate?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:386
+msgid "Full Width Section"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:388
+msgid "Background Color"
+msgstr ""
+
+# @ js_composer
+# @ wpb
+#: nectar/tinymce/tinymce-class.php:389
+msgid "Background Image"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:392
+msgid "Background Position"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:394
+msgid "Left Top"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:395
+msgid "Left Center"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:396
+msgid "Left Bottom"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:397
+msgid "Center Top"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:398
+msgid "Center Center"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:399
+msgid "Center Bottom"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:400
+msgid "Right Top"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:401
+msgid "Right Center"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:402
+msgid "Right Bottom"
+msgstr ""
+
+# @ js_composer
+# @ wpb
+#: nectar/tinymce/tinymce-class.php:407
+msgid "Background Repeat"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:409
+msgid "No-Repeat"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:410
+msgid "Repeat"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:413
+msgid "Parallax Background"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:416
+msgid "Text Color"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:418
+msgid "Light"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:419
+msgid "Dark"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:425
+msgid "Top Padding"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:426 nectar/tinymce/tinymce-class.php:431
+msgid "Don'nt include \"px\" in your string. e.g. 40"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:430
+msgid "Bottom Padding"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:441
+msgid "Image With Animation"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:446
+msgid "Image Animation"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:457
+msgid "Delay"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:466
+msgid "Centered Heading"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:468
+msgid "Subtitle"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:475
+msgid "Divider"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:479
+msgid "Display Line?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:481
+msgid "No Line"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:482
+msgid "Full Width Line"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:483
+msgid "Small Line"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:489
+msgid "Custom Dividing Height"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:497
+msgid "Dropcap"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:501 nectar/tinymce/tinymce-class.php:524
+#: nectar/tinymce/tinymce-class.php:537 nectar/tinymce/tinymce-class.php:4199
+msgid "Color"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:509
+msgid "Milestone"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:511
+msgid "Milestone Number"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:512
+msgid "Milestone Subject"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:513
+msgid "Milestone Symbol"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:516
+msgid "Milestone Symbol Position"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:527 nectar/tinymce/tinymce-class.php:4201
+#: nectar/tinymce/tinymce-class.php:4397
+msgid "Accent-Color"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:528 nectar/tinymce/tinymce-class.php:4202
+#: nectar/tinymce/tinymce-class.php:4398
+msgid "Extra-Color-1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:529 nectar/tinymce/tinymce-class.php:4203
+#: nectar/tinymce/tinymce-class.php:4399
+msgid "Extra-Color-2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:530 nectar/tinymce/tinymce-class.php:4204
+#: nectar/tinymce/tinymce-class.php:4400
+msgid "Extra-Color-3"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:533
+msgid "Milestone Number Font Size"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:534
+msgid "Milestone Symbol Font Size"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:540
+msgid "Superscript"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4183
+msgid "Icon"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4187
+msgid "Icon Style"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4188
+msgid ""
+"Tiny is recommended to be used inline with regular text. <br/> Small is "
+"recommended to be used inline right before heading text. <br> Regular can be "
+"used in a variety of places. <br> Large is recommended to be used at the top "
+"of columns."
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4190
+msgid "Tiny"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4191
+msgid "Small Circle"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4192
+msgid "Regular"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4193
+msgid "Large Circle"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4194
+msgid "Large Circle Alt"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4205
+msgid "Extra-Color-Gradient-1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4206
+msgid "Extra-Color-Gradient-2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4214
+msgid "Icon Size"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4214
+msgid "Don'nt include \"px\" in your string. e.g. 40 - the default is 64"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4215
+msgid "Enable Animation"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4215
+msgid "This will cause the icon to appear to draw itself"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4216
+msgid "Enter time in milliseconds e.g. 400"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4219
+msgid "Animation Speed"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4221
+msgid "Slow"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4222 nectar/tinymce/tinymce-class.php:4245
+msgid "Medium"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4223
+msgid "Fast"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4238
+msgid "Button"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4242
+msgid "Size"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4244
+msgid "Small"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4246
+msgid "Large"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4247
+msgid "Jumbo"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4248
+msgid "Extra Jumbo"
+msgstr ""
+
+# @ js_composer
+# @ default
+#: nectar/tinymce/tinymce-class.php:4257
+msgid "Text"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4259
+msgid "Open Link In New Tab?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4262
+msgid "Style"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4264
+msgid "Regular + Accent Color"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4265
+msgid "Regular + Extra Color-1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4266
+msgid "Regular + Extra Color-2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4267
+msgid "Regular + Extra Color-3"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4268
+msgid "Regular + Color Gradient 1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4269
+msgid "Regular + Color Gradient 2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4270
+msgid "Regular W/ Tilt + Accent Color"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4271
+msgid "Regular W/ Tilt + Extra Color 1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4272
+msgid "Regular W/ Tilt + Extra Color 2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4273
+msgid "Regular W/ Tilt + Extra Color 3"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4274
+msgid "See-Through"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4275
+msgid "See-Through + Solid On Hover"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4276
+msgid "See-Through + Solid On Hover Alt"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4277
+msgid "See-Through + Color Gradient 1"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4278
+msgid "See-Through + Color Gradient 2"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4279
+msgid "See-Through + 3D On Hover"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4282
+msgid "Button Color Override"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4283
+msgid "Button Hover Color Override"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4286
+msgid "Hover Text Color"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4308
+msgid "Toggle Panels"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4317
+msgid "Tabbed Section"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4327
+msgid "Testimonial Slider"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4337
+msgid "Bar Graph"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4346
+msgid "Clients"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4356
+msgid "Pricing Table"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4361
+msgid "How many columns would you like?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4375
+msgid "Team Member"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4379
+msgid "Job Position"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4380
+msgid "Description"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4381
+msgid "Social Media"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4381
+msgid ""
+"Enter any social media links with a comma separated list. e.g. Facebook,"
+"http://facebook.com, Twitter,http://twitter.com"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4384
+msgid "Team Member Link Type"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4392
+msgid "Team Member Link URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4392
+msgid "Will only be used if Link Type is not set to \"None\"."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4395
+msgid "Link Color"
+msgstr ""
+
+# @ js_composer
+# @ vc_extend
+#: nectar/tinymce/tinymce-class.php:4409
+msgid "Carousel"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4413
+msgid "Carousel Title"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4417
+msgid "Scroll Speed"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4418
+msgid "Enter in milliseconds (default is 700)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4422
+msgid "Autorotate"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4423
+msgid "Would you like the carousel the transition automatically?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4427
+msgid "Easing"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4462
+msgid "Click here"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4462
+msgid "to see examples of these."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4470
+msgid "Social Buttons"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4474
+msgid "Display full width?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4475
+msgid ""
+"This will make your social icons expand to fit edge to edge in whatever "
+"space they're placed."
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4479
+msgid "Hide Share Count?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4480
+msgid "This will remove your share counts from displaying to the user"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4485
+msgid "Nectar Love"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4486 nectar/tinymce/tinymce-class.php:4491
+#: nectar/tinymce/tinymce-class.php:4496 nectar/tinymce/tinymce-class.php:4501
+#: nectar/tinymce/tinymce-class.php:4506 nectar/tinymce/tinymce-class.php:4511
+msgid "Check to enable"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4490
+msgid "Facebook"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4495
+msgid "Twitter"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4500
+msgid "Pinterest"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4505
+msgid "Google+"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4510
+msgid "LinkedIn"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4519
+msgid "Video"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4521
+msgid "MP4 File URL"
+msgstr ""
+
+# @ default
+#: nectar/tinymce/tinymce-class.php:4521
+msgid ""
+"Only supply the formats you desire, this shortcode is just a shortcut to "
+"place the <a href=\"https://codex.wordpress.org/Video_Shortcode\" target="
+"\"_blank\">default WordPress video player</a>."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4522
+msgid "WEBM File URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4523
+msgid "OGV FILE URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4524
+msgid "Preview Image"
+msgstr ""
+
+# @ default
+#: nectar/tinymce/tinymce-class.php:4524
+msgid "The preview image should be the same dimensions as your video."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4531
+msgid "Audio"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4533
+msgid "MP3 File URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4534
+msgid "OGA File URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4546
+msgid "Portfolio/Blog"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4567 nectar/tinymce/tinymce-class.php:4729
+msgid "Layout"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4576
+msgid "Constrain Max Columns to 4?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4577
+msgid ""
+"This will change the max columns to 4 (default is 5 for fullwidth). "
+"Activating this will make it easier to create a grid with no empty spaces at "
+"the end of the list on all screen sizes."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4581
+msgid "Portfolio Categories"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4582
+msgid ""
+"Please select the categories you would like to display for your portfolio. "
+"<br/>You can select multiple categories too (ctrl + click on PC and command "
+"+ click on Mac)."
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4587
+msgid "Starting Category"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4588
+msgid ""
+"Please select the category you would like you're portfolio to start filtered "
+"on"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4593 nectar/tinymce/tinymce-class.php:4693
+msgid "Project Style"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4594 nectar/tinymce/tinymce-class.php:4694
+msgid "Please select the style you would like your projects to display in."
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4596 nectar/tinymce/tinymce-class.php:4696
+msgid "Meta below thumb w/ links on hover"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4597 nectar/tinymce/tinymce-class.php:4697
+msgid "Meta on hover + entire thumb link"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4598 nectar/tinymce/tinymce-class.php:4698
+msgid "Title overlaid w/ zoom effect on hover"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4599 nectar/tinymce/tinymce-class.php:4699
+msgid "Meta from bottom on hover + entire thumb link"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4605
+msgid "Masonry Style"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4606
+msgid ""
+"This will allow your portfolio items to display in a masonry layout as "
+"opposed to a fixed grid. You can define your masonry sizes in each project. "
+"<br/> <br/>If using the full width layout, will only be active with the "
+"alternative project style."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4611
+msgid "Enable Sortable"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4612
+msgid "Checking this box will allow your portfolio to display sortable filters"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4617
+msgid "Horizontal Filters"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4618
+msgid ""
+"This will allow your filters to display horizontally instead of in a "
+"dropdown. (Only used if you enable sortable above.)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4622 nectar/tinymce/tinymce-class.php:4746
+msgid "Enable Pagination"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4623
+msgid "Would you like to enable pagination for this portfolio?"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4627 nectar/tinymce/tinymce-class.php:4751
+msgid "Pagination Type"
+msgstr ""
+
+# @ wpb
+#: nectar/tinymce/tinymce-class.php:4629 nectar/tinymce/tinymce-class.php:4753
+msgid "Default"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4630 nectar/tinymce/tinymce-class.php:4754
+msgid "Infinite Scroll"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4635
+msgid "Projects Per Page"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4636
+msgid ""
+"How many projects would you like to display per page? <br/> If pagination is "
+"not enabled, will simply show this number of projects <br/> Enter as a "
+"number example \"20\""
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4640 nectar/tinymce/tinymce-class.php:4704
+msgid "Lightbox Only?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4641 nectar/tinymce/tinymce-class.php:4705
+msgid ""
+"This will remove the single project page from being accessible thus "
+"rendering your portfolio into only a gallery."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4656
+msgid "Full Width Carousel?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4657
+msgid ""
+"This will make your carousel extend the full width of the page. Won't work "
+"in a column shortcode!"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4661
+msgid "Heading Text"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4662
+msgid "Enter any text you would like for the heading of your carousel"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4666
+msgid "Page Link Text"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4667
+msgid ""
+"This will be the text that is in a link leading users to your desired page "
+"<br/> (will be omitted for full width carousels and an icon will be used "
+"instead)"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4671
+msgid "Page Link URL"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4672
+msgid ""
+"Enter portfolio page URL you would like to link to. <br/> Remember to "
+"include \"http://\"!"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4677
+msgid "Hide Carousel Controls?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4678
+msgid "Checking this box will remove the controls from your carousel"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4683
+msgid "Number of Projects To Show"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4684
+msgid "Enter as a number example \"6\""
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4688 nectar/tinymce/tinymce-class.php:4779
+msgid "Category To Display From"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4725
+msgid "Blog"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4731
+msgid "Standard Blog W/ Sidebar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4732
+msgid "Standard Blog No Sidebar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4733
+msgid "Masonry Blog W/ Sidebar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4734
+msgid "Masonry Blog No Sidebar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4735
+msgid "Masonry Blog Fullwidth"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4740
+msgid "Blog Categories"
+msgstr ""
+
+#: nectar/tinymce/tinymce-class.php:4741
+msgid ""
+"Please select the categories you would like to display for your blog. <br/"
+">You can select multiple categories too (ctrl + click on PC and command + "
+"click on Mac)."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4747
+msgid "Would you like to enable pagination?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4759
+msgid "Posts Per Page"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4760
+msgid ""
+"How many posts would you like to display per page? <br/> If pagination is "
+"not enabled, will simply show this number of posts <br/>  Enter as a number "
+"example \"10\""
+msgstr ""
+
+# @ js_composer
+# @ default
+#: nectar/tinymce/tinymce-class.php:4770
+msgid "Recent Posts"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4774
+msgid "Enable Title Labels?"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4775
+msgid ""
+"These labels are defined by you in the \"Blog Options\" tab of your theme "
+"options panel."
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4800
+msgid "Choose a shortcode"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4830
+msgid "Content: "
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4838
+msgid "Add Shortcode"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4988
+msgid "Remove Tab"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:4988
+msgid "Add Tab"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5019
+msgid "Remove Toggle"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5019
+msgid "Add Toggle"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5042
+msgid "Remove Bar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5042
+msgid "Add Bar"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5068
+msgid "Remove Testimonial"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5068
+msgid "Add Testimonial"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5206
+msgid "Remove Client"
+msgstr ""
+
+# @ js_composer
+#: nectar/tinymce/tinymce-class.php:5206
+msgid "Add Client"
+msgstr ""
+
+# @ js_composer
+#: search.php:38
+msgid "Results For"
+msgstr "Resultaten voor"
+
+# @ js_composer
+#: search.php:116
+msgid "No results found"
+msgstr ""
+
+#: searchform.php:2
+msgid "Search..."
+msgstr ""
+
+#: searchform.php:2
+msgid "Search for:"
+msgstr ""
+
+# @ default
+#: searchform.php:3
+msgid "Search"
+msgstr ""
+
+# @ js_composer
+#: single.php:224 single.php:294
+msgid "Author"
+msgstr ""
+
+# @ js_composer
+#: single.php:224 single.php:294
+msgid "About"
+msgstr ""
+
+#: single.php:227 single.php:297
+msgid "More posts by"
+msgstr ""
+
+# @ js_composer
+#: template-home-1.php:69 template-home-2.php:69 template-home-3.php:69
+#: template-home-4.php:69
+msgid "More Info"
+msgstr ""
+
+# @ js_composer
+#: template-home-1.php:69 template-home-2.php:69 template-home-3.php:69
+#: template-home-4.php:69
+msgid "Back to Video"
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:20
+#, php-format
+msgid "Shipping #%d"
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:22
+msgid "Shipping and Handling"
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:59
+msgid "Please use the shipping calculator to see available shipping methods."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:63
+msgid ""
+"Please continue to the checkout and enter your full address to see if there "
+"are any available shipping methods."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:67
+msgid "Please fill in your details to see available shipping methods."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:76 woocommerce/cart/cart-shipping.php:82
+msgid ""
+"There don&lsquo;t seem to be available shipping methods. Please double check "
+"your address, or contact us if you need any help."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:97
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:19
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:24 woocommerce/checkout/review-order.php:55
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:71 woocommerce/cart/cart.php:31
+#: woocommerce/checkout/review-order.php:102
+msgid "Total"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:83
+#, php-format
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:86
+#, php-format
+msgid ""
+"Note: Shipping and taxes are estimated%s and will be updated during checkout "
+"based on your billing and shipping information."
+msgstr ""
+
+# @ js_composer
+#: woocommerce/cart/cart.php:29
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:30
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:48
+msgid "Remove this item"
+msgstr ""
+
+#: woocommerce/cart/cart.php:75
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:120
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:120
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/cart/cart.php:120
+msgid "Apply Coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:147
+msgid "Update Cart"
+msgstr ""
+
+#: woocommerce/cart/cart.php:152
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:24
+msgid "Calculate Shipping"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:30
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:47
+#: woocommerce/cart/shipping-calculator.php:53
+#: woocommerce/cart/shipping-calculator.php:65
+msgid "State / county"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:54
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:74
+msgid "City"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:82
+msgid "Postcode / Zip"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:87
+msgid "Update Totals"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:20
+msgid "You must be logged in to checkout."
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:42
+msgid "Your order"
+msgstr ""
+
+#: woocommerce/checkout/form-shipping.php:33
+msgid "Ship to a different address?"
+msgstr ""
+
+#: woocommerce/checkout/form-shipping.php:58
+msgid "Additional Information"
+msgstr ""
+
+#: woocommerce/checkout/review-order.php:37
+msgid "Quantity: "
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:37
+msgid "Login"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:44
+msgid "Username or email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:48
+#: woocommerce/myaccount/form-login.php:97
+msgid "Password"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:58
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:61
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:74
+msgid "Register"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:83
+msgid "Username"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:90
+msgid "Email address"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:104
+msgid "Anti-spam"
+msgstr ""
+
+#: woocommerce/single-product/product-image.php:44
+#: woocommerce/single-product/product-image.php:146
+msgid "Placeholder"
+msgstr ""
+
+#: woocommerce/single-product/tabs/description.php:16
+msgid "Product Description"
+msgstr ""

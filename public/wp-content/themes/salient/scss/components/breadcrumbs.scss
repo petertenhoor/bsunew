@@ -1,0 +1,23 @@
+/** Breadcrumbs **/
+
+.full-width-section.breadcrumbs {
+  border-bottom: 2px solid #f4f4f4;
+  margin-bottom: 40px;
+  height: auto !important;
+  margin-top: 0 !important;
+}
+
+p#breadcrumbs {
+  font-size: 13px;
+}
+
+p#breadcrumbs i {
+  font-size: 13px;
+  width: auto;
+  height: auto;
+  padding-right: 5px;
+}
+
+body[data-bg-header="true"].archive .container-wrap, body[data-bg-header="true"].category .container-wrap, body[data-bg-header="true"].blog .container-wrap, body.single-post[data-bg-header="true"] .container-wrap {
+  padding-top: 0 !important;
+}

@@ -1,0 +1,25 @@
+/* Border radius definitions
+ *--------------------------- */
+$border-radius-1: 5px;
+$border-radius-2: 3px;
+$border-radius-3: 7px;
+
+/* Border radius mappings
+ *------------------------ */
+$borderradius-mapping-default: (
+  'block': $border-radius-1,
+  'button': $border-radius-2,
+  'form-field': $border-radius-2,
+  'image': $border-radius-1,
+  'blue-block': $border-radius-3
+);
+
+/**
+ * Get border-radius by mapping name
+ *
+ * @param   {string}      $name
+ * @returns {px}
+ */
+@function get-borderradius($name) {
+  @return map-get($borderradius-mapping-default, $name);
+}

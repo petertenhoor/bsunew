@@ -1,0 +1,71 @@
+blockquote.shortcode-single-quote-block {
+  text-align: center;
+  font-family: Varela Round;
+  font-size: 18px;
+  line-height: 33px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  .shortcode-single-quote-block-text {
+    background-color: #fbfbfb;
+    text-align: left;
+    padding: 25px 25px 25px 50px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    quotes: "\201C" "\201D";
+    position: relative;
+    font-size: 14px;
+    line-height: 25px;
+    &:before {
+      font-family: sans-serif;
+      content: open-quote;
+      font-size: 60px;
+      position: absolute;
+      left: 14.5px;
+      top: 25px;
+      opacity: 0.4;
+      line-height: 60px;
+    }
+    &:after {
+      content:'';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -15px;
+      width: 0;
+      height: 0;
+      border-top: solid 15px #fbfbfb;
+      border-left: solid 15px transparent;
+      border-right: solid 15px transparent;
+    }
+  }
+  .shortcode-single-quote-block-person-image {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 17px;
+    position: relative;
+    font-family: Georgia, serif !important;
+    font-size: 50px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 100px;
+    line-height: 70px;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.13);
+  }
+  .shortcode-single-quote-block-person-name {
+    font-family: Open Sans;
+    font-weight: 400 !important;
+    font-size: 16px;
+    display: block;
+    line-height: 22px;
+  }
+  .shortcode-single-quote-block-person-title {
+    font-size: 14px !important;
+    color: #ca3d7f;
+    font-weight: bolder !important;
+    font-family: Open Sans;
+    display: block;
+    line-height: 22px;
+  }
+}

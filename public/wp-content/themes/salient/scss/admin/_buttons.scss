@@ -1,0 +1,53 @@
+/**
+ * Admin button style by background color
+ *
+ * @param {hexadecimal} $background-color
+ * @type {mixin}
+ */
+@mixin admin-button($background-color: grey) {
+  color: #fff;
+  border: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 1px 0 rgba(0,0,0,.08);
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  background-color: $background-color;
+  outline: none;
+  transition: background-color .4s ease-out;
+
+  &:hover {
+    background-color: darken($background-color, 4);
+    color: #fff;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+  }
+}
+
+
+@include button-elements {
+
+  // Add button
+  &.button-add {
+    @include admin-button(#49ae2c);
+    &:before {
+      @include fa-icon;
+      content: $fa-var-plus;
+      margin-right: .5em;
+    }
+  }
+
+  // Delete button
+  &.button-delete {
+    @include admin-button(#cb2027);
+    &:before {
+      @include fa-icon;
+      content: $fa-var-remove;
+      margin-right: .5em;
+    }
+  }
+
+  &.button-save {
+    @include admin-button(#909090);
+  }
+}
+

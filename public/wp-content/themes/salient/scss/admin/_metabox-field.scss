@@ -1,0 +1,98 @@
+.metabox-field {
+  @extend %remove-margins-descending-element;
+  margin: 2em 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include input-elements {
+    width: 100%;
+  }
+
+  label {
+    font-weight: bold;
+    margin: 1em 0 0.5em 0;
+    cursor: default;
+  }
+
+  img {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.metabox-title {
+  font-weight: 400 !important;
+  line-height: 29px !important;
+  font-size: 1.5em !important;
+  padding: 0 !important;
+}
+
+.metabox-field .media-library-preview-container {
+  @extend %remove-margins-descending-element;
+  width: 100%;
+  box-sizing: border-box;
+  img {
+    border: 8px solid #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+    user-select: none;
+  }
+}
+
+.metabox-field input {
+  width: 100%;
+}
+
+.metabox-field textarea {
+  max-width: 100%;
+}
+
+.metabox-field a.button.media-library-remove,
+.metabox-field a.button.media-library-add {
+  margin-top: 1em;
+}
+
+.metabox-wrapper .metabox-title {
+  display: block;
+  font-size: 1.3em !important;
+
+  &:first-of-type, &:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+.metabox-wrapper {
+  background-color: #f8f8f8;
+  border: 1px solid #e9e9e9;
+  padding: 1em;
+  margin: 1em 0;
+
+  .metabox-field > label:not(.no-after) {
+    border-bottom: 1px dashed #cecece;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    display: block;
+  }
+
+  .metabox-field:first-of-type label.no-after {
+    margin-top: 0px;
+  }
+
+  label.no-after {
+    margin-top: -10px;
+  }
+}
+
+label.no-after {
+  display: block;
+  font-weight: normal;
+}
+
+.metabox-field .metabox-wrapper {
+  background-color: #fff;
+}
+

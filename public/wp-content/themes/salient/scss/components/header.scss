@@ -1,0 +1,15 @@
+/** Header **/
+#header-secondary-outer ul {
+  background: #ca3d7f;
+}
+#header-secondary-outer li, #header-secondary-outer li a {
+  border: none !important;
+}
+#header-secondary-outer ul i {
+  width: auto;
+  padding-right: 5px;
+  height: auto;
+}
+body[data-header-color="custom"] #header-secondary-outer {
+  border-bottom: 2px solid rgba(202, 61, 127, 1) !important;
+}

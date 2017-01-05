@@ -1,0 +1,13 @@
+/** Blog Header **/
+
+html .single-post #single-meta {
+  top:25%;
+}
+
+.nectar-recent-post-slide .nectar-recent-post-bg:after, .single [data-post-hs="default_minimal"] .page-header-bg-image:after, .archive .page-header-bg-image:after {
+  display: none !important;
+}
+
+body[data-ext-responsive="true"].single-post .container-wrap.no-sidebar #post-area {
+  max-width: 100%;
+}

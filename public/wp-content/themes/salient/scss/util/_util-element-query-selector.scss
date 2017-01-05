@@ -1,0 +1,29 @@
+/**
+ * Element query selector
+ * Mixin for selecting small elements
+ */
+@mixin eq-small {
+  &.element-small {
+    @content;
+  }
+}
+
+/**
+ * Element query selector
+ * Mixin for selecting medium elements
+ */
+@mixin eq-medium {
+  &.element-medium {
+    @content;
+  }
+}
+
+/**
+ * Element query selector
+ * Mixin for selecting big elements
+ */
+@mixin eq-big {
+  &.element-big {
+    @content;
+  }
+}

@@ -1,0 +1,31 @@
+/* Fontsize mappings
+ *------------------------ */
+$fontsize-mapping-default: (
+  'text': em(14),
+  'small':em(13),
+  'title-big': em(18),
+  'title-medium': em(16),
+  'button': em(14),
+  'icon': 20px,
+  'loader-icon': em(100),
+  'caption': em(13),
+  'time': em(20),
+  'input': em(22),
+  'quote-block-content-fontsize-bigger': em(17),
+  'header-links': em(15),
+  'header-banner-label-text': em(25),
+  'site-footer-bottom-links': 12px,
+  'page-menu-link': em(16),
+  'breadcrumbs': em(12),
+  'snippet-location-details': em(13),
+);
+
+/**
+ * Get fontsize by name
+ *
+ * @param   {string} $name
+ * @return  {em}}
+ */
+@function get-fontsize($name) {
+  @return map-get($fontsize-mapping-default, $name);
+}

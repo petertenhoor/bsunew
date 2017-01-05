@@ -1,5 +1,5 @@
 <?php
-
+global $post;
 get_header();
 nectar_page_header($post->ID);
 
@@ -21,7 +21,7 @@ extract($fp_options);
                 if (function_exists('yoast_breadcrumb') && !is_home() && !is_front_page()) {
                     yoast_breadcrumb('<div class="full-width-section breadcrumbs"><div class="row"><p id="breadcrumbs">', '</p></div></div>');
                 }
-                
+
                 //buddypress
                 global $bp;
                 if ($bp && !bp_is_blog_page()) echo '<h1>' . get_the_title() . '</h1>';
