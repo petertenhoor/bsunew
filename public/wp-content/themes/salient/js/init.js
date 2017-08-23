@@ -8344,7 +8344,7 @@ $('body').on('click','#sidebar .widget.woocommerce:not(.widget_price_filter) h4'
 				},{queue:false, duration:250, easing: 'easeOutCubic'});		
 			} else {
 				$('header#top .sf-menu > li > ul, header#top .sf-menu > li.sfHover > ul').stop(true,true).animate({
-					'top' : Math.ceil($('header#top nav > ul > li > a').height() + (((logoHeight)/2) - ($('header#top nav > ul > li > a').height()/2))*2 + headerPadding),
+					'top' : Math.ceil($('header#top nav > ul > li > a').height() + (((logoHeight)/2) - ($('header#top nav > ul > li > a').height()/2)) + headerPadding),
 				},{queue:false, duration:250, easing: 'easeOutCubic'});		
 			}
 			
