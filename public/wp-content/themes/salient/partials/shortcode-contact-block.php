@@ -29,7 +29,7 @@ $person_image = $person_image ? File::getImageWithSrcset($person_image, array(),
         </div>
         <div class="col span_7 shortcode-contact-block-info">
             <?php if (!empty($contact_title)): ?>
-                <h2><?php echo $contact_subtitle; ?></h2>
+                <h2><?php echo $contact_title; ?></h2>
             <?php endif; ?>
             <?php if (!empty($contact_subtitle)): ?>
                 <p><?php echo $contact_subtitle; ?></p>
