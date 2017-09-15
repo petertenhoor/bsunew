@@ -3,8 +3,6 @@
 namespace Bsu\Shortcode;
 
 use Bsu\BsuTheme;
-use HappyFramework\Helpers\Log;
-use VisualComposer\Attribute;
 use VisualComposer\VisualComposerFactory;
 
 /**
@@ -21,12 +19,14 @@ class ContactBlockShortcode extends AbstractShortcode
             self::IDENTIFIER,
             __('Contact Block', BsuTheme::TEXTDOMAIN),
             array(
-                'person_image' => false,
-                'person_name'  => false,
-                'person_title' => false,
-                'person_email' => false,
-                'person_phone' => false,
-                'form_id'      => false,
+                'contact_title'    => false,
+                'contact_subtitle' => false,
+                'person_image'     => false,
+                'person_name'      => false,
+                'person_title'     => false,
+                'person_email'     => false,
+                'person_phone'     => false,
+                'form_id'          => false,
 
             )
         );
@@ -47,6 +47,16 @@ class ContactBlockShortcode extends AbstractShortcode
         $factory = VisualComposerFactory::getInstance();
 
         return array(
+            $factory->createAttributeTextField(
+                'contact_title',
+                __('Contact title', BsuTheme::TEXTDOMAIN),
+                __('The title of your contact block', BsuTheme::TEXTDOMAIN)
+            ),
+            $factory->createAttributeTextField(
+                'contact_subtitle',
+                __('Contact subtitle', BsuTheme::TEXTDOMAIN),
+                __('The subtitle of your contact block', BsuTheme::TEXTDOMAIN)
+            ),
             $factory->createAttributeImage('person_image', __('Person Image', BsuTheme::TEXTDOMAIN)),
             $factory->createAttributeTextField('person_name', __('Person name', BsuTheme::TEXTDOMAIN)),
             $factory->createAttributeTextField('person_title', __('Person Job Title', BsuTheme::TEXTDOMAIN)),

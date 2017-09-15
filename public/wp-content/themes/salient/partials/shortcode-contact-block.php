@@ -1,5 +1,7 @@
 <?php
 /**
+ * @var string $contact_title title of block
+ * @var string $contact_subtitle subtitle of block
  * @var string $person_image Id of person image
  * @var string $person_name Name of person
  * @var string $person_title Title of person
@@ -26,8 +28,12 @@ $person_image = $person_image ? File::getImageWithSrcset($person_image, array(),
             <?php endif; ?>
         </div>
         <div class="col span_7 shortcode-contact-block-info">
-            <h2>Vragen?</h2>
-            <p>Neem contact op:</p>
+            <?php if (!empty($contact_title)): ?>
+                <h2><?php echo $contact_subtitle; ?></h2>
+            <?php endif; ?>
+            <?php if (!empty($contact_subtitle)): ?>
+                <p><?php echo $contact_subtitle; ?></p>
+            <?php endif; ?>
             <?php if (!empty($person_phone)): ?>
                 <a href="tel:<?php echo str_replace(' ', '', $person_phone); ?>">
                     <?php echo $person_phone; ?>
