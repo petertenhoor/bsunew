@@ -8,9 +8,6 @@ task :deploy do
         # Wordpress installation:
         execute "mv -f ~/build-master/current/wp-config.php.master ~/build-master/current/public/wp-config.php"
 
-        execute "echo ~/build-master/current/wp-config.php.master";
-        execute "echo ~/build-master/current/public/wp-config.php";
-
         # set htaccess for master environment
         execute "mv -f ~/build-master/current/.htaccess.master ~/build-master/current/public/.htaccess"
     end

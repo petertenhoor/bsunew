@@ -1,0 +1,12 @@
+/** Utils **/
+
+.radius-5:before {
+  border-radius: 5px !important;
+}
+
+.white-block {
+  -o-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+}

@@ -1,0 +1,43 @@
+.metabox-attributes-location {
+
+  .attribute-term {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: .7em;
+    padding-top: .7em;
+
+    &:before {
+      content: '';
+      height: 1px;
+      width: calc(100% + 24px);
+      display: block;
+      margin-left: -12px;
+      background-color: #eee;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      left: 0;
+      top: 1.1em;
+    }
+
+    &:first-child {
+      padding-top: 0;
+      input[type="checkbox"] {
+        top: .4em;
+      }
+      &:before {
+        display: none;
+      }
+    }
+
+    .attribute-term-name {
+      color: #8f8f8f;
+      user-select: none;
+    }
+  }
+}

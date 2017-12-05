@@ -6,7 +6,17 @@
 		
 	<div class="container main-content">
 		
+		
 		<div class="row">
+
+			<?php
+
+			//breadcrumbs
+			if (function_exists('yoast_breadcrumb') && !is_home() && !is_front_page()) {
+				yoast_breadcrumb('<div class="full-width-section breadcrumbs"><div class="row"><p id="breadcrumbs">', '</p></div></div>');
+			}
+
+			?>
 			
 			<?php $options = get_nectar_theme_options(); 
 			

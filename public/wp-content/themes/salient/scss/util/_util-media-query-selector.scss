@@ -1,0 +1,84 @@
+/**
+ * Generic breakpoints
+ */
+
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 960px !default;
+$breakpoint-big: 1200px !default;
+
+@mixin mq-small() {
+  @media screen and (max-width: $breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin mq-medium() {
+  @media screen and (max-width: $breakpoint-big) {
+    @content;
+  }
+}
+
+@mixin mq-big {
+  @media screen and (min-width: $breakpoint-big) {
+    @content;
+  }
+}
+
+@mixin mq-between-small-medium() {
+  @media screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+    @content;
+  }
+}
+
+@mixin mq-between-small-big() {
+  @media screen and (min-width: $breakpoint-small) and (max-width: $breakpoint-big) {
+    @content;
+  }
+}
+
+@mixin mq-between-medium-big() {
+  @media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-big) {
+    @content;
+  }
+}
+
+@mixin mq-bigger-medium() {
+  @media screen and (min-width: $breakpoint-medium) {
+    @content;
+  }
+}
+
+@mixin mq-bigger-small() {
+  @media screen and (min-width: $breakpoint-small) {
+    @content;
+  }
+}
+
+
+@mixin mq-custom-max($max-width) {
+  @media screen and (max-width: $max-width) {
+    @content;
+  }
+}
+
+@mixin mq-custom-min($min-width) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin mq-custom($min-width, $max-width) {
+  @media screen and (min-width: $min-width) and (max-width: $max-width) {
+    @content;
+  }
+}
+
+
+$custom-breakpoint-map: (
+  'header-menu': 850px,
+  'header-smallest': 550px,
+);
+
+@function get-breakpoint($name) {
+  @return map-get($custom-breakpoint-map, $name);
+}

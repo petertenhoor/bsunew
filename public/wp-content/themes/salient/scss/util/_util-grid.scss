@@ -1,0 +1,130 @@
+/* ---------------------------------------------
+ * A simple sass micro grid framework
+ * @author Ferry Brouwer <ferry@happy-online.nl>
+ * --------------------------------------------- */
+
+/* Grid global variables */
+$grid-width: 960px !default;
+$col-width: 80px !default;
+$gutter: 20px !default;
+$gutter-vertical: 20px !default;
+
+/** Calculate the em value of target from container
+ * -----------------------------------------------
+ * @param  {px} $target    [target of context]
+ * @param  {px} $context   [context of the target]
+ * @return {px} */
+@function calc-em($target, $context) {
+  @return $target / $context * 1em;
+}
+
+/** Calculate the % value of target from container
+ * ----------------------------------------------
+ * @type   {function}
+ * @param  {pixels}    $target    [target of context]
+ * @param  {pixels}    $context   [context of target]
+ * @return {pixels} */
+@function calc-percentage($target, $context) {
+  @return percentage($target / $context);
+}
+
+/* Column width converted into `em` and `%`
+ * @note: Do not use these values inside a sub context container,
+ * since the percentage will be relative to it's parent */
+$col-width-em: calc-em($col-width, $grid-width) !default;
+$col-width-percentage: percentage($col-width / $grid-width) !default;
+$gutter-percentage: calc-percentage($gutter, $grid-width) !default;
+
+/** Calculate grid width from given grid col-width count in pixels
+ * --------------------------------------------------------------
+ * @type   {function}
+ * @param  {number}    $grid-col-count  [number of grid columns defined in $col-width global variable]
+ * @return {pixels} */
+@function grid-context-width-px($grid-col-count) {
+  @return $grid-col-count * $col-width + ($grid-col-count - 1) * $gutter;
+}
+
+/** Calculate grid context column width in pixels
+ * ---------------------------------------------
+ * @type   {function}
+ * @param  {number}    $grid-col-count   [number of grid columns defined in $col-width global variable]
+ * @param  {number}    $col-count        [number of columns inside context] */
+@function grid-context-col-width-px($grid-col-count, $col-count) {
+  $context-width: grid-context-width-px($grid-col-count);
+  @return ($context-width - ($col-count - 1) * $gutter) / $col-count;
+}
+
+/** Mixin set default css properties to grid context and columns
+ * ------------------------------------------------------------
+ * @type   {mixin} */
+@mixin grid-context-columns($col-count: null) {
+  @include clearfix;
+  box-sizing: border-box;
+  & > * {
+    float: left;
+    box-sizing: border-box;
+    margin-left: $gutter;
+    @if $col-count {
+      &:nth-child(#{$col-count}n+1) {
+        margin-left: 0;
+        clear: left;
+      }
+    }
+  }
+}
+
+/** Mixin set context and columns in pixels
+ * ---------------------------------------
+ * @type   {mixin}
+ * @param  {number}  $grid-col-count   [number of grid columns defined in $col-width global variable]
+ * @paran  {number}  $col-count        [number of columns inside context] */
+@mixin grid-context-columns-px($grid-col-count, $col-count) {
+  $_context-width: grid-context-width-px($grid-col-count);
+  $_col-width: grid-context-col-width-px($grid-col-count, $col-count);
+  @include grid-context-columns;
+  width: $_context-width;
+  & > * {
+    width: $_col-width;
+    &:nth-child(#{$col-count}n+1) {
+      margin-left: 0;
+      clear: left;
+    }
+  }
+}
+
+/** Mixin set context and columns in percentages
+ * --------------------------------------------
+ * @type   {mixin}
+ * @param  {number}  $grid-col-count  [number of grid columns defined in $col-width global variable]
+ * @param  {number}  $col-count       [number of columns inside context] */
+@mixin grid-context-columns-percentage($grid-col-count: null, $col-count: 1, $h-gutter: $gutter, $v-gutter: $gutter-vertical) {
+  $_number_of_gutters: $col-count - 1;
+  $_total_gutter: $_number_of_gutters * $h-gutter;
+  width: if($grid-col-count, grid-context-width-px($grid-col-count), 100%);
+
+  & > * {
+    width: calc(#{100% / $col-count} - #{$_total_gutter / $col-count});
+    margin-left: $h-gutter;
+    margin-top: $v-gutter;
+
+    &:nth-child(#{$col-count}n+1) {
+      margin-left: 0;
+      clear: left;
+    }
+
+    @for $i from 1 through $col-count {
+      &:nth-child(#{$i}) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  html.flexboxlegacy & {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  html.no-flexboxlegacy & > * {
+    float: left;
+  }
+}

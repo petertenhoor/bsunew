@@ -1,0 +1,10 @@
+.vc_admin_label {
+  display: block !important;
+  clear: left;
+  margin-top: .4em;
+  word-break: break-word;
+  label {
+    font-weight: bold;
+    color: $color-orange;
+  }
+}

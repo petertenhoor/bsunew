@@ -1,0 +1,14 @@
+/** Single **/
+
+.single .heading-title {
+  border-bottom: 2px solid #f4f4f4;
+}
+
+.comments-section {
+  -o-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.15);
+  background-color: #f4f4f4;
+  padding: 20px;
+}

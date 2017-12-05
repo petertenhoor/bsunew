@@ -1,0 +1,29 @@
+.iteratable-block-item {
+  border: 1px solid #e9e9e9;
+  padding: 3.5em 1em 1em 1em;
+  position: relative;
+  margin-bottom: 1em;
+  background-color: #f8f8f8;
+
+  // handle
+  .handle {
+    &:before {
+      @include fa-icon;
+      content: $fa-var-sort-up;
+    }
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #e9e9e9;
+    padding: .5em 1em;
+    cursor: move;
+  }
+
+  // image selection
+
+
+  // editor selection
+
+}

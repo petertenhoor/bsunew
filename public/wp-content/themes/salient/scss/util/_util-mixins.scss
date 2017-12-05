@@ -1,0 +1,247 @@
+$show-animations: true !default;
+
+/**
+ * @package superduperbox/util
+ * Mixins */
+
+/* Placeholder remove margins descending element
+ *---------------------------------------------- */
+%remove-margins-descending-element {
+  & > *:first-child {
+    margin-top: 0;
+  }
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * default block margin
+ */
+%default-block-vertical-margin {
+  @if variable_exists('gutter-vertical') {
+    margin: $gutter-vertical 0;
+
+    .wpb_wrapper > & {
+      margin: ($gutter-vertical / 2) 0;
+      & + *:not(*[class*="vc_"]) {
+        margin-top: $gutter-vertical;
+      }
+    }
+  }
+}
+
+/**
+ * Reset default list styles
+ * Applied to HTMLListElements
+ */
+%reset-list-style {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+@mixin reset-list-style {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/**
+ * Transition delay children
+ */
+%transition-delay-children {
+  @for $i from 0 through 20 {
+    &:nth-child(#{$i}) {
+      transition-delay: .08s * $i;
+    }
+  }
+}
+
+/**
+ * Animation delay children
+ */
+%animation-delay-children {
+  @for $i from 0 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: .08s * ($i - 1) !important;
+    }
+  }
+}
+
+@mixin border-dotted-top {
+  border-top: 1px dotted get-color('button-border-dotted');
+  html.svg.borderimage & {
+    border-image-source: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMScgd2lkdGg9JzUnPjxjaXJjbGUgY3g9JzAuNScgY3k9JzAuNScgcj0nMC41JyBmaWxsPScjYmZiZmJmJyAvPjxjaXJjbGUgY3g9JzUnIGN5PScwLjUnIHI9JzAuNScgZmlsbD0nI2JmYmZiZicgLz48L3N2Zz4=);
+    border-image-slice: 1 0 0 0;
+    border-image-width: 1px 0px 0px 0px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: repeat round;
+  }
+}
+%border-dotted-top {
+  @include border-dotted-top;
+}
+
+@mixin border-dotted-bottom {
+  border-bottom: 1px dotted get-color('button-border-dotted');
+  html.svg.borderimage & {
+    border-image-source: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nMScgd2lkdGg9JzUnPjxjaXJjbGUgY3g9JzAuNScgY3k9JzAuNScgcj0nMC41JyBmaWxsPScjYmZiZmJmJyAvPjxjaXJjbGUgY3g9JzUnIGN5PScwLjUnIHI9JzAuNScgZmlsbD0nI2JmYmZiZicgLz48L3N2Zz4=);
+    border-image-slice: 0 0 1 0;
+    border-image-width: 0px 0px 1px 0px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: repeat round;
+  }
+}
+%border-dotted-bottom {
+  @include border-dotted-bottom;
+}
+
+@mixin border-dotted-left {
+  border-left: 1px dotted get-color('button-border-dotted');
+  html.svg.borderimage & {
+    border-image-slice: 0 0 0 1;
+    border-image-source: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGhlaWdodD0nNScgd2lkdGg9JzEnPjxjaXJjbGUgY3g9JzAuNScgY3k9JzAuNScgcj0nMC41JyBmaWxsPScjYmZiZmJmJyAvPjxjaXJjbGUgY3g9JzEnIGN5PSc1JyByPScwLjUnIGZpbGw9JyNiZmJmYmYnIC8+PC9zdmc+);
+    border-image-width: 0px 0px 0px 1px;
+    border-image-outset: 0px;
+    border-image-repeat: round repeat;
+  }
+}
+%border-dotted-left {
+    @include border-dotted-left;
+}
+
+
+/**
+ * Print overlay grid in the before pseudo selector
+ * @param {color} $color-column
+ * @param {color} $color-gutter
+ */
+@mixin overlay-grid-before($color-column: transparentize(#555, .9), $color-gutter: transparentize(#555, .98)) {
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+
+    // fill color-stops
+    $color-stops: ();
+    $current-column: 0px;
+
+    @for $i from 1 through 12 {
+      // add color stops columns
+      $color-stops: append($color-stops, $color-column $current-column, 'comma');
+      $current-column: $current-column + 45;
+      $color-stops: append($color-stops, $color-column $current-column, 'comma');
+
+      // add color stops gutter
+      @if $i < 12 {
+        $color-stops: append($color-stops, $color-gutter $current-column, 'comma');
+        $current-column: $current-column + 40;
+        $color-stops: append($color-stops, $color-gutter $current-column, 'comma');
+      }
+    }
+
+    @include background-image(linear-gradient(to right, $color-stops));
+    @content;
+  }
+}
+
+/**
+ * Dashed border
+ * @param {number} $dashlength
+ * @param {number} $spacelength
+ * @param {number} $borderwidth
+ * @param {color} 	$color
+ * @param {string} $position
+ * @param {string} 	$direction */
+@mixin dashed-border($dashlength, $spacelength, $borderwidth, $color, $position: top, $direction: right) {
+  $per: percentage($dashlength / ($dashlength + $spacelength));
+  background-image: linear-gradient(to $direction, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
+  background-position: 0 $position;
+  @if $direction == right or $direction == left {
+    background-size: ($dashlength + $spacelength) $borderwidth;
+    background-repeat: repeat-x;
+  }
+  @else {
+    background-size: $borderwidth ($dashlength + $spacelength);
+    background-repeat: repeat-y;
+  }
+}
+
+/**
+ * Animation mask from left to right */
+@mixin layer-animation-left-to-right($color: #ffffff, $duration: 1.5s, $ease: $ease-in-out-custom-1) {
+  @if $show-animations {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: "";
+      transform-origin: right center;
+      animation: animate-out-to-right $duration $ease;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      background-color: $color;
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/**
+ * Animation mask from right to left */
+@mixin layer-animation-right-to-left($color: #ffffff, $duration: 1.5s, $ease: $ease-in-out-custom-1) {
+  @if $show-animations {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: "";
+      transform-origin: left center;
+      animation: animate-out-to-right $duration $ease;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      background-color: $color;
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/**
+ * Animation mask from top to bottom */
+@mixin layer-animation-top-to-bottom($color: #ffffff, $duration: 1.5s, $ease: $ease-in-out-custom-1) {
+  @if $show-animations {
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: "";
+      transform-origin: bottom center;
+      animation: animate-out-to-bottom $duration $ease;
+      animation-fill-mode: both;
+      animation-iteration-count: 1;
+      background-color: $color;
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.form-table {
+  $bg-color: rgba(255, 255, 255, .5);
+  $border-color: rgba(0, 0, 0, .1);
+  background-color: $bg-color;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  margin-bottom: 2em;
+
+  th, td {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  tr {
+    border-bottom: 1px solid transparentize($border-color, .08);
+  }
+
+  th[scope="row"] {
+    color: #999;
+    font-weight: normal;
+  }
+
+  span[scope="row-title"] {
+    display: block;
+    margin-top: 1em;
+    color: darken(#999, 20);
+    text-transform: uppercase;
+  }
+
+  @include input-textarea-elements {
+    min-width: 300px;
+  }
+}
+
+

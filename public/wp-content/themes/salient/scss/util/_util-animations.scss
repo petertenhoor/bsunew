@@ -1,0 +1,187 @@
+$animate-scale-in: "animate-in-scale";
+$animate-from-down-in: "animate-in-from-down-only-translate";
+$animate-from-up-in: "animate-in-from-up-only-translate";
+$animate-fade-from-down-in: "animate-in-from-down";
+$animate-fade-from-up-in: "animate-in-from-up";
+$animate-fade-from-left-in: "animate-in-from-left";
+$animate-fade-from-right-in: "animate-in-from-right";
+$animate-scale-out-horizontal: "animate-out-to-right";
+$animate-scale-out-vertical: "animate-out-to-bottom";
+$animate-scale-in-vertical: "animate-scale-y-in";
+$animate-fade-in: "animate-fade-in";
+$animate-scale-x: "animate-scale-x";
+
+@include keyframes($animate-scale-x) {
+  from {
+    transform: scaleX(.94);
+  }
+}
+
+/* Select element bounce (elastic) */
+@include keyframes(select-bounce) {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -25px, 0);
+  }
+  25% {
+    transform: translate3d(0, 10px, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+  75% {
+    transform: translate3d(0, 2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Select expand background (elastic) */
+@include keyframes(select-expand) {
+  0% {
+    opacity: 0;
+    transform: scale3d(1, 0, 1);
+  }
+  25% {
+    transform: scale3d(1, 1.01, 1);
+  }
+  50% {
+    transform: scale3d(1, 0.85, 1);
+  }
+  75% {
+    transform: scale3d(1, 1.02, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/* Fade and slide in from down */
+@include keyframes($animate-scale-in) {
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+  25% {
+    transform: scale3d(1.02, 1.02, 1.02);
+  }
+  50% {
+    transform: scale3d(0.95, 0.95, 0.95);
+  }
+  75% {
+    transform: scale3d(1.01, 1.01, 1.01);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@include keyframes($animate-scale-in-vertical) {
+  0% {
+    transform: scaleY(0);
+  }
+  25% {
+    transform: scaleY(1.02);
+  }
+  50% {
+    transform: scaleY(0.95);
+  }
+  75% {
+    transform: scaleY(1.01);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Fade and slide in from down */
+@include keyframes($animate-from-down-in) {
+  from {
+    transform: translateY(200%);
+  }
+}
+
+/* Fade and slide in from down */
+@include keyframes($animate-from-up-in) {
+  from {
+    transform: translateY(-200%);
+  }
+}
+
+/* Fade and slide in from down */
+@include keyframes($animate-fade-from-down-in) {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Fade and slide in from up */
+@include keyframes($animate-fade-from-up-in) {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+/* Fade and slide in from left */
+@include keyframes($animate-fade-from-left-in) {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+}
+
+/* Fade and slide in from left */
+@include keyframes($animate-fade-from-right-in) {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Slide out to right */
+@include keyframes($animate-scale-out-horizontal) {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Slide out to bottom */
+@include keyframes($animate-scale-out-vertical) {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@include keyframes($animate-fade-in) {
+  from {
+    opacity: 0;
+  }
+}
+
+/**
+ * Get animation property value
+ *
+ * @param {string} $name
+ * @param {string} $duration
+ * @param {string} $easing
+ */
+@function get-animation($name, $duration: 1s, $easing: ease-out) {
+  @return $name $duration $easing both;
+}
+
+/**
+ * Set animation
+ *
+ * @param {string} $name
+ * @param {string} $duration
+ * @param {string} $easing
+ */
+@mixin set-animation($name, $duration: 1s, $easing: ease-out) {
+  html.no-touchevents & {
+    animation: get-animation($name, $duration, $easing);
+  }
+}

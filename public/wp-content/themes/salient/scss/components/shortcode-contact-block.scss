@@ -1,0 +1,46 @@
+aside.shortcode-contact-block {
+  padding: 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  .shortcode-contact-block-person {
+    padding-right: 10px;
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+    span {
+      padding-top: 5px;
+      font-size: 12px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 14px;
+      display: block;
+      &.shortcode-single-quote-block-person-title {
+        color: #ca3d7f;
+      }
+    }
+  }
+  .shortcode-contact-block-info {
+    h2 {
+      color: #4aa4d5;
+    }
+    p {
+      padding-bottom: 10px;
+    }
+    a {
+      color: #ca3d7f;
+      padding-bottom: 10px;
+      font-size: 20px;
+      display: block;
+    }
+  }
+  form input[type=submit] {
+    width: 100%;
+    visibility: visible !important;
+    border-radius: 5px !important;
+  }
+  .row.np {
+    padding: 0;
+  }
+}
