@@ -82,9 +82,7 @@ class Loco_package_Plugin extends Loco_package_Bundle {
             }
             $cached = apply_filters('loco_plugins_data', $cached );
             uasort( $cached, '_sort_uname_callback' );
-            // Intended as in-memory cache so adding short expiry for object caching plugins that may persist it.
-            // All actions that invoke `wp_clean_plugins_cache` should purge this. See Loco_hooks_AdminHooks
-            wp_cache_set('plugins', $cached, 'loco', 3600 );
+            wp_cache_set('plugins', $cached, 'loco');
         }
         return $cached;
     }

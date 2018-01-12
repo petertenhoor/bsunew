@@ -28,6 +28,7 @@ class ShortcodeDownloadBlock extends AbstractShortcode
                 'title'     => false,
                 'btn_label' => false,
                 'file'      => false,
+                'target'    => false
             )
         );
 
@@ -51,6 +52,14 @@ class ShortcodeDownloadBlock extends AbstractShortcode
             $factory->createAttributeTextField('title', __('Title', BsuTheme::TEXTDOMAIN)),
             $factory->createAttributeFile('file', __('Downloadable File', BsuTheme::TEXTDOMAIN)),
             $factory->createAttributeTextField('btn_label', __('Button Label', BsuTheme::TEXTDOMAIN)),
+            $factory->createAttributeDropdown('target',
+                __('Target', BsuTheme::TEXTDOMAIN),
+                null,
+                [
+                    '_self'    => __('Open in same tab', BsuTheme::TEXTDOMAIN),
+                    '_blank'     => __('Open in new tab', BsuTheme::TEXTDOMAIN)
+                ]
+            )
         );
     }
 

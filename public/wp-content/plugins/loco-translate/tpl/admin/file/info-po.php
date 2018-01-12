@@ -30,7 +30,7 @@ $this->start('header');
     </div>
  
     <?php
-    if( ! $sibling->existent ):?> 
+    if( ! $sibling->existant ):?> 
     <div class="notice inline notice-warning">
         <h3 class="has-icon">
             <?php self::e( __('Binary file missing','loco-translate') )?> 

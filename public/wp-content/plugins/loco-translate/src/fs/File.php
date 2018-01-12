@@ -193,7 +193,7 @@ class Loco_fs_File {
 
 
     /**
-     * Check if file can't be overwitten when existent, nor created when non-existent
+     * Check if file can't be overwitten when existant, nor created when non-existant
      * This does not check permissions recursively as directory trees are not built implicitly
      * @return bool
      */
@@ -209,7 +209,7 @@ class Loco_fs_File {
 
 
     /**
-     * Check if full path can be built to non-existent file.
+     * Check if full path can be built to non-existant file.
      * @return bool
      */
     public function creatable(){

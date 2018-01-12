@@ -15,7 +15,7 @@
 
         // PO file data
         locale = conf.locale,
-        messages = loco.po.init( locale ).wrap( conf.powrap ),
+        messages = loco.po.init( locale ),
         template = ! locale,
         
         // form containing action buttons

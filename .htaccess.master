@@ -1,3 +1,13 @@
+#redirect http non-www to https://www
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^(www\.)?bsu\.nl$
+RewriteRule (.*) https://www.bsu.nl/$1 [R=301,L]
+
+#redirect https non-www to www
+RewriteCond %{HTTPS} on
+RewriteCond %{HTTP_HOST} ^bsu\.nl$
+RewriteRule (.*) https://www.bsu.nl/$1 [R=301,L]
+
 php_value max_input_vars 10000
 php_value suhosin.post.max_vars 10000
 php_value suhosin.request.max_vars 10000
@@ -63,6 +73,10 @@ AddType text/x-component .htc
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^bsu\.nl$
+RewriteRule (.*) https://www.bsu.nl/$1 [R=301,L]
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

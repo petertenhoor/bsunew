@@ -28,7 +28,7 @@ $this->start('header');
     </div>
    
     <?php
-    if( ! $sibling->existent ):?> 
+    if( ! $sibling->existant ):?> 
     <div class="notice inline notice-warning">
         <h3 class="has-icon">
             <?php esc_html_e('PO file missing','loco-translate')?> 

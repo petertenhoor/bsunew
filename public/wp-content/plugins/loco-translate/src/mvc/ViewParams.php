@@ -100,8 +100,7 @@ class Loco_mvc_ViewParams extends ArrayObject implements JsonSerializable {
 
 
     /**
-     * Print property with passed formatting string
-     * e.g. $params->f('name', 'My name is %s' );
+     * Format property with passed formatting string
      */
     public function f( $p, $f = '%s' ){
         echo $this->escape( sprintf( $f, $this->__get($p) ) );
