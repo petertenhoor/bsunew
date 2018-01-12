@@ -134,7 +134,7 @@ class VisualComposerFactory
      * Create dropdown attribute
      *
      * @param string      $name
-     * @param heading     $heading
+     * @param string     $heading
      * @param null|string $description
      * @param array       $values
      * @param string      $default
