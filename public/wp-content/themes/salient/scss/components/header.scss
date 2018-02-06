@@ -2,6 +2,10 @@
 #header-secondary-outer ul {
   background: #ca3d7f;
   height: auto !important;
+
+  li:first-child {
+    background: $color-blue-1;
+  }
 }
 
 #header-secondary-outer li, #header-secondary-outer li a {
