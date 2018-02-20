@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BSU\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-16 09:49+0100\n"
-"PO-Revision-Date: 2016-12-19 11:48+0100\n"
+"POT-Creation-Date: 2018-02-20 15:51+0100\n"
+"PO-Revision-Date: 2018-02-20 15:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: Happy Online <peter@happy-online.nl>\n"
 "Language: nl_NL\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
 "_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
@@ -27,6 +27,40 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
+#: classes/options/CookieNotificationOptions.php:23
+#: classes/options/CookieNotificationOptions.php:33
+msgid "Cookie Notification"
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:36
+msgid "Enable Cookie notification"
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:40
+msgid "Cookie notification message"
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:41
+msgid "If you leave this field empty, the cookie notification won't be shown."
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:45
+msgid "Cookie notification statement*"
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:46
+msgid "This text will be shown when the notification is collapsed."
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:50
+#: classes/options/CookieNotificationOptions.php:51
+msgid "Button text"
+msgstr ""
+
+#: classes/options/CookieNotificationOptions.php:53
+msgid "The text for the button that accepts the use of cookies"
+msgstr ""
+
 #: classes/post-types/AbstractPostType.php:234
 msgid "Pages"
 msgstr "Pagina’s"
@@ -39,9 +73,359 @@ msgstr "Vacature"
 msgid "Jobs"
 msgstr "Vacatures"
 
-#: classes/post-types/JobPostType.php:48
-msgid "BSU Jobs"
-msgstr "BSU Vacatures"
+#: classes/post-types/JobPostType.php:50
+msgid "BSU vacatures"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:74
+msgid "Disable Transparency From Navigation"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:75
+msgid ""
+"You can use this option to force your navigation header to stay a solid "
+"color even if it qualifies to trigger the <a target=\"_blank\" href=\""
+msgstr ""
+
+#: classes/post-types/JobPostType.php:81
+msgid "Force Transparency On Navigation"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:82
+msgid ""
+"You can use this option to force your navigation header to start transparent "
+"even if it does not qualify to trigger the <a target=\"_blank\" href=\""
+msgstr ""
+
+#: classes/post-types/JobPostType.php:94
+msgid "Vacature Header Settings"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:95
+msgid ""
+"Here you can configure how your page header will appear. <br/> For a full "
+"width background image behind your header text, simply upload the image "
+"below. To have a standard header just fill out the fields below and don't "
+"upload an image."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:102
+msgid "Background Type"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:103
+msgid "Please select the background type you would like to use for your slide."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:115
+msgid "Particle Images"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:125
+msgid "Video WebM Upload"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:126
+msgid ""
+"Browse for your WebM video file here.<br/> This will be automatically played "
+"on load so make sure to use this responsibly for enhancing your design, "
+"rather than annoy your user. e.g. A video loop with no sound.<br/"
+"><strong>You must include this format & the mp4 format to render your video "
+"with cross browser compatibility. OGV is optional.</strong> <br/"
+"><strong>Video must be in a 16:9 aspect ratio.</strong>"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:132
+msgid "Video MP4 Upload"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:133
+msgid ""
+"Browse for your mp4 video file here.<br/> See the note above for "
+"recommendations on how to properly use your video background."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:139
+msgid "Video OGV Upload"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:140
+msgid ""
+"Browse for your OGV video file here.<br/>  See the note above for "
+"recommendations on how to properly use your video background."
+msgstr ""
+
+# @ js_composer
+#: classes/post-types/JobPostType.php:146 nectar/tinymce/tinymce-class.php:4524
+msgid "Preview Image"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:147
+msgid ""
+"This is the image that will be seen in place of your video on mobile devices "
+"& older browsers before your video is played (browsers like IE8 don't allow "
+"autoplaying)."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:153
+msgid "Page Header Image"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:154
+msgid ""
+"The image should be between 1600px - 2000px wide and have a minimum height "
+"of 475px for best results. Click \"Browse\" to upload and then \"Insert into "
+"Post\"."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:160
+msgid "Parallax Header"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:161
+msgid "This will cause your header to have a parallax scroll effect."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:168
+msgid "Box Roll Header"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:169
+msgid ""
+"This will cause your header to have a 3d box roll on scroll. (deactivated "
+"for boxed layouts)"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:176
+msgid "Page Header Height"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:177
+msgid ""
+"How tall do you want your header? <br/>Don't include \"px\" in the string. e."
+"g. 350 <br/><strong>This only applies when you are using an image/bg color.</"
+"strong>"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:183
+msgid "Fullscreen Height"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:184
+msgid ""
+"Chooseing this option will allow your header to always remain fullscreen on "
+"all devices/screen sizes."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:190
+msgid "Page Header Title"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:191
+msgid "Enter in the page header title"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:197
+msgid "Page Header Subtitle"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:198
+msgid "Enter in the page header subtitle"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:204
+msgid "Page Header Shortcode"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:205
+msgid "(optional)"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:211
+msgid "Text Effect"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:212
+msgid "Please select your desired text effect"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:222
+msgid "Shape Autorotate Timing"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:223
+msgid ""
+"Enter your desired autorotation time in milliseconds e.g. \"5000\". Leaving "
+"this blank will disable the functionality."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:229
+msgid "Disable Chance For Particle Explosion"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:230
+#, php-format
+msgid ""
+"By default there's a 50% chance on autorotation that your particles will "
+"explode. Checking this box disables that."
+msgstr ""
+
+#: classes/post-types/JobPostType.php:236
+#: classes/post-types/JobPostType.php:250
+msgid "Content Alignment"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:237
+msgid "Horizontal Alignment"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:251
+msgid "Vertical Alignment"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:263
+msgid "Background Alignment"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:264
+msgid "Please choose how you would like your slides background to be aligned"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:275
+msgid "Page Header Background Color"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:276
+msgid "Set your desired page header background color if not using an image"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:282
+msgid "Page Header Font Color"
+msgstr ""
+
+#: classes/post-types/JobPostType.php:283
+msgid "Set your desired page header font color"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:20
+msgid "Contact Block"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:36
+msgid "a block with contact information and form"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:52
+msgid "Contact title"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:53
+msgid "The title of your contact block"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:57
+msgid "Contact subtitle"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:58
+msgid "The subtitle of your contact block"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:60
+msgid "Person Image"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:61
+msgid "Person name"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:62
+msgid "Person Job Title"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:63
+msgid "Person Email"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:64
+msgid "Person Phone Number"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:67
+msgid "Contact form"
+msgstr ""
+
+#: classes/shortcodes/ContactBlockShortcode.php:95
+msgid "No contact forms found"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:25
+msgid "Download PDF Block"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:37
+msgid "A downloadable item with a headline, image and button."
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:51
+msgid "File Image"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:52
+msgid "Title"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:53
+msgid "Downloadable File"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:54
+msgid "Button Label"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:56
+msgid "Target"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:59
+msgid "Open in same tab"
+msgstr ""
+
+#: classes/shortcodes/DownloadBlockShortcode.php:60
+msgid "Open in new tab"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:20
+msgid "Single Quote Block"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:32
+msgid "A single quote block with author"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:46
+msgid "Quote Text"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:47
+msgid "Quote link"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:48
+msgid "Author Image"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:49
+msgid "Author name"
+msgstr ""
+
+#: classes/shortcodes/QuoteBlockShortcode.php:50
+msgid "Author Job Title"
+msgstr ""
+
+#: classes/shortcodes/ZipcodeCheckerShortcode.php:22
+msgid "Zipcode Checker"
+msgstr ""
 
 #: classes/visual-composer/templates/code_embed.php:28
 msgid "Preview"
@@ -109,8 +493,8 @@ msgstr ""
 #: includes/post-templates/entry-image.php:251
 #: includes/post-templates/entry-video.php:386
 #: includes/post-templates/entry.php:298
-#: nectar/tinymce/shortcode-processing.php:2724 single.php:61 single.php:105
-#: single.php:115 single.php:276 template-home-2.php:270
+#: nectar/tinymce/shortcode-processing.php:2724 single.php:59 single.php:103
+#: single.php:113 single.php:274 template-home-2.php:270
 #: template-home-3.php:398
 msgid "No Comments"
 msgstr "Geen Reacties"
@@ -132,8 +516,8 @@ msgstr "Een Reactie"
 #: includes/post-templates/entry-gallery.php:352
 #: includes/post-templates/entry-image.php:251
 #: includes/post-templates/entry-video.php:386
-#: includes/post-templates/entry.php:298 single.php:61 single.php:105
-#: single.php:115 single.php:276
+#: includes/post-templates/entry.php:298 single.php:59 single.php:103
+#: single.php:113 single.php:274
 msgid "% Comments"
 msgstr "% Reacties"
 
@@ -496,24 +880,24 @@ msgstr ""
 # @ js_composer
 #: functions.php:3578 functions.php:3587 functions.php:3592 functions.php:3601
 #: functions.php:3603 functions.php:3604 functions.php:4280 functions.php:4288
-#: functions.php:4293 functions.php:5400 functions.php:5405
+#: functions.php:4293 functions.php:5398 functions.php:5403
 #: nectar/tinymce/shortcode-processing.php:1160
 #: nectar/tinymce/shortcode-processing.php:1168
 #: nectar/tinymce/shortcode-processing.php:1172 single-portfolio.php:203
-#: single-portfolio.php:211 single-portfolio.php:216 single.php:129
-#: single.php:137 single.php:142
+#: single-portfolio.php:211 single-portfolio.php:216 single.php:127
+#: single.php:135 single.php:140
 msgid "Share this"
 msgstr ""
 
-#: functions.php:3578 functions.php:3587 functions.php:3592 functions.php:5385
-#: single-portfolio.php:198 single.php:59 single.php:274
+#: functions.php:3578 functions.php:3587 functions.php:3592 functions.php:5383
+#: single-portfolio.php:198 single.php:57 single.php:272
 msgid "Share"
 msgstr ""
 
 # @ js_composer
 #: functions.php:3582 functions.php:3602 functions.php:4284
 #: nectar/tinymce/shortcode-processing.php:1164 single-portfolio.php:207
-#: single.php:133
+#: single.php:131
 msgid "Tweet this"
 msgstr ""
 
@@ -525,7 +909,7 @@ msgstr ""
 # @ js_composer
 #: functions.php:3597 functions.php:3605 functions.php:4297
 #: nectar/tinymce/shortcode-processing.php:1176 single-portfolio.php:220
-#: single.php:146
+#: single.php:144
 msgid "Pin this"
 msgstr ""
 
@@ -550,7 +934,7 @@ msgid "Previous Post"
 msgstr ""
 
 #: functions.php:4222 nectar/tinymce/shortcode-processing.php:2843
-#: single.php:92
+#: single.php:90
 #, php-format
 msgid "View all posts in %s"
 msgstr ""
@@ -561,7 +945,7 @@ msgstr ""
 #: includes/post-templates/entry-gallery.php:349
 #: includes/post-templates/entry-image.php:248
 #: includes/post-templates/entry-video.php:383
-#: includes/post-templates/entry.php:295 single.php:102
+#: includes/post-templates/entry.php:295 single.php:100
 msgid "By"
 msgstr "Door"
 
@@ -576,20 +960,20 @@ msgstr "Door"
 #: includes/post-templates/entry-gallery.php:352
 #: includes/post-templates/entry-image.php:251
 #: includes/post-templates/entry-video.php:386
-#: includes/post-templates/entry.php:298 single.php:61 single.php:105
-#: single.php:115 single.php:276
+#: includes/post-templates/entry.php:298 single.php:59 single.php:103
+#: single.php:113 single.php:274
 msgid "One Comment "
 msgstr ""
 
 # @ js_composer
-#: functions.php:4340 functions.php:4552
+#: functions.php:4340 functions.php:4551
 #: nectar/tinymce/shortcode-processing.php:1251
 #: nectar/tinymce/shortcode-processing.php:1260 template-portfolio.php:128
 msgid "Sort Portfolio"
 msgstr ""
 
 # @ js_composer
-#: functions.php:4343 functions.php:4556
+#: functions.php:4343 functions.php:4555
 #: nectar/tinymce/shortcode-processing.php:1249
 #: nectar/tinymce/shortcode-processing.php:1252
 #: nectar/tinymce/shortcode-processing.php:1262 template-portfolio.php:126
@@ -597,46 +981,46 @@ msgstr ""
 msgid "All"
 msgstr "Alle"
 
-#: functions.php:4580
+#: functions.php:4579
 msgid "All Posts By"
 msgstr ""
 
-#: functions.php:4585
+#: functions.php:4584
 msgid "Category"
 msgstr "Categorie"
 
-#: functions.php:4590
+#: functions.php:4589
 msgid "Tag"
 msgstr ""
 
-#: functions.php:4597
+#: functions.php:4596
 msgid "Daily Archives"
 msgstr ""
 
-#: functions.php:4601
+#: functions.php:4600
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: functions.php:4602
+#: functions.php:4601
 msgid "Monthly Archives"
 msgstr ""
 
-#: functions.php:4606
+#: functions.php:4605
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: functions.php:4607
+#: functions.php:4606
 msgid "Yearly Archives"
 msgstr ""
 
 # @ default
-#: functions.php:4610
+#: functions.php:4609
 msgid "Archives"
 msgstr ""
 
-#: functions.php:4861 functions.php:4879
+#: functions.php:4859 functions.php:4877
 #: nectar/tinymce/shortcode-processing.php:2321
 #: nectar/tinymce/shortcode-processing.php:2341
 #: nectar/tinymce/shortcode-processing.php:2477
@@ -647,15 +1031,15 @@ msgstr ""
 msgid "All items loaded"
 msgstr ""
 
-#: functions.php:4868 functions.php:5108
+#: functions.php:4866 functions.php:5106
 msgid "Previous"
 msgstr ""
 
-#: functions.php:4869 functions.php:5109
+#: functions.php:4867 functions.php:5107
 msgid "Next"
 msgstr ""
 
-#: functions.php:5385 single-portfolio.php:198 single.php:59 single.php:274
+#: functions.php:5383 single-portfolio.php:198 single.php:57 single.php:272
 msgid "Shares"
 msgstr ""
 
@@ -812,16 +1196,17 @@ msgid "Insert shortcode"
 msgstr ""
 
 #: happy-framework/templates/tinymce-popup-after.php:14
+#: partials/component-cookie-notification.php:23
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 # @ default
-#: header.php:276
+#: header.php:355
 msgid "was successfully added to your cart."
 msgstr ""
 
 # @ js_composer
-#: header.php:333
+#: header.php:414
 msgid "Search.."
 msgstr ""
 
@@ -928,6 +1313,7 @@ msgstr ""
 #: includes/post-templates/entry.php:308 includes/post-templates/entry.php:339
 #: includes/post-templates/entry.php:354
 #: nectar/tinymce/shortcode-processing.php:2738
+#: partials/shortcode-quote-block.php:19
 msgid "Read More"
 msgstr "Lees meer"
 
@@ -2392,11 +2778,6 @@ msgstr ""
 msgid "OGV FILE URL"
 msgstr ""
 
-# @ js_composer
-#: nectar/tinymce/tinymce-class.php:4524
-msgid "Preview Image"
-msgstr ""
-
 # @ default
 #: nectar/tinymce/tinymce-class.php:4524
 msgid "The preview image should be the same dimensions as your video."
@@ -2784,6 +3165,14 @@ msgstr ""
 msgid "Add Client"
 msgstr ""
 
+#: partials/component-cookie-notification.php:28
+msgid "Yes, I accept"
+msgstr ""
+
+#: partials/shortcode-download-block.php:38
+msgid "Download"
+msgstr ""
+
 # @ js_composer
 #: search.php:38
 msgid "Results For"
@@ -2808,16 +3197,16 @@ msgid "Search"
 msgstr ""
 
 # @ js_composer
-#: single.php:224 single.php:294
+#: single.php:222 single.php:292
 msgid "Author"
 msgstr ""
 
 # @ js_composer
-#: single.php:224 single.php:294
+#: single.php:222 single.php:292
 msgid "About"
 msgstr ""
 
-#: single.php:227 single.php:297
+#: single.php:225 single.php:295
 msgid "More posts by"
 msgstr ""
 
@@ -3023,3 +3412,6 @@ msgstr ""
 #: woocommerce/single-product/tabs/description.php:16
 msgid "Product Description"
 msgstr ""
+
+#~ msgid "BSU Jobs"
+#~ msgstr "BSU Vacatures"

@@ -7,6 +7,7 @@ require_once 'post-types/AbstractPostType.php';
 require_once 'post-types/JobPostType.php';
 
 //Options
+require_once 'options/CookieNotificationOptions.php';
 
 //Scripts
 require_once 'scripts/AdminScript.php';
@@ -31,6 +32,7 @@ require_once 'MetaboxesPost.php';
 require_once 'misc/login-styling.php';
 require_once 'misc/strip-salient.php';
 
+use Bsu\Option\CookieNotificationOptions;
 use Bsu\PostType;
 use Bsu\Shortcode\ContactBlockShortcode;
 use Bsu\Shortcode\QuoteBlockShortcode;
@@ -81,6 +83,8 @@ class BsuTheme extends AbstractTheme
 
         // add shortcodes when theme textdomain is loaded
         add_action('theme_textdomain_loaded', array($this, 'addShortcodes'));
+        // add options when theme textdomain is loaded
+        add_action('theme_textdomain_loaded', array($this, 'addOptions'));
 
         // initialize theme
         $this->init(self::TEXTDOMAIN, self::TEXTDOMAIN, get_template_directory() . '/lang');
@@ -137,5 +141,17 @@ class BsuTheme extends AbstractTheme
     public function initMenu()
     {
 
+    }
+
+    /**
+     * Add options
+     */
+    public function addOptions()
+    {
+        $this->setOptions(
+            array(
+                'cookie_options' => CookieNotificationOptions::getInstance()
+            )
+        );
     }
 }
