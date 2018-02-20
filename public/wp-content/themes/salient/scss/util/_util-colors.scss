@@ -22,6 +22,7 @@ $color-header-blue: #1f368d;
 $color-white: #ffffff;
 $color-space-gray: #b3bdc2;
 $color-yellow: #f4ae05;
+$color-pink: #ca3d7f;
 
 /* Color mappings
  *------------------------ */
@@ -140,7 +141,8 @@ $color-mapping-default: (
         'input-placeholder-color': $color-space-gray,
         'yellow': $color-yellow,
         'red': #c52424,
-        'green': #24c547
+        'green': #24c547,
+        'pink': $color-pink
 );
 
 /**
