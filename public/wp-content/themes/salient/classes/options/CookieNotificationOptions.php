@@ -21,6 +21,7 @@ class CookieNotificationOptions extends AbstractOptionMenuItem
     protected function __construct()
     {
         parent::__construct(__('Cookie Notification', BsuTheme::TEXTDOMAIN), self::$okey, self::$oslug);
+        $this->setIcon('dashicons-info');
         Ajax::register('fetchCookieNotificationHTML', array($this, 'xhrGetCookieNotificationHTML'), true);
     }
 
