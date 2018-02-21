@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: BSU\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-20 15:51+0100\n"
-"PO-Revision-Date: 2018-02-20 15:51+0100\n"
+"PO-Revision-Date: 2018-02-21 16:28+0100\n"
 "Last-Translator: \n"
 "Language-Team: Happy Online <peter@happy-online.nl>\n"
 "Language: nl_NL\n"
@@ -30,11 +30,11 @@ msgstr ""
 #: classes/options/CookieNotificationOptions.php:23
 #: classes/options/CookieNotificationOptions.php:33
 msgid "Cookie Notification"
-msgstr ""
+msgstr "Cookie-melding"
 
 #: classes/options/CookieNotificationOptions.php:36
 msgid "Enable Cookie notification"
-msgstr ""
+msgstr "Schakel Cookie-melding in"
 
 #: classes/options/CookieNotificationOptions.php:40
 msgid "Cookie notification message"
