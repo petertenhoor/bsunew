@@ -1,0 +1,15 @@
+.wpcf7-form {
+  > p {
+    margin-bottom: 8px;
+
+    > label {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #acacac;
+      display: inline-block;
+    }
+  }
+  select{
+    padding: 16px !important;
+  }
+}
