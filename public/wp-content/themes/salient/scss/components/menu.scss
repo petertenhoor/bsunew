@@ -1,0 +1,10 @@
+$menu-width: 18em;
+
+nav .sf-menu {
+  ul {
+    width: $menu-width;
+  }
+  li li ul {
+    left: $menu-width !important;
+  }
+}
