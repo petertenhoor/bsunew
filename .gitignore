@@ -23,3 +23,4 @@ public/wp-content/uploads/
 public/wp-content/wp-cache-config.php
 public/wp-content/themes/salient-child/node_modules
 public/vendor
+package-lock.json
