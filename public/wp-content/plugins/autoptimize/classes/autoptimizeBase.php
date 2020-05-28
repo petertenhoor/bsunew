@@ -23,6 +23,13 @@ abstract class autoptimizeBase
      */
     public $debug_log = false;
 
+    /**
+     * Initiated $cdn_url.
+     *
+     * @var string
+     */
+    public $cdn_url = '';
+
     public function __construct( $content )
     {
         $this->content = $content;
@@ -299,7 +306,7 @@ abstract class autoptimizeBase
 
             // Simple str_replace-based approach fails when $url is protocol-or-host-relative.
             $is_protocol_relative = autoptimizeUtils::is_protocol_relative( $url );
-            $is_host_relative     = ( ! $is_protocol_relative && ( '/' === $url{0} ) );
+            $is_host_relative     = ( ! $is_protocol_relative && ( '/' === $url[0] ) );
             $cdn_url              = rtrim( $cdn_url, '/' );
 
             if ( $is_host_relative ) {
@@ -417,9 +424,9 @@ abstract class autoptimizeBase
         $filehash = null;
 
         // Grab the parts we need.
-        $parts = explode( $matches[1], '|' );
+        $parts = explode( '|', $matches[1] );
         if ( ! empty( $parts ) ) {
-            $filepath = isset( $parts[0] ) ? $parts[0] : null;
+            $filepath = isset( $parts[0] ) ? base64_decode( $parts[0] ) : null;
             $filehash = isset( $parts[1] ) ? $parts[1] : null;
         }
 
@@ -485,7 +492,6 @@ abstract class autoptimizeBase
     protected function inject_minified( $in )
     {
         $out = $in;
-
         if ( false !== strpos( $in, '%%INJECTLATER%%' ) ) {
             $out = preg_replace_callback(
                 '#\/\*\!%%INJECTLATER' . AUTOPTIMIZE_HASH . '%%(.*?)%%INJECTLATER%%\*\/#is',
@@ -560,7 +566,7 @@ abstract class autoptimizeBase
      *
      * @return string
      */
-    protected function replace_contents_with_marker_if_exists( $marker, $search, $re_replace_pattern, $content )
+    public static function replace_contents_with_marker_if_exists( $marker, $search, $re_replace_pattern, $content )
     {
         $found = false;
 
@@ -592,7 +598,7 @@ abstract class autoptimizeBase
      *
      * @return string
      */
-    protected function restore_marked_content( $marker, $content )
+    public static function restore_marked_content( $marker, $content )
     {
         if ( false !== strpos( $content, $marker ) ) {
             $content = preg_replace_callback(
@@ -637,9 +643,9 @@ abstract class autoptimizeBase
     protected function prepare_minify_single( $filepath )
     {
         // Decide what we're dealing with, return false if we don't know.
-        if ( $this->str_ends_in( $filepath, '.js' ) ) {
+        if ( autoptimizeUtils::str_ends_in( $filepath, '.js' ) ) {
             $type = 'js';
-        } elseif ( $this->str_ends_in( $filepath, '.css' ) ) {
+        } elseif ( autoptimizeUtils::str_ends_in( $filepath, '.css' ) ) {
             $type = 'css';
         } else {
             return false;
@@ -653,7 +659,7 @@ abstract class autoptimizeBase
             'js/jquery/jquery.js',
         );
         foreach ( $minified_variants as $ending ) {
-            if ( $this->str_ends_in( $filepath, $ending ) ) {
+            if ( autoptimizeUtils::str_ends_in( $filepath, $ending ) ) {
                 return false;
             }
         }
@@ -680,25 +686,5 @@ abstract class autoptimizeBase
         $url = $this->url_replace_cdn( $url );
 
         return $url;
-    }
-
-    /**
-     * Returns true if given $str ends with given $test.
-     *
-     * @param string $str String to check.
-     * @param string $test Ending to match.
-     *
-     * @return bool
-     */
-    protected function str_ends_in( $str, $test )
-    {
-        // @codingStandardsIgnoreStart
-        // substr_compare() is bugged on 5.5.11: https://3v4l.org/qGYBH
-        // return ( 0 === substr_compare( $str, $test, -strlen( $test ) ) );
-        // @codingStandardsIgnoreEnd
-
-        $length = strlen( $test );
-
-        return ( substr( $str, -$length, $length ) === $test );
     }
 }

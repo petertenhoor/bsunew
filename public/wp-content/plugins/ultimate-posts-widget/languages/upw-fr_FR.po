@@ -217,14 +217,6 @@ msgstr "Décroissant"
 msgid "Ascending"
 msgstr "Croissant"
 
-#: ultimate-posts-widget.php:630
-msgid ""
-"Enjoy this plugin? Please <a href=\"http://pomelodesign.com/donate/\" target="
-"\"_blank\">donate to support development</a>."
-msgstr ""
-"Vous aimez cette extension ? <a href=\"http://pomelodesign.com/donate/\" "
-"target=\"_blank\">Donnez pour aider à son développement</a>."
-
 #: templates/legacy.php:51 templates/standard.php:57
 msgid "By"
 msgstr "Par"
