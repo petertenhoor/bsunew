@@ -1,7 +1,7 @@
-server 'maseru.happy-online.nl', user: 'bsunew', roles: %w{web}
+server 'aruba.happyserver.nl', user: 'bsu', roles: %w{web}
 
-set :application, 'BSU_new'
-set :repo_url, 'git@github.com:HappyOnline/bsunew.git'
+set :application, 'bsu'
+set :repo_url, 'git@github.com:HappyOnline/bsu-old.git'
 set :keep_releases, 2
 
 # Linked directories (WordPress):
