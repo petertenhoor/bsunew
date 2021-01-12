@@ -24,7 +24,7 @@ define( 'WP_CACHE', true );
 define('DB_NAME', 'bsu_mas');
 
 /** MySQL database username */
-define('DB_USER', 'bsu_mas');
+define('DB_USER', 'bsu');
 
 /** MySQL database password */
 define('DB_PASSWORD', '7dTfkX5Zq9avG9oaWvAZ');
