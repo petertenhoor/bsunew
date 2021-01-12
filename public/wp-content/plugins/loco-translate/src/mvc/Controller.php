@@ -12,12 +12,15 @@ abstract class Loco_mvc_Controller extends Loco_hooks_Hookable {
 
     /**
      * Get view parameter
+     * @param string
      * @return mixed
      */
     abstract public function get( $prop );
 
     /**
      * Set view parameter
+     * @param string
+     * @param mixed
      * @return Loco_mvc_Controller
      */
     abstract public function set( $prop, $value );
@@ -66,6 +69,7 @@ abstract class Loco_mvc_Controller extends Loco_hooks_Hookable {
      * Check if a valid nonce has been sent in current request.
      * Fails if nonce is invalid, but returns false if not sent so scripts can exit accordingly.
      * @throws Loco_error_Exception
+     * @param string action for passing to wp_verify_nonce
      * @return bool true if data has been posted and nonce is valid
      */
     public function checkNonce( $action ){
@@ -82,5 +86,32 @@ abstract class Loco_mvc_Controller extends Loco_hooks_Hookable {
         }
         return $posted;
     }
-        
+
+
+    /**
+     * Filter callback for `translations_api'
+     * Ensures silent failure of translations_api when network disabled, see $this->getAvailableCore
+     */
+    public function filter_translations_api( $value = false ){
+        if( apply_filters('loco_allow_remote', true ) ){
+            return $value;
+        }
+        // returning error here has the safe effect as returning empty translations list
+        return new WP_Error( -1, 'Translations API blocked by loco_allow_remote filter' );
+    }
+    
+
+    /**
+     * Filter callback for `pre_http_request`
+     * Ensures fatal error if we failed to handle offline mode earlier.
+     */
+    public function filter_pre_http_request( $value = false ){
+        if( apply_filters('loco_allow_remote', true ) ){
+            return $value;
+        }
+        // little point returning WP_Error error because WordPress will just show "unexpected error" 
+        throw new Loco_error_Exception('HTTP request blocked by loco_allow_remote filter' );
+    }
+
+
 }

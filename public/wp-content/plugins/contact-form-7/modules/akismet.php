@@ -4,9 +4,9 @@
 ** Akismet API: http://akismet.com/development/api/
 **/
 
-add_filter( 'wpcf7_spam', 'wpcf7_akismet' );
+add_filter( 'wpcf7_spam', 'wpcf7_akismet', 10, 2 );
 
-function wpcf7_akismet( $spam ) {
+function wpcf7_akismet( $spam, $submission ) {
 	if ( $spam ) {
 		return $spam;
 	}
@@ -32,9 +32,15 @@ function wpcf7_akismet( $spam ) {
 	$c['user_ip'] = $_SERVER['REMOTE_ADDR'];
 	$c['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
 	$c['referrer'] = $_SERVER['HTTP_REFERER'];
-
-	// http://blog.akismet.com/2012/06/19/pro-tip-tell-us-your-comment_type/
 	$c['comment_type'] = 'contact-form';
+
+	$datetime = date_create_immutable(
+		'@' . $submission->get_meta( 'timestamp' )
+	);
+
+	if ( $datetime ) {
+		$c['comment_date_gmt'] = $datetime->format( DATE_ATOM );
+	}
 
 	if ( $permalink = get_permalink() ) {
 		$c['permalink'] = $permalink;
@@ -43,20 +49,28 @@ function wpcf7_akismet( $spam ) {
 	$ignore = array( 'HTTP_COOKIE', 'HTTP_COOKIE2', 'PHP_AUTH_PW' );
 
 	foreach ( $_SERVER as $key => $value ) {
-		if ( ! in_array( $key, (array) $ignore ) )
+		if ( ! in_array( $key, (array) $ignore ) ) {
 			$c["$key"] = $value;
+		}
 	}
 
-	return wpcf7_akismet_comment_check( $c );
+	if ( wpcf7_akismet_comment_check( $c ) ) {
+		$spam = true;
+
+		$submission->add_spam_log( array(
+			'agent' => 'akismet',
+			'reason' => __( "Akismet returns a spam response.", 'contact-form-7' ),
+		) );
+	} else {
+		$spam = false;
+	}
+
+	return $spam;
 }
 
 function wpcf7_akismet_is_available() {
-	if ( is_callable( array( 'Akismet', 'get_api_key' ) ) ) { // Akismet v3.0+
+	if ( is_callable( array( 'Akismet', 'get_api_key' ) ) ) {
 		return (bool) Akismet::get_api_key();
-	}
-
-	if ( function_exists( 'akismet_get_key' ) ) {
-		return (bool) akismet_get_key();
 	}
 
 	return false;
@@ -67,12 +81,14 @@ function wpcf7_akismet_submitted_params() {
 		'author' => '',
 		'author_email' => '',
 		'author_url' => '',
-		'content' => '' );
+		'content' => '',
+	);
 
 	$has_akismet_option = false;
 
 	foreach ( (array) $_POST as $key => $val ) {
-		if ( '_wpcf7' == substr( $key, 0, 6 ) || '_wpnonce' == $key ) {
+		if ( '_wpcf7' == substr( $key, 0, 6 )
+		or '_wpnonce' == $key ) {
 			continue;
 		}
 
@@ -88,7 +104,6 @@ function wpcf7_akismet_submitted_params() {
 
 		if ( $tags = wpcf7_scan_form_tags( array( 'name' => $key ) ) ) {
 			$tag = $tags[0];
-			$tag = new WPCF7_FormTag( $tag );
 
 			$akismet = $tag->get_option( 'akismet',
 				'(author|author_email|author_url)', true );
@@ -98,8 +113,10 @@ function wpcf7_akismet_submitted_params() {
 
 				if ( 'author' == $akismet ) {
 					$params[$akismet] = trim( $params[$akismet] . ' ' . $val );
+					continue;
 				} elseif ( '' == $params[$akismet] ) {
 					$params[$akismet] = $val;
+					continue;
 				}
 			}
 		}
@@ -117,16 +134,13 @@ function wpcf7_akismet_submitted_params() {
 }
 
 function wpcf7_akismet_comment_check( $comment ) {
-	global $akismet_api_host, $akismet_api_port;
-
 	$spam = false;
 	$query_string = wpcf7_build_query( $comment );
 
-	if ( is_callable( array( 'Akismet', 'http_post' ) ) ) { // Akismet v3.0+
+	if ( is_callable( array( 'Akismet', 'http_post' ) ) ) {
 		$response = Akismet::http_post( $query_string, 'comment-check' );
 	} else {
-		$response = akismet_http_post( $query_string, $akismet_api_host,
-			'/1.1/comment-check', $akismet_api_port );
+		return $spam;
 	}
 
 	if ( 'true' == $response[1] ) {

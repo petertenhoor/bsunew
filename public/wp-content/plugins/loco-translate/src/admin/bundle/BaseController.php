@@ -28,7 +28,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
     }
 
 
-
     /**
      * Commit bundle config to database
      * @return Loco_admin_bundle_BaseController 
@@ -42,7 +41,6 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
         $this->bundle = null;
         return $this;
     }
-
 
 
     /**
@@ -60,11 +58,10 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
     }
 
 
-
     /**
      * @return Loco_package_Project
      */
-    public function getProject(){
+    protected function getProject(){
         if( ! $this->project ){
             $bundle = $this->getBundle();
             $domain = $this->get('domain');
@@ -80,6 +77,18 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
         return $this->project;
     }
 
+
+    /**
+     * @return Loco_package_Project|null
+     */
+    protected function getOptionalProject(){
+        try {
+            return $this->getProject();
+        }
+        catch( Exception $e ){
+            return null;
+        }
+    }
 
 
     /**
@@ -118,29 +127,48 @@ abstract class Loco_admin_bundle_BaseController extends Loco_mvc_AdminController
 
     /**
      * Prepare file system connect
+     * @param string "create", "update", "delete"
+     * @param string path relative to wp-content
      * @return Loco_mvc_HiddenFields
      */
-    protected function prepareFsConnect( $type, $path ){
+    protected function prepareFsConnect( $type, $relpath ){
+
         $fields = new Loco_mvc_HiddenFields( array(
             'auth' => $type,
-            'path' => $path,
-            'loco-nonce' => wp_create_nonce('fsConnect'), // <- used for our ajax action
+            'path' => $relpath,
+            'loco-nonce' => wp_create_nonce('fsConnect'),
             '_fs_nonce' => wp_create_nonce('filesystem-credentials'), // <- WP 4.7.5 added security fix
-        ) );
+        ) ) ;
         $this->set('fsFields', $fields );
 
         // may have fs credentials saved in session
         try {
-            $session = Loco_data_Session::get();
-            if( isset($session['loco-fs']) ){
-                $fields['connection_type'] = $session['loco-fs']['connection_type'];
+            if( Loco_data_Settings::get()->fs_persist ){
+                $session = Loco_data_Session::get();
+                if( isset($session['loco-fs']) ){
+                    $fields['connection_type'] = $session['loco-fs']['connection_type'];
+                }
             }
         }
         catch( Exception $e ){
             Loco_error_AdminNotices::debug( $e->getMessage() );
         }
 
+        // Run pre-checks that may determine file should not be written
+        if( $relpath ){
+            $file = new Loco_fs_File( $relpath );
+            $file->normalize( loco_constant('WP_CONTENT_DIR') );
+            // total file system block makes connection type irrelevant
+            try {
+                $api = new Loco_api_WordPressFileSystem;
+                $api->preAuthorize($file);
+            }
+            catch( Loco_error_WriteException $e ){
+                $this->set('fsLocked', $e->getMessage() );
+            }
+        }
+        
         return $fields;
     }
-    
+
 }

@@ -30,6 +30,19 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
 
 
     /**
+     * @param bool whether po files is in read-only mode
+     * @return array
+     */
+    private function getNonces( $readonly ){
+        $nonces = array();
+        foreach( $readonly ? array('fsReference') : array('sync','save','fsReference','apis') as $name ){
+            $nonces[$name] = wp_create_nonce($name);
+        }
+        return $nonces;
+    }
+
+
+    /**
      * {@inheritdoc}
      */
     public function render(){
@@ -53,44 +66,46 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
             $data = Loco_gettext_Data::dummy();
         }
 
-        // Pre-populate PO headers with data that JavaScript doesn't have access to
-        if( $locale = $this->get('locale') ){
-            $data->localize( $locale );
-            $lname = $locale->getName() or $lname = (string) $locale;
-            $this->set( 'localeName', $lname );
-        }
-        
+        $head = $data->getHeaders();
+
         // default is to permit editing of any file
         $readonly = false;
-
         
+        // All files must belong to a bundle.
+        $bundle = $this->getBundle();
+
         // Establish if file belongs to a configured project
         try {
-            $bundle = $this->getBundle();
             $project = $this->getProject();
         }
         // Fine if not, this just means sync isn't possible.
         catch( Loco_error_Exception $e ){
-            Loco_error_AdminNotices::debug( sprintf("Sync is disabled because this file doesn't relate to a known set of translations", $bundle ) );
+            Loco_error_AdminNotices::add( $e );
+            Loco_error_AdminNotices::debug("Sync is disabled because this file doesn't relate to a known set of translations");
             $project = null;
         }
             
         // Establish PO/POT edit mode
-        if( $locale ){
+        $potfile = null;
+        $syncmode = null;
+        $locale = $this->getLocale();
+        if( $locale instanceof Loco_Locale ){
             // alternative POT file may be forced by PO headers
-            $head = $data->getHeaders();
             if( $head->has('X-Loco-Template') ){
-                $potfile = new Loco_fs_File($head['X-Loco-Template']);
+                $potfile = new Loco_fs_File( $head['X-Loco-Template'] );
                 $potfile->normalize( $bundle->getDirectoryPath() );
-            }
-            // no way to get configured POT if invalid project
-            else if( is_null($project) ){
-                $potfile = null;
+                // sync mode permits copying of translations since 2.4.3
+                // legacy sync behaviour was copy msgstr fields when they exist (no strip)
+                if( $head->has('X-Loco-Template-Mode') ){
+                    $syncmode = $head['X-Loco-Template-Mode'];
+                }
             }
             // else use project-configured template, assuming there is one
-            else if( $potfile = $project->getPot() ){
+            // no way to get configured POT if invalid project
+            else if( $project ){
+                $potfile = $project->getPot();
                 // Handle situation where project defines a localised file as the official template
-                if( $potfile->equal($file) ){
+                if( $potfile && $potfile->equal($file) ){
                     $locale = null;
                     $potfile = null;
                 }
@@ -98,9 +113,16 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
             if( $potfile ){
                 // Validate template file as long as it exists
                 if( $potfile->exists() ){
-                    $potdata = Loco_gettext_Data::load( $potfile );
-                    if( ! $potdata->equalSource($data) ){
-                        Loco_error_AdminNotices::debug( sprintf( __("Translations don't match template. Run sync to update from %s",'loco-translate'), $potfile->basename() ) );
+                    try {
+                        $potdata = Loco_gettext_Data::load( $potfile );
+                        if( ! $potdata->equalSource($data) ){
+                            Loco_error_AdminNotices::debug( sprintf( __("Translations don't match template. Run sync to update from %s",'loco-translate'), $potfile->basename() ) );
+                        }
+                    }
+                    catch( Exception $e ){
+                        // translators: Where %s is the name of the invalid POT file
+                        Loco_error_AdminNotices::warn( sprintf( __('Translation template is invalid (%s)','loco-translate'), $potfile->basename() ) );
+                        $potfile = null;
                     }
                 }
                 // else template doesn't exist, so sync will be done to source code
@@ -109,12 +131,38 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
                     $potfile = null;
                 }
             }
+            if( $locale ){
+                // allow PO file to dictate its own Plural-Forms
+                try {
+                    $locale->setPluralFormsHeader( $head['Plural-Forms'] );
+                }
+                catch( InvalidArgumentException $e ){
+                    // ignore invalid Plural-Forms
+                }
+                // fill in missing PO headers now locale is fully resolved
+                $data->localize($locale);
+                
+                // If MO file will be compiled, check for library/config problems
+                if ( 2 !== strlen( "\xC2\xA3" ) ) {
+                    Loco_error_AdminNotices::warn('Your mbstring configuration will result in corrupt MO files. Please ensure mbstring.func_overload is disabled');
+                }
+            }
         }
         
-        // notify if template is locked (save and sync will be disabled)
-        if( is_null($locale) && $project && $project->isPotLocked() ){
-            Loco_error_AdminNotices::warn('Template is protected from updates by the bundle configuration');
-            $readonly = true;
+        $settings =  Loco_data_Settings::get();
+        
+        if( is_null($locale) ){
+            // notify if template is locked (save and sync will be disabled)
+            if( $project && $project->isPotLocked() ){
+                $this->set('fsDenied', true );
+                $readonly = true;
+            }
+            // translators: Warning when POT file is opened in the file editor. It can be disabled in settings.
+            else if( 1 === $settings->pot_protect ){
+                Loco_error_AdminNotices::warn( __("This is NOT a translation file. Manual editing of source strings is not recommended.",'loco-translate') )
+                 ->addLink( Loco_mvc_AdminRouter::generate('config').'#loco--pot-protect', __('Settings','loco-translate') )
+                 ->addLink( apply_filters('loco_external','https://localise.biz/wordpress/plugin/manual/templates'), __('Documentation','loco-translate') );
+            }
         }
         
         // back end expects paths relative to wp-content
@@ -122,21 +170,20 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
         
         $this->set( 'js', new Loco_mvc_ViewParams( array(
             'podata' => $data->jsonSerialize(),
+            'powrap' => (int) $settings->po_width,
+            'multipart' => (bool) $settings->ajax_files,
             'locale' => $locale ? $locale->jsonSerialize() : null,
             'potpath' => $locale && $potfile ? $potfile->getRelativePath($wp_content) : null,
+            'syncmode' => $syncmode,
             'popath' => $this->get('path'),
             'readonly' => $readonly,
             'project' => $project ? array (
                 'bundle' => $bundle->getId(),
-                'domain' => $project->getId(),
+                'domain' => (string) $project->getId(),
             ) : null,
-            'nonces' => $readonly ? null : array (
-                'save' => wp_create_nonce('save'),
-                'sync' => wp_create_nonce('sync'),
-                'fsConnect' => wp_create_nonce('fsConnect'),
-            ),
+            'nonces' => $this->getNonces($readonly),
+            'apis' => $locale && ! $readonly ? Loco_api_Providers::configured() : null,
         ) ) );
-        
         $this->set( 'ui', new Loco_mvc_ViewParams( array(
              // Translators: button for adding a new string when manually editing a POT file
              'add'      => _x('Add','Editor','loco-translate'),
@@ -149,8 +196,8 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
              'sync'     => _x('Sync','Editor','loco-translate'),
              // Translators: Button that reloads current screen
              'revert'   => _x('Revert','Editor','loco-translate'),
-             // Translators: Button that toggles a translation's Fuzzy flag
-             'fuzzy'    => _x('Fuzzy','Editor','loco-translate'),
+             // Translators: Button that opens window for auto-translating
+             'auto'     => _x('Auto','Editor','loco-translate'),
              // Translators: Button for downloading a PO, MO or POT file
              'download' => _x('Download','Editor','loco-translate'),
              // Translators: Placeholder text for text filter above editor
@@ -170,29 +217,9 @@ class Loco_admin_file_EditController extends Loco_admin_file_BaseController {
         ) );
         $this->set( 'dlFields', $hidden->setNonce('download') );
         $this->set( 'dlAction', admin_url('admin-ajax.php','relative') );
-        
-        // validate file system writableness for all operations involved in save
-        $writable = $file->writable();
-        
-        // Check in advance if MO file can be compiled in this directory
-        if( $writable ){
-            $dummy = $file->cloneExtension('mo');
-            if( ! ( $dummy->exists() ? $dummy->writable() : $dummy->creatable() ) ){
-                $writable = false;
-            }
-            // Check in advance if backups will work in this directory
-            else if( Loco_data_Settings::get()->num_backups ){
-                $dummy = new Loco_fs_File( $file->dirname().'/does-not-exist.po~' );
-                if( ! $dummy->creatable() ){
-                    $writable = false;
-                }
-            }
-        }
 
-        // File system connect if any operations likely to fail
-        if( ! $writable ){
-            $this->prepareFsConnect( 'connect', $this->get('path') );
-        }
+        // Remote file system required if file is not directly writable
+        $this->prepareFsConnect( 'update', $this->get('path') );
         
         // set simpler title for breadcrumb
         $this->set('title', $file->basename() );

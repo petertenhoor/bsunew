@@ -17,6 +17,13 @@ class autoptimizeHTML extends autoptimizeBase
     private $keepcomments = false;
 
     /**
+     * Whether to force xhtml compatibility.
+     *
+     * @var bool
+     */
+    private $forcexhtml = false;
+
+    /**
      * Things to exclude from being minifed.
      *
      * @var array

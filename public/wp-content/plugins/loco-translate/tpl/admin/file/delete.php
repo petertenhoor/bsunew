@@ -27,10 +27,10 @@ $this->extend('../layout');
             </p><?php
             endif?> 
             <p class="submit">
-                <input type="submit" class="button button-danger" value="<?php esc_html_e('Delete Permanently','default')?>" />
+                <button type="submit" class="button button-danger" disabled><?php esc_html_e('Delete Permanently','default')?></button>
             </p>
         </div>
         <?php
-        /* @var $hidden Loco_mvc_HiddenFields */
+        /* @var Loco_mvc_HiddenFields $hidden */
         $hidden->_e();?> 
     </form>

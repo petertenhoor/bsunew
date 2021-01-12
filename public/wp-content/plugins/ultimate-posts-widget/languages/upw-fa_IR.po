@@ -264,14 +264,6 @@ msgstr "نزولی"
 msgid "Ascending"
 msgstr "صعودی"
 
-#: ../ultimate-posts-widget.php:630
-msgid ""
-"Enjoy this plugin? Please <a href=\"http://pomelodesign.com/donate/\" target="
-"\"_blank\">donate to support development</a>."
-msgstr ""
-"آماده سازی بدست <a href=\"http://taktaweb.ir/\" target=\"_blank\">گروه طراحی "
-"و توسعه تکتاوب</a>."
-
 #, fuzzy
 #~ msgid "Comment History"
 #~ msgstr "تعداد نظرات"

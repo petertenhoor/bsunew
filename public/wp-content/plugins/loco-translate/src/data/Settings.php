@@ -1,6 +1,32 @@
 <?php
 /**
  * Global plugin settings stored in a single WordPress site option.
+ * 
+ * @property string $version Current plugin version installed
+ * @property bool $gen_hash Whether to compile hash table into MO files
+ * @property bool $use_fuzzy Whether to include Fuzzy strings in MO files
+ * @property int $fuzziness Fuzzy matching tolerance level, 0-100
+ * @property int $num_backups Number of backups to keep of Gettext files
+ * @property array $pot_alias Alternative names for POT files in priority order
+ * @property array $php_alias Alternative file extensions for PHP files
+ * @property array $jsx_alias Registered extensions for scanning JavaScript/JSX files (disabled by default)
+ * @property bool $fs_persist Whether to remember file system credentials in session
+ * @property int $fs_protect Prevent modification of files in system folders (0:off, 1:warn, 2:block)
+ * @property int $pot_protect Prevent modification of POT files (0:off, 1:warn, 2:block)
+ * @property int $pot_expected Whether to allow missing templates and sync to source (0:off, 1:warn, 2:block) 
+ * @property string $max_php_size Skip PHP source files this size or larger
+ * @property bool $po_utf8_bom Whether to prepend PO and POT files with UTF-8 byte order mark
+ * @property string $po_width PO/POT file maximum line width (wrapping) zero to disable
+ * @property bool $jed_pretty Whether to pretty print JSON JED files
+ * @property bool $jed_clean Whether to clean up redundant JSON files during compilation
+ * @property bool $ajax_files Whether to submit PO data as concrete files (requires Blob support in Ajax)
+ *
+ * @property string $deepl_api_key API key for DeepL Translator
+ * @property string $google_api_key API key for Google Translate
+ * @property string $yandex_api_key API key for Yandex.Translate
+ * @property string $microsoft_api_key API key for Microsoft Translator text API
+ * @property string $microsoft_api_region API region for Microsoft Translator text API
+ *
  */
 class Loco_data_Settings extends Loco_data_Serializable {
 
@@ -9,42 +35,39 @@ class Loco_data_Settings extends Loco_data_Serializable {
      * @var Loco_data_Settings
      */
     private static $current;
-    
+
 
     /**
      * Available options and their defaults
      * @var array
      */
     private static $defaults = array (
-        // current plugin version installed
         'version' => '',
-        // whether to compile hash table into MO files
         'gen_hash' => false,
-        // whether to include Fuzzy strings in MO files
         'use_fuzzy' => true,
-        // number of backups to keep of Gettext files
-        'num_backups' => 1,
-        // alternative names for POT files in priority order
+        'fuzziness' => 20,
+        'num_backups' => 5,
         'pot_alias' => array( 'default.po', 'en_US.po', 'en.po' ),
-        // alternative file extensions for PHP files
-        'php_alias' => array( 'php' ),
-        // whether to remember file system credentials in session
+        'php_alias' => array( 'php', 'twig' ),
+        'jsx_alias' => array(),
         'fs_persist' => false,
-        // skip PHP source files this size or larger
+        'fs_protect' => 1,
+        'pot_protect' => 1,
+        'pot_expected' => 1,
         'max_php_size' => '100K',
-        // whether to prepend PO and POT files with UTF-8 byte order mark
         'po_utf8_bom' => false,
-        /*/ Legacy options from 1.x branch:
-        // whether to use external msgfmt command (1), or internal (default)
-        'use_msgfmt' => false,
-        // which external msgfmt command to use
-        'which_msgfmt' => '',
-        // whether to enable core package translation
-        'enable_core' => false,*/
+        'po_width' => '79',
+        'jed_pretty' => false,
+        'jed_clean' => false,
+        'ajax_files' => true,
+        'deepl_api_key' => '',
+        'google_api_key' => '',
+        'yandex_api_key' => '',
+        'microsoft_api_key' => '',
+        'microsoft_api_region' => 'global',
     );
 
 
-    
     /**
      * Create default settings instance
      * @return Loco_data_Settings
@@ -54,7 +77,6 @@ class Loco_data_Settings extends Loco_data_Serializable {
         $args['version'] = loco_plugin_version();
         return new Loco_data_Settings( $args );
     }
-
 
 
     /**
@@ -67,10 +89,11 @@ class Loco_data_Settings extends Loco_data_Serializable {
             $opts = self::create();
             $opts->fetch();
             self::$current = $opts;
+            // allow hooks to modify settings
+            do_action('loco_settings', $opts );
         }
         return $opts;
     }
-
 
 
     /**
@@ -81,7 +104,6 @@ class Loco_data_Settings extends Loco_data_Serializable {
         delete_option('loco_settings');
         self::$current = null;
     }
-
 
 
     /**
@@ -95,32 +117,12 @@ class Loco_data_Settings extends Loco_data_Serializable {
 
 
     /**
-     * @override
+     * {@inheritdoc}
      */
     public function offsetSet( $prop, $value ){
-        if( ! isset(self::$defaults[$prop]) ){
-            throw new InvalidArgumentException('Invalid option, '.$prop );
-        }
-        $default = self::$defaults[$prop];
-        // cast to same type as default
-        if( is_bool($default) ){
-            $value = (bool) $value;
-        }
-        else if( is_int($default) ){
-            $value = (int) $value;
-        }
-        else if( is_array($default) ){
-            if( ! is_array($value) ){
-                // TODO use a standard CSV split for array values?
-                $value = preg_split( '/[\s,]+/', trim($value), -1, PREG_SPLIT_NO_EMPTY );
-            }
-        }
-        else {
-            $value = (string) $value;
-        }
+        $value = parent::cast($prop,$value,self::$defaults);
         parent::offsetSet( $prop, $value );
     }
-
 
 
     /**
@@ -134,13 +136,13 @@ class Loco_data_Settings extends Loco_data_Serializable {
     }
 
 
-
     /**
      * Pull current settings from WordPress DB and merge into this object
      * @return bool whether settings where previously saved
      */
     public function fetch(){
-        if( $data = get_option('loco_settings') ){
+        $data = get_option('loco_settings');
+        if( is_array($data) ){
             $copy = new Loco_data_Settings;
             $copy->setUnserialized($data);
             // preserve any defaults not in previously saved data
@@ -156,52 +158,58 @@ class Loco_data_Settings extends Loco_data_Serializable {
     }
 
 
-
     /**
      * Run migration in case plugin has been upgraded since settings last saved
-     * @return bool whether upgrade has occured
+     * @return bool whether upgrade has occurred
      */
     public function migrate(){
-        $existed = (bool) get_option('loco_settings');
-        // Populate new format from legacy 1.x options, but only on first run
-        if( ! $existed ){
-            $this->gen_hash = get_option('loco-translate-gen_hash','0');
-            $this->use_fuzzy = get_option('loco-translate-use_fuzzy', '1' );
-            $this->num_backups = get_option('loco-translate-num_backups','1');
+        $updated = false;
+        // Always update version number in settings after an upgrade
+        $old = $this->version;
+        $new = loco_plugin_version();
+        if( version_compare($old,$new,'<') ){
             $this->persist();
+            $updated = true;
+            // feature alerts:
+            if( '2.5.' === substr($new,0,4) && '2.5.' !== substr($old,0,4) ){
+                Loco_error_AdminNotices::info( __('Loco Translate 2.5 adds supports for JSON language pack generation.','loco-translate') )
+                   ->addLink( apply_filters('loco_external','https://localise.biz/wordpress/plugin/manual/json'), __('Documentation','loco-translate') );
+            }
         }
-        // currently the only upgrade could be 1.x => 2.0
-        // deliberately keeping the old options due to legacy switching feature
-        return ! $existed;
+        return $updated;
     }
-    
 
 
     /**
-     * Populate all settings from raw postdata. 
+     * Populate ALL settings from raw postdata.
+     * @param array posted setting values
+     * @param array optional filter to restrict modifiable values
      * @return Loco_data_Settings
      */
-    public function populate( array $data ){
-        // set all keys present in array
+    public function populate( array $data, $filter = null ){
+        // set all keys present in posted data
         foreach( $data as $prop => $value ){
             try {
-                $this->offsetSet( $prop, $value );
+                if( is_null($filter) || in_array($prop,$filter,true) ) {
+                    $this->offsetSet( $prop, $value );
+                }
             }
             catch( InvalidArgumentException $e ){
                 // skipping invalid key
             }
         }
-        // set missing boolean keys as false, because checkboxes
-        if( $missing = array_diff_key(self::$defaults,$data) ){
-            foreach( $missing as $prop => $default ){
-                if( is_bool($default) ){
-                    parent::offsetSet( $prop, false );
-                }
-                
+        // set missing boolean keys as false, because unchecked checkboxes won't post anything
+        $defaults = self::$defaults;
+        if( is_array($filter) ){
+            $defaults = array_intersect_key( array_flip($filter) ,$defaults);
+        }
+        foreach( array_diff_key($defaults,$data) as $prop => $default ){
+            if( is_bool($default) ){
+                parent::offsetSet( $prop, false );
             }
         }
-        // enforce missing values that must have default
-        foreach( array('php_alias','max_php_size') as $prop ){
+        // enforce missing values that must have a default, but were passed empty
+        foreach( array('php_alias','max_php_size','po_width') as $prop ){
             if( isset($data[$prop]) && '' === $data[$prop] ){
                 parent::offsetSet( $prop, self::$defaults[$prop] );
             }
@@ -210,4 +218,17 @@ class Loco_data_Settings extends Loco_data_Serializable {
         return $this;
     }
 
+
+    /**
+     * Map a file extension to registered types, defaults to "php"
+     * @param string
+     * @return string php, js or twig
+     */
+    public function ext2type($x){
+        $x = strtolower($x);
+        $types = array_fill_keys( $this->jsx_alias, 'js' );
+        $types['twig'] = 'twig'; // <- temporary hack in lieu of dedicated twig extractor
+        return isset($types[$x]) ? $types[$x] : 'php';
+    }
+   
 }

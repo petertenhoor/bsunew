@@ -1,6 +1,6 @@
 <?php
 
-class WPCF7_FormTag {
+class WPCF7_FormTag implements ArrayAccess {
 
 	public $type;
 	public $basetype;
@@ -13,10 +13,13 @@ class WPCF7_FormTag {
 	public $attr = '';
 	public $content = '';
 
-	public function __construct( $tag ) {
-		foreach ( $tag as $key => $value ) {
-			if ( property_exists( __CLASS__, $key ) ) {
-				$this->{$key} = $value;
+	public function __construct( $tag = array() ) {
+		if ( is_array( $tag )
+		or $tag instanceof self ) {
+			foreach ( $tag as $key => $value ) {
+				if ( property_exists( __CLASS__, $key ) ) {
+					$this->{$key} = $value;
+				}
 			}
 		}
 	}
@@ -32,11 +35,12 @@ class WPCF7_FormTag {
 
 	public function get_option( $opt, $pattern = '', $single = false ) {
 		$preset_patterns = array(
-			'date' => '([0-9]{4}-[0-9]{2}-[0-9]{2}|today(.*))',
+			'date' => '[0-9]{4}-[0-9]{2}-[0-9]{2}',
 			'int' => '[0-9]+',
 			'signed_int' => '-?[0-9]+',
 			'class' => '[-0-9a-zA-Z_]+',
-			'id' => '[-0-9a-zA-Z_]+' );
+			'id' => '[-0-9a-zA-Z_]+',
+		);
 
 		if ( isset( $preset_patterns[$pattern] ) ) {
 			$pattern = $preset_patterns[$pattern];
@@ -101,7 +105,8 @@ class WPCF7_FormTag {
 		$matches_a = $this->get_all_match_options( '%^([0-9]*)/[0-9]*$%' );
 
 		foreach ( (array) $matches_a as $matches ) {
-			if ( isset( $matches[1] ) && '' !== $matches[1] ) {
+			if ( isset( $matches[1] )
+			and '' !== $matches[1] ) {
 				return $matches[1];
 			}
 		}
@@ -168,7 +173,8 @@ class WPCF7_FormTag {
 			'%^([0-9]*)x([0-9]*)(?:/[0-9]+)?$%' );
 
 		foreach ( (array) $matches_a as $matches ) {
-			if ( isset( $matches[2] ) && '' !== $matches[2] ) {
+			if ( isset( $matches[2] )
+			and '' !== $matches[2] ) {
 				return $matches[2];
 			}
 		}
@@ -177,23 +183,33 @@ class WPCF7_FormTag {
 	}
 
 	public function get_date_option( $opt ) {
-		$option = $this->get_option( $opt, 'date', true );
+		$option_value = $this->get_option( $opt, '', true );
 
-		if ( preg_match( '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $option ) ) {
-			return $option;
+		if ( empty( $option_value ) ) {
+			return false;
 		}
 
-		if ( preg_match( '/^today(?:([+-][0-9]+)([a-z]*))?/', $option, $matches ) ) {
-			$number = isset( $matches[1] ) ? (int) $matches[1] : 0;
-			$unit = isset( $matches[2] ) ? $matches[2] : '';
+		$date = apply_filters( 'wpcf7_form_tag_date_option',
+			null,
+			array( $opt => $option_value )
+		);
 
-			if ( ! preg_match( '/^(day|month|year|week)s?$/', $unit ) ) {
-				$unit = 'days';
+		if ( $date ) {
+			$date_pattern = '/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/';
+
+			if ( preg_match( $date_pattern, $date, $matches )
+			and checkdate( $matches[2], $matches[3], $matches[1] ) ) {
+				return $date;
 			}
+		} else {
+			$datetime_obj = date_create_immutable(
+				preg_replace( '/[_]+/', ' ', $option_value ),
+				wp_timezone()
+			);
 
-			$date = gmdate( 'Y-m-d',
-				strtotime( sprintf( 'today %1$s %2$s', $number, $unit ) ) );
-			return $date;
+			if ( $datetime_obj ) {
+				return $datetime_obj->format( 'Y-m-d' );
+			}
 		}
 
 		return false;
@@ -201,7 +217,9 @@ class WPCF7_FormTag {
 
 	public function get_default_option( $default = '', $args = '' ) {
 		$args = wp_parse_args( $args, array(
-			'multiple' => false ) );
+			'multiple' => false,
+			'shifted' => false,
+		) );
 
 		$options = (array) $this->get_option( 'default' );
 		$values = array();
@@ -213,7 +231,8 @@ class WPCF7_FormTag {
 		foreach ( $options as $opt ) {
 			$opt = sanitize_key( $opt );
 
-			if ( 'user_' == substr( $opt, 0, 5 ) && is_user_logged_in() ) {
+			if ( 'user_' == substr( $opt, 0, 5 )
+			and is_user_logged_in() ) {
 				$primary_props = array( 'user_login', 'user_email', 'user_url' );
 				$opt = in_array( $opt, $primary_props ) ? $opt : substr( $opt, 5 );
 
@@ -228,7 +247,7 @@ class WPCF7_FormTag {
 					}
 				}
 
-			} elseif ( 'post_meta' == $opt && in_the_loop() ) {
+			} elseif ( 'post_meta' == $opt and in_the_loop() ) {
 				if ( $args['multiple'] ) {
 					$values = array_merge( $values,
 						get_post_meta( get_the_ID(), $this->name ) );
@@ -240,7 +259,7 @@ class WPCF7_FormTag {
 					}
 				}
 
-			} elseif ( 'get' == $opt && isset( $_GET[$this->name] ) ) {
+			} elseif ( 'get' == $opt and isset( $_GET[$this->name] ) ) {
 				$vals = (array) $_GET[$this->name];
 				$vals = array_map( 'wpcf7_sanitize_query_var', $vals );
 
@@ -254,7 +273,7 @@ class WPCF7_FormTag {
 					}
 				}
 
-			} elseif ( 'post' == $opt && isset( $_POST[$this->name] ) ) {
+			} elseif ( 'post' == $opt and isset( $_POST[$this->name] ) ) {
 				$vals = (array) $_POST[$this->name];
 				$vals = array_map( 'wpcf7_sanitize_query_var', $vals );
 
@@ -280,6 +299,22 @@ class WPCF7_FormTag {
 						}
 					}
 				}
+
+			} elseif ( preg_match( '/^[0-9_]+$/', $opt ) ) {
+				$nums = explode( '_', $opt );
+
+				foreach ( $nums as $num ) {
+					$num = absint( $num );
+					$num = $args['shifted'] ? $num : $num - 1;
+
+					if ( isset( $this->values[$num] ) ) {
+						if ( $args['multiple'] ) {
+							$values[] = $this->values[$num];
+						} else {
+							return $this->values[$num];
+						}
+					}
+				}
 			}
 		}
 
@@ -295,6 +330,30 @@ class WPCF7_FormTag {
 		$options = (array) $this->get_option( 'data' );
 
 		return apply_filters( 'wpcf7_form_tag_data_option', null, $options, $args );
+	}
+
+	public function get_limit_option( $default = MB_IN_BYTES ) {
+		$pattern = '/^limit:([1-9][0-9]*)([kKmM]?[bB])?$/';
+
+		$matches = $this->get_first_match_option( $pattern );
+
+		if ( $matches ) {
+			$size = (int) $matches[1];
+
+			if ( ! empty( $matches[2] ) ) {
+				$kbmb = strtolower( $matches[2] );
+
+				if ( 'kb' == $kbmb ) {
+					$size *= KB_IN_BYTES;
+				} elseif ( 'mb' == $kbmb ) {
+					$size *= MB_IN_BYTES;
+				}
+			}
+
+			return $size;
+		}
+
+		return (int) $default;
 	}
 
 	public function get_first_match_option( $pattern ) {
@@ -317,5 +376,26 @@ class WPCF7_FormTag {
 		}
 
 		return $result;
+	}
+
+	public function offsetSet( $offset, $value ) {
+		if ( property_exists( __CLASS__, $offset ) ) {
+			$this->{$offset} = $value;
+		}
+	}
+
+	public function offsetGet( $offset ) {
+		if ( property_exists( __CLASS__, $offset ) ) {
+			return $this->{$offset};
+		}
+
+		return null;
+	}
+
+	public function offsetExists( $offset ) {
+		return property_exists( __CLASS__, $offset );
+	}
+
+	public function offsetUnset( $offset ) {
 	}
 }

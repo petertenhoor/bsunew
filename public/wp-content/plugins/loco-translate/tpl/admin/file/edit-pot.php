@@ -6,7 +6,7 @@ $this->extend('editor');
 $this->start('header');
 ?>
 
-    <h3 class="title">
+    <h3 class="has-lang">
         <span><?php esc_html_e('Template file','loco-translate')?>:</span>
         <span class="loco-meta">
             <span><?php echo esc_html_x('Updated','Modified time','loco-translate')?>:</span>
@@ -15,3 +15,8 @@ $this->start('header');
             <span id="loco-po-status"></span>
         </span>
     </h3>
+
+
+    <div id="loco-auto" title="Error">
+        <p>Template files cannot be translated</p>
+    </div>

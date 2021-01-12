@@ -7,50 +7,22 @@ class Loco_admin_file_DeleteController extends Loco_admin_file_BaseController {
 
     /**
      * Expand single path to all files that will be deleted
+     * @param Loco_fs_File primary file being deleted, probably the PO
      * @return array
      */
     private function expandFiles( Loco_fs_File $file ){
-        $files = array( $file );
-        $ext = $file->extension();
-        //
-        if( 'po' === $ext ){
-            $sibling = $file->cloneExtension('mo');
-            if( $sibling->exists() ){
-                $files[] = $sibling;
-            }
+        try {
+            $siblings = new Loco_fs_Siblings( $file );
         }
-        else if( 'mo' === $ext ){
-            $sibling = $file->cloneExtension('po');
-            if( $sibling->exists() ){
-                $files[] = $sibling;
-            }
-        }
-        else if( 'pot' !== $ext ){
+        catch( InvalidArgumentException $e ){
+            $ext = $file->extension();
             throw new Loco_error_Exception( sprintf('Refusing to delete a %s file', strtoupper($ext) ) );
         }
-        // add backups of all files (although there should be none for MO files)
-        foreach( array_values($files) as $file ){
-            $backups = new Loco_fs_Revisions($file);
-            foreach( $backups->getPaths() as $path ){
-                $files[] = new Loco_fs_File($path);
-            }
-        }
-        
-        return $files;
+        return $siblings->expand();
     }
 
 
-    /**
-     * {@inheritdoc}
-     *
-    public function getHelpTabs(){
-        return array (
-            __('Overview','default') => $this->viewSnippet('tab-file-delete'),
-        );
-    }*/
 
-
-    
     /**
      * {@inheritdoc}
      */
@@ -71,7 +43,7 @@ class Loco_admin_file_DeleteController extends Loco_admin_file_BaseController {
             // attempt delete if valid nonce posted back
             if( $this->checkNonce($action) ){
                 $api = new Loco_api_WordPressFileSystem;
-                // delete dependant files, so that master always exists if any others fail
+                // delete dependant files first, so master still exists if others fail
                 $files = array_reverse( $this->expandFiles($file) );
                 try {
                     /* @var $trash Loco_fs_File */
@@ -86,7 +58,7 @@ class Loco_admin_file_DeleteController extends Loco_admin_file_BaseController {
                         Loco_data_Session::close();
                     }
                     catch( Exception $e ){
-                        // tollerate session failure
+                        // tolerate session failure
                     }
                     // redirect to bundle overview
                     $href = Loco_mvc_AdminRouter::generate( $this->get('type').'-view', array( 'bundle' => $this->get('bundle') ) );
@@ -99,7 +71,7 @@ class Loco_admin_file_DeleteController extends Loco_admin_file_BaseController {
                 }
             }
         }
-
+        // set page title before render sets inline title
         $bundle = $this->getBundle();
         $this->set('title', sprintf( __('Delete %s','loco-translate'), $file->basename() ).' &lsaquo; '.$bundle->getName() );
     }
@@ -120,29 +92,20 @@ class Loco_admin_file_DeleteController extends Loco_admin_file_BaseController {
         $info = Loco_mvc_FileParams::create($file);
         $this->set( 'info', $info );
         $this->set( 'title', sprintf( __('Delete %s','loco-translate'), $info->name ) );
-
-        $locked = $file->deletable() ? 0 : 1;
         
         // warn about additional files that will be deleted along with this
         if( $deps = array_slice($files,1) ){
             $count = count($deps);
-            $this->set('warn', sprintf( _n( 'One dependant file will also be deleted', '%u dependant files will also be deleted', $count, 'loco-translate' ), $count ) );
+            $this->set('warn', sprintf( _n( 'One dependent file will also be deleted', '%u dependent files will also be deleted', $count, 'loco-translate' ), $count ) );
             $infos = array();
             foreach( $deps as $depfile ){
                 $infos[] = Loco_mvc_FileParams::create( $depfile );
-                if( is_int($locked) && ! $depfile->deletable() ){
-                    ++$locked;
-                }
             }
             $this->set('deps', $infos );
         }
         
-        $this->set( 'locked', $locked );
+        $this->prepareFsConnect( 'delete', $this->get('path') );
         
-        if( $locked ){
-            $this->prepareFsConnect( 'delete', $this->get('path') );
-        }
-
         $this->enqueueScript('delete');
         return $this->view('admin/file/delete');
     }

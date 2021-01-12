@@ -30,12 +30,71 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
 
 
     /**
+     * Sort to the left the best option for saving new translation files
+     * @return Loco_mvc_ViewParams
+     */
+    private function sortPreferred( array $choices ){
+        usort( $choices, array(__CLASS__,'_onSortPreferred') );
+        $best = current( $choices );
+        if( $best && ! $best['disabled'] ){
+            return $best;
+        }
+    }
+
+    
+
+    /**
+     * @internal
+     */
+    public static function _onSortPreferred( Loco_mvc_ViewParams $a, Loco_mvc_ViewParams $b ){
+        $x = self::scoreFileChoice($a);
+        $y = self::scoreFileChoice($b);
+        return $x === $y ? 0 : ( $x > $y ? -1 : 1 );
+    }
+    
+    
+    /**
+     * Score an individual file choice for sorting preferred
+     * @return int
+     */
+    private static function scoreFileChoice( Loco_mvc_ViewParams $p ){
+        $score = 0;
+        if( $p['writable'] ){
+            $score++;
+        }
+        if( $p['disabled'] ){
+            $score -= 2;
+        }
+        if( $p['systype'] ){
+            $score--;
+        }
+        return $score;
+    }
+
+
+
+    /**
+     * @internal
+     * @param int
+     * @param int
+     * @return int
+     */
+    private static function compareLocationKeys( $a, $b ){
+        static $order = array('custom' => 4, 'wplang' => 3, 'theme' => 2, 'plugin' => 2, 'other' => 1 );
+        $x = $order[$a];
+        $y = $order[$b];
+        return $x === $y ? 0 : ( $x > $y ? -1 : 1 );
+    }
+
+
+
+    /**
      * {@inheritdoc}
      */
     public function render(){
         
         $breadcrumb = $this->prepareNavigation();
-        // "new" tab is confising when no project-scope navigation
+        // "new" tab is confusing when no project-scope navigation
         // $this->get('tabs')->add( __('New PO','loco-translate'), '', true );
         
         // bundle mandatory, but project optional
@@ -61,11 +120,11 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
         
         // default locale is a placeholder
         $locale = new Loco_Locale('zxx');
-        $content_dir = rtrim( loco_constant('WP_CONTENT_DIR'), '/' );
+        $content_dir = untrailingslashit( loco_constant('WP_CONTENT_DIR') );
         $copying = false;
         
         // Permit using any provided file a template instead of POT
-        if( $potpath = $this->get('source') ){
+        if( $potpath = $this->get('path') ){
             $potfile = new Loco_fs_LocaleFile($potpath);
             $potfile->normalize( $content_dir );
             if( ! $potfile->exists() ){
@@ -88,32 +147,35 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
         }
 
 
-        // start dropdown list with installed languages
-        $default = new Loco_Locale('en','US'); 
-        $installed = array(
-            new Loco_mvc_ViewParams( array(
-                'icon'  => $default->getIcon(),
-                'value' => (string) $default,
-                'label' => $default->buildName(),
-            ) )
-        );
-        // pull the same list of "available" languages as used in WordPress settings
-        $api = new Loco_api_WordPressTranslations;
         $locales = array();
-        foreach( $api->getAvailableCore() as $tag => $raw ){
+        $installed = array();
+        $api = new Loco_api_WordPressTranslations;
+        $prefs = Loco_data_Preferences::get();
+        // pull installed list first, this will include en_US and any non-standard languages installed
+        foreach( $api->getInstalledCore() as $tag ){
             $locale = Loco_Locale::parse($tag);
-            $vparam = new Loco_mvc_ViewParams( array(
-                'icon'  => $locale->getIcon(),
-                'value' => (string) $locale,
-                'label' => $locale->fetchName($api),
-            ) );
-            if( $api->isInstalled($tag) ){
-                $installed[] = $vparam;
-            }
-            else {
-                $locales[] = $vparam;
+            if( $locale->isValid() && $prefs->has_locale($locale) ){
+                $tag = (string) $tag;
+                // We may not have names for these, so just the language tag will show
+                $installed[$tag] = new Loco_mvc_ViewParams( array(
+                    'value' => $tag,
+                    'icon'  => $locale->getIcon(),
+                    'label' => $locale->ensureName($api),
+                ) );
             }
         }
+        // pull the same list of "available" languages as used in WordPress settings
+        foreach( $api->getAvailableCore() as $tag => $locale ){
+            if( ! array_key_exists($tag,$installed) && $prefs->has_locale($locale) ){
+                $locales[$tag] = new Loco_mvc_ViewParams( array(
+                    'value' => $tag,
+                    'icon'  => $locale->getIcon(),
+                    'label' => $locale->ensureName($api),
+                ) );
+            }
+        }
+
+        // two locale lists built for "installed" and "available" dropdowns
         $this->set( 'locales', $locales );
         $this->set( 'installed', $installed );
 
@@ -126,11 +188,12 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
             $filechoice = new Loco_fs_FileList;
         }
 
-        
-        // show information about POT file if we are initialializing from template
+
+        // show information about POT file if we are initializing from template
         if( $potfile && $potfile->exists() ){
             $meta = Loco_gettext_Metadata::load($potfile);
             $total = $meta->getTotal();
+            // translators: 1: Number of strings; 2: Name of POT file; e.g. "100 strings found in file.pot"
             $summary = sprintf( _n('One string found in %2$s','%s strings found in %s',$total,'loco-translate'), number_format($total), $potfile->basename() );
             $this->set( 'pot', new Loco_mvc_ViewParams( array(
                 'name' => $potfile->basename(),
@@ -144,16 +207,16 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
                 $filechoice->add( $pofile );
             }
             /// else if POT is in a folder we don't know about, we may as well add to the choices
-            // TODO this means another utilty function in project for prefixing rules on individual location
+            // TODO this means another utility function in project for prefixing rules on individual location
         }
         // else no template exists, so we prompt to extract from source
-        else {
+        else if( 2 > Loco_data_Settings::get()->pot_expected ){
             $this->set( 'ext', new Loco_mvc_ViewParams( array(
                 'link' => Loco_mvc_AdminRouter::generate( $this->get('type').'-xgettext', $_GET ),
                 'text' => __('Create template','loco-translate'),
             ) ) );
-            // if forcing source extraction show brief description of source files
-            if( $this->get('extract') ){
+            // if allowing source extraction without warning show brief description of source files
+            if( $this->get('extract') || 0 === Loco_data_Settings::get()->pot_expected ){
                 // Tokenizer required for string extraction
                 if( ! loco_check_extension('tokenizer') ){
                     return $this->view('admin/errors/no-tokenizer');
@@ -171,19 +234,30 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
                 if( $potfile ){
                     $this->set('pot', Loco_mvc_FileParams::create($potfile) );
                 }
+                // else offer assignment of a new file
+                else {
+                    $this->set( 'conf', new Loco_mvc_ViewParams( array(
+                        'link' => Loco_mvc_AdminRouter::generate( $this->get('type').'-conf', array_intersect_key($_GET,array('bundle'=>'')) ),
+                        'text' => __('Assign template','loco-translate'),
+                    ) ) );
+                }
                 return $this->view('admin/init/init-prompt');
             }
         }
+        else {
+            throw new Loco_error_Exception('Plugin settings disallow missing templates');
+        }
         $this->set( 'summary', $summary );
         
-
-        // group established locations into types (offical, etc..) 
+        // group established locations into types (official, etc..)
         // there is no point checking whether any of these file exist, because we don't know what language will be chosen yet.
+        $sortable = array();
         $locations = array();
-        $preferred = null;
-        /* @var $pofile Loco_fs_File */
+        $fs_failure = null;
+        /* @var Loco_fs_LocaleFile $pofile */
         foreach( $filechoice as $pofile ){
             $parent = new Loco_fs_LocaleDirectory( $pofile->dirname() );
+            $systype = $parent->getUpdateType();
             $typeId = $parent->getTypeId();
             if( ! isset($locations[$typeId]) ){
                 $locations[$typeId] = new Loco_mvc_ViewParams( array(
@@ -191,42 +265,60 @@ class Loco_admin_init_InitPoController extends Loco_admin_bundle_BaseController 
                     'paths' => array(),
                 ) );
             }
-            // lazy build of directory path, suppressing errors
-            if( ! $parent->exists() ){
-                try {
-                    $parent->mkdir();
-                }
-                catch( Exception $e ){
-                    // Loco_error_AdminNotices::warn( $e->getMessage() );
-                }
+            // folder may be unwritable (requiring connect to create file) or may be denied under security settings
+            try {
+                $context = $parent->getWriteContext()->authorize();
+                $writable = $context->writable();
+                $disabled = false;
             }
-            $params = new Loco_mvc_ViewParams( array (
-                'locked' => ! $parent->writable(),
+            catch( Loco_error_WriteException $e ){
+                $fs_failure = $e->getMessage();
+                $writable = false;
+                $disabled = true;
+            }
+            $suffix = $pofile->getSuffix().'.po';
+            $choice = new Loco_mvc_ViewParams( array (
+                'checked' => '',
+                'writable' => $writable,
+                'disabled' => $disabled,
+                'systype' => $systype,
                 'parent' => Loco_mvc_FileParams::create( $parent ),
                 'hidden' => $pofile->getRelativePath($content_dir),
-                'holder' => str_replace( (string) $locale, '<span>&lt;locale&gt;</span>', $pofile->basename() ),
+                'holder' => str_replace( $suffix, '<span>{locale}</span>.po', $pofile->basename() ),
             ) );
-            // use first writable (or createable) location as default option
-            if( is_null($preferred) && ! $params['locked'] ){
-                $preferred = $pofile;
-                $params['checked'] = 'checked';
-            }
-            $locations[$typeId]['paths'][] = $params;
+            $sortable[] = $choice;
+            $locations[$typeId]['paths'][] = $choice;
         }
+
+        // display locations in runtime preference order
+        uksort( $locations, array(__CLASS__,'compareLocationKeys') );
         $this->set( 'locations', $locations );
 
+        // pre-select best (safest/writable) option
+        if( $preferred = $this->sortPreferred( $sortable ) ){
+            $preferred['checked'] = 'checked';
+        }
+        // else show total lock message. probably file mods disallowed
+        else if( $fs_failure ){
+            $this->set('fsLocked', $fs_failure );
+        }
         
         // hidden fields to pass through to Ajax endpoint
-        $this->set('hidden', new Loco_mvc_ViewParams( array(
+        $this->set('hidden', new Loco_mvc_HiddenFields( array(
             'action' => 'loco_json',
             'route' => 'msginit',
             'loco-nonce' => $this->setNonce('msginit')->value,
             'type' => $bundle->getType(),
             'bundle' => $bundle->getHandle(),
             'domain' => $project ? $project->getId() : '',
-            'source' => $this->get('source'),
+            'source' => $potpath,
         ) ) );
         
+        $this->set('help', new Loco_mvc_ViewParams( array(
+            'href' => apply_filters('loco_external','https://localise.biz/wordpress/plugin/manual/msginit'),
+            'text' => __("What's this?",'loco-translate'),
+        ) ) );
+
         // file system prompts will be handled when paths are selected (i.e. we don't have one yet)
         $this->prepareFsConnect( 'create', '' );
         

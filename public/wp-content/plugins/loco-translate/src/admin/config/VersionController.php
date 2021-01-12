@@ -11,19 +11,6 @@ class Loco_admin_config_VersionController extends Loco_admin_config_BaseControll
     public function init(){
         parent::init();
         $this->set( 'title', __('Version','loco-translate') );
-        // handle legacy degradation
-        $nonce = $this->setNonce('downgrade');
-        try {
-            if( $this->checkNonce($nonce->action) ){
-                update_option('loco-branch', '1', true );
-                $legacy = add_query_arg( array('page'=>'loco-translate'), admin_url('admin.php') );
-                wp_redirect( $legacy );
-            }
-        }
-        catch( Loco_error_Exception $e ){
-            Loco_error_AdminNotices::add($e);
-        }
-        
     }
 
 
@@ -38,39 +25,64 @@ class Loco_admin_config_VersionController extends Loco_admin_config_BaseControll
         
         // current plugin version
         $version = loco_plugin_version();
-        
-        // check for auto-update availabilty
         if( $updates = get_site_transient('update_plugins') ){
             $key = loco_plugin_self();
-            if( isset($updates->checked[$key]) && isset($updates->response[$key]) ){
-                $old = $updates->checked[$key];
-                $new = $updates->response[$key]->new_version;
-                $diff = version_compare( $new, $old );
-                if( 1 === $diff ){
-                    // current version is lower than latest
-                    $this->setUpdate( $new );
+            if( isset($updates->response[$key]) ){
+                $latest = $updates->response[$key]->new_version;
+                // if current version is lower than latest, prompt update
+                if( version_compare($version,$latest,'<') ){
+                    $this->setLocoUpdate($latest);
                 }
-                /*else {
-                    // current version is a future release (dev branch probably)
-                }*/
             }
         }
-
-        // $this->setUpdate('2.0.1-debug');
-        return $this->view('admin/config/version', compact('breadcrumb','version') ); 
+        // notify if running a development snapshot, but only if ahead of latest stable
+        if( '-dev' === substr($version,-4) ){
+            $this->set( 'devel', true );
+        }
+        
+        
+        // check PHP version, noting that we want to move to minimum version 5.6 as per latest WordPress
+        $phpversion = PHP_VERSION;
+        if( version_compare($phpversion,'5.6.20','<') ){
+            $this->setPhpUpdate('5.6.20');
+        }
+        
+        
+        // check WordPress version, noting that v5.2 bumped PHP min version to 5.6.20, as above
+        $wpversion = $GLOBALS['wp_version'];
+        if( version_compare($wpversion,'5.2','<') ){
+            $this->setWpUpdate('5.2');
+        }
+        
+        return $this->view('admin/config/version', compact('breadcrumb','version','phpversion','wpversion') ); 
     }
 
 
-
     /**
-     * @internal
+     * @param string version
      */
-    private function setUpdate( $version ){
+    private function setLocoUpdate( $version ){
         $action = 'upgrade-plugin_'.loco_plugin_self();
         $link = admin_url( 'update.php?action=upgrade-plugin&plugin='.rawurlencode(loco_plugin_self()) );
-
         $this->set('update', $version );
         $this->set('update_href', wp_nonce_url( $link, $action ) );
+    }
+
+
+    /**
+     * @param string minimum recommended version
+     */
+    private function setPhpUpdate( $version ){
+        $this->set('phpupdate',$version);
+    }
+
+
+    /**
+     * @param string minimum recommended version
+     */
+    private function setWpUpdate( $version ){
+        $this->set('wpupdate',$version);
+        $this->set('wpupdate_href', admin_url('update-core.php') );
     }
 
     

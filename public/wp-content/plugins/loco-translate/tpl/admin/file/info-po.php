@@ -4,17 +4,27 @@
  */
 $this->extend('info');
 $this->start('header');
+/* @var Loco_mvc_FileParams $file */
+/* @var Loco_mvc_FileParams $locale */
+/* @var Loco_gettext_Metadata $meta */
 ?> 
 
     <div class="notice inline notice-info">
+        <nav>
+            <a class="icon only-icon icon-download" title="Download" href="<?php $file->e('download')?>"><span>download</span></a>
+        </nav>
         <h3>
-            <span class="<?php $locale->e('icon')?>" lang="<?php $locale->e('lang')?>"> </span>
-            <span><?php $locale->e('name')?></span>
-            <code><?php $locale->e('code')?></code>
+            <a href="<?php $locale->e('href')?>" class="has-lang">
+                <span class="<?php $locale->e('icon')?>" lang="<?php $locale->e('lang')?>"><code><?php $locale->e('code')?></code></span>
+                <span><?php $locale->e('name')?></span>
+            </a>
         </h3>
         <dl>
+            <dt><?php self::e( __('File size','loco-translate') )?>:</dt>
+            <dd><?php $file->e('size')?></dd>
+
             <dt><?php self::e( __('File modified','loco-translate') )?>:</dt>
-            <dd><?php $file->date('mtime')?></dd>
+            <dd><time><?php $file->date('mtime')?></time></dd>
 
             <dt><?php self::e( __('Last translation','loco-translate') )?>:</dt>
             <dd><?php $params->e('author')?> &mdash; <date><?php $params->date('potime')?></date></dd>
@@ -30,7 +40,7 @@ $this->start('header');
     </div>
  
     <?php
-    if( ! $sibling->existant ):?> 
+    if( ! $sibling->existent ):?> 
     <div class="notice inline notice-warning">
         <h3 class="has-icon">
             <?php self::e( __('Binary file missing','loco-translate') )?> 
@@ -55,7 +65,7 @@ $this->start('header');
     </div><?php
 
     else:?> 
-    <div class="notice inline notice-debug">
+    <div class="notice inline notice-info">
         <h3 class="has-icon">
             <?php self::e( __('Out of sync with template','loco-translate') )?> 
         </h3>
@@ -66,15 +76,8 @@ $this->start('header');
     </div><?php
     endif;
     
-    /*if( $params->has('altpot') ):?> 
-    <div class="notice inline notice-debug">
-        <h3 class="has-icon">
-            Alternative template file
-        </h3>
-    </div><?php
-    endif;*/
-    
-    else:?> 
+    // only showing missing template warning when project was matched. Avoids confusion if something went wrong
+    elseif( $params->has('project') ):?> 
     <div class="notice inline notice-debug">
         <h3 class="has-icon">
             <?php self::e( __('Missing template','loco-translate') )?> 

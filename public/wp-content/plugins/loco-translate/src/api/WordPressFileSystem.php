@@ -6,9 +6,16 @@
 class Loco_api_WordPressFileSystem {
     
     /**
+     * Currently authenticated file system connection
      * @var WP_Filesystem_Direct
      */
     private $fs;
+    
+    /**
+     * Whether global file modifications have already passed check
+     * @var bool
+     */
+    private $fs_allowed;
     
     /**
      * Credentials form HTML echoed from request_filesystem_credentials
@@ -53,34 +60,100 @@ class Loco_api_WordPressFileSystem {
 
 
     /**
+     * Pre-auth checks for superficial file system blocks and disconnects any active remotes
+     * @param Loco_fs_File
+     * @throws Loco_error_WriteException
+     * @return bool always true
+     */
+    public function preAuthorize( Loco_fs_File $file ){
+        if( ! $this->fs_allowed ){
+            $file->getWriteContext()->authorize();
+            $this->fs_allowed = true;
+        }
+        // Disconnecting remote file system ensures the auth functions always start with direct file access
+        $file->getWriteContext()->disconnect();
+        return true;
+    }
+
+
+    /**
      * Authorize for the creation of a file that does not exist
+     * @param Loco_fs_File
      * @return bool whether file system is authorized NOT necessarily whether file is creatable
      */
     public function authorizeCreate( Loco_fs_File $file ){
+        $this->preAuthorize($file);
         if( $file->exists() ){
             throw new Loco_error_WriteException( sprintf( __('%s already exists in this folder','loco-translate'), $file->basename() ) );
         }
         return $file->creatable() || $this->authorize($file);
     }
-    
-    
+
+
     /**
      * Authorize for the update of a file that does exist
+     * @param Loco_fs_File
      * @return bool whether file system is authorized NOT necessarily whether file is updatable
      */
     public function authorizeUpdate( Loco_fs_File $file ){
+        $this->preAuthorize($file);
         if( ! $file->exists() ){
             throw new Loco_error_WriteException("File doesn't exist, try authorizeCreate");
         }
         return $file->writable() || $this->authorize($file);
     }
+
+
+    /**
+     * Authorize for update or creation, depending whether file exists
+     * @param Loco_fs_File
+     * @return bool
+     */
+    public function authorizeSave( Loco_fs_File $file ){
+        $this->preAuthorize($file);
+        return ( $file->exists() ? $file->writable() : $file->creatable() ) || $this->authorize($file);
+    }
+
+
+    /**
+     * Authorize for copy (to same directory), meaning source file must exist and directory be writable
+     * @param Loco_fs_File
+     * @return bool
+     */
+    public function authorizeCopy( Loco_fs_File $file ){
+        $this->preAuthorize($file);
+        if( ! $file->exists() ){
+            throw new Loco_error_WriteException("Can't copy a file that doesn't exist");
+        }
+        return $file->creatable() || $this->authorize($file);
+    }
+
+
+    /**
+     * Authorize for move (to another path if given).
+     * @param Loco_fs_File file being moved (must exist)
+     * @param Loco_fs_File target path (should not exist)
+     * @return bool
+     */
+    public function authorizeMove( Loco_fs_File $source, Loco_fs_File $target = null ){
+        // source is in charge of its own deletion
+        $result = $this->authorizeDelete($source);
+        // target is in charge of copying original which it must also be able to read.
+        if( $target && ! $this->authorizeCreate($target) ){
+            $result = false;
+        }
+        // value returned will be false if at least one file requires we add credentials
+        return $result;
+    }
     
     
     /**
      * Authorize for the removal of an existing file
+     * @param Loco_fs_File
      * @return bool whether file system is authorized NOT necessarily whether file is removable
      */
     public function authorizeDelete( Loco_fs_File $file ){
+        $this->preAuthorize($file);
         if( ! $file->exists() ){
             throw new Loco_error_WriteException("Can't delete a file that doesn't exist");
         }
@@ -89,31 +162,45 @@ class Loco_api_WordPressFileSystem {
 
 
     /**
-     * Authorizes update or create, depending on whether file exists
-     * @return bool whether file system is authorized
-     */
-    public function authorizeWrite( Loco_fs_File $file ){
-        return ( $file->exists() ? $file->writable() : $file->creatable() ) || $this->authorize($file);
-    }
-
-
-
-    /**
-     * Authorize connection for any operations, regardless of whether direct file system is available.
+     * Connect file to credentials in posted data. Used when established in advance what connection is needed
+     * @param Loco_fs_File
      * @return bool whether file system is authorized
      */    
     public function authorizeConnect( Loco_fs_File $file ){
+        $this->preAuthorize($file);
+        // front end may have posted that "direct" connection will work
+        $post = Loco_mvc_PostParams::get();
+        if( 'direct' === $post->connection_type ){
+            return true;
+        }
         return $this->authorize($file);
     }
 
 
-
     /**
-     * Wraps `request_filesystem_credentials` negotiation to obtain a remote connection and buffer WordPress form outout
+     * Wraps `request_filesystem_credentials` negotiation to obtain a remote connection and buffer WordPress form output
      * Call before output started, because buffers.
+     * @param Loco_fs_File
+     * @return bool
      */
     private function authorize( Loco_fs_File $file ){
+        // may already have authorized successfully
+        if( $this->fs instanceof WP_Filesystem_Base ){
+            $file->getWriteContext()->connect( $this->fs, false );
+            return true;
+        }
+        
+        // may have already failed authorization
+        if( $this->form ){
+            return false;
+        }
+        
+        // network access may be disabled
+        if( ! apply_filters('loco_allow_remote', true ) ){
+            throw new Loco_error_WriteException('Remote connection required, but network access is disabled');
+        }
     
+        // else begin new auth
         $this->fs = null;
         $this->form = '';
         $this->creds_out = array();
@@ -123,14 +210,14 @@ class Loco_api_WordPressFileSystem {
             $session = Loco_data_Session::get();
             if( isset($session['loco-fs']) ){
                 $creds = $session['loco-fs'];
-                if( $this->tryCredentials($creds,$file) ){
+                if( is_array($creds) && $this->tryCredentials($creds,$file) ){
                     $this->creds_in = array();
                     return true;
                 }
             }
         }
         catch( Exception $e ){
-            // tollerate session failure
+            // tolerate session failure
         }
 
         $post = Loco_mvc_PostParams::get();
@@ -144,9 +231,15 @@ class Loco_api_WordPressFileSystem {
             $type = FS_METHOD;
             // forcing direct access means request_filesystem_credentials will never give us a form :( 
             if( 'direct' === $type ){
+                Loco_error_AdminNotices::debug('Cannot connect remotely when FS_METHOD is "direct"');
                 return false;
             }
         }
+        // direct filesystem if ok if front end already posted it
+        else if( 'direct' === $post->connection_type ){
+            return true;
+        }
+        // else perform same logic as request_filesystem_credentials does to establish type
         else if( 'ssh' === $post->connection_type && extension_loaded('ssh2') && function_exists('stream_get_contents') ){
             $type = 'ssh2';
         }
@@ -168,14 +261,15 @@ class Loco_api_WordPressFileSystem {
         $type = apply_filters( 'filesystem_method', $type, $post->getArrayCopy(), $context, true );
         
         // the only params we'll pass into form will be those used by the ajax fsConnect end point
-        $extra = array( 'loco-nonce', 'path', 'auth' );
+        $extra = array( 'loco-nonce', 'path', 'auth', 'dest' );
         
         // capture WordPress output during negotiation.
         $buffer = Loco_output_Buffer::start();
 
-        if( $creds = request_filesystem_credentials( '', $type, false, $context, $extra ) ){
+        $creds = request_filesystem_credentials( '', $type, false, $context, $extra );
+        if( is_array($creds) ){
             // credentials passed through, should allow connect if they are correct
-            if( $this->tryCredentials( $creds?$creds:array(), $file ) ){
+            if( $this->tryCredentials($creds,$file) ){
                 $this->persistCredentials();
                 return true;
             }
@@ -193,15 +287,18 @@ class Loco_api_WordPressFileSystem {
             request_filesystem_credentials( '', $type, $error, $context, $extra );
         }
 
-        // now have unauthorized remote connection
+        // should now have unauthorized remote connection form
         $this->form = (string) $buffer->close();
+        if( '' === $this->form ){
+            Loco_error_AdminNotices::debug('Unknown error capturing output from request_filesystem_credentials');
+        }
         return false;
     }
 
 
-
     /**
-     * @internal
+     * @param array credentials returned from request_filesystem_credentials
+     * @param Loco_fs_File file to authorize write context
      * @return bool when credentials connected ok
      */
     private function tryCredentials( array $creds, Loco_fs_File $file ){
@@ -218,10 +315,9 @@ class Loco_api_WordPressFileSystem {
     }
 
 
-
     /**
      * Set current credentials in session if settings allow
-     * @return bool whether creds persisted
+     * @return bool whether credentials persisted
      */
     private function persistCredentials(){
         try {
@@ -234,12 +330,11 @@ class Loco_api_WordPressFileSystem {
             }
         }
         catch( Exception $e ){
-            // tollerate session failure
+            // tolerate session failure
             Loco_error_AdminNotices::debug( $e->getMessage() );
         }
         return false;
     }    
-
 
 
     /**
@@ -249,8 +344,7 @@ class Loco_api_WordPressFileSystem {
     public function getOutputCredentials(){
         return $this->creds_out;
     }
-    
-    
+   
     
     /**
      * Get input credentials from original post.
@@ -262,27 +356,76 @@ class Loco_api_WordPressFileSystem {
     }
 
 
-
     /**
      * Get currently configured filesystem API
      * @return WP_Filesystem_Direct
      */
     public function getFileSystem(){
         if( ! $this->fs ){
-            $this->fs = self::direct();
+            return self::direct();
         }
         return $this->fs;     
     }
 
 
-
     /**
-     * Check if filesystem access is direct
+     * Check if a file is subject to WordPress automatic updates
+     * @param Loco_fs_File
      * @return bool
      */
-    public function isDirect(){
-        return 'direct' === $this->getFileSystem()->method;
+    public function isAutoUpdatable( Loco_fs_File $file ){
+        // all paths safe from auto-updates if auto-updates are completely disabled
+        if( $this->isAutoUpdateDenied() ){
+            return false;
+        }
+        // Auto-updates aren't denied, so ascertain location "type" and run through the same filters as WP_Automatic_Updater::should_update()
+        $type = $file->getUpdateType();
+        if( '' !== $type ){
+            // Since 5.5.0: "{type}_s_auto_update_enabled" filters auto-update status for themes and plugins
+            // admins must also enable auto-updates on plugins and themes individually, but not checking that here. 
+            if( function_exists('wp_is_auto_update_enabled_for_type') && ('plugin'===$type||'theme'===$type) ){
+                $enabled = (bool) apply_filters( "{$type}s_auto_update_enabled", true );
+                if( $enabled ){
+                    // resolve given file to plugin/theme handle so we can check if it's been enabled
+                    $bundle = Loco_package_Bundle::fromFile($file);
+                    if( $bundle instanceof Loco_package_Bundle ){
+                        $handle = $bundle->getHandle();
+                        $option = (array) get_site_option( "auto_update_{$type}s", array() );
+                        // var_dump( compact('handle','option') );
+                        if( ! in_array($handle,$option,true) ){
+                            $enabled = false;
+                        }
+                    }
+                }
+                return $enabled;
+            }
+            // WordPress updater will have {item} from remote API data which we don't have here.
+            $item = new stdClass;
+            $item->new_files = false;
+            $item->autoupdate = true;
+            $item->disable_autoupdate = false;
+            return apply_filters( 'auto_update_'.$type, true, $item );
+        }
+        // else safe (not auto-updatable)
+        return false;
     }
 
+
+    /**
+     * Check if system is configured to deny auto-updates
+     * @return bool
+     */
+    public function isAutoUpdateDenied(){
+        // WordPress >= 4.8 can disable auto updates completely with "automatic_updater" context
+        if( function_exists('wp_is_file_mod_allowed') && ! wp_is_file_mod_allowed('automatic_updater') ){
+            return true;
+        }
+        // else simply observe AUTOMATIC_UPDATER_DISABLED constant
+        if( apply_filters( 'automatic_updater_disabled', loco_constant('AUTOMATIC_UPDATER_DISABLED') ) ) {
+            return true;
+        }
+        // else nothing explicitly denying updates
+        return false;
+    }
 
 }
